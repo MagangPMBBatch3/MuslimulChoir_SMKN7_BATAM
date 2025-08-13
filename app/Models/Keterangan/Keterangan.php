@@ -21,12 +21,12 @@ class Keterangan extends Model
     // Relasi ke Bagian
     public function bagian()
     {
-        return $this->belongsTo(\App\Models\Bagian\Bagians::class);
+        return $this->belongsTo(\App\Models\Bagian\Bagians::class , 'bagian_id');
     }
 
     // Relasi ke Proyek
     public function proyek()
     {
-        return $this->belongsTo(\App\Models\Proyek\Proyek::class);
+        return $this->belongsTo(\App\Models\Proyek\Proyek::class , 'proyek_id');
     }
 }

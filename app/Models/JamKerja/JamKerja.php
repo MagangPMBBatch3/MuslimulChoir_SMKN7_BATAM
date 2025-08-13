@@ -28,30 +28,30 @@ class JamKerja extends Model
     // Relasi ke UserProfile
     public function userProfile()
     {
-        return $this->belongsTo(\App\Models\UserProfile\UserProfile::class);
+        return $this->belongsTo(\App\Models\UserProfile\UserProfile::class , 'users_profile_id');
     }
 
     // Relasi ke Proyek
     public function proyek()
     {
-        return $this->belongsTo(\App\Models\Proyek\Proyek::class);
+        return $this->belongsTo(\App\Models\Proyek\Proyek::class , 'proyek_id');
     }
 
     // Relasi ke Aktivitas
     public function aktivitas()
     {
-        return $this->belongsTo(\App\Models\Aktivitas\Aktivitas::class);
+        return $this->belongsTo(\App\Models\Aktivitas\Aktivitas::class , 'aktivitas_id');
     }
 
     // Relasi ke Status
     public function status()
     {
-        return $this->belongsTo(\App\Models\Status\Statuses::class);
+        return $this->belongsTo(\App\Models\Status\Statuses::class , 'status_id');
     }
 
     // Relasi ke ModeJamKerja
     public function modeJamKerja()
     {
-        return $this->belongsTo(\App\Models\ModeJamKerja\ModeJamKerja::class);
+        return $this->belongsTo(\App\Models\ModeJamKerja\ModeJamKerja::class , 'mode_id');
     }
 }

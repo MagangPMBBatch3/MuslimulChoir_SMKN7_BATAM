@@ -27,21 +27,21 @@ class UserProfile extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\Models\User\User::class);
+        return $this->belongsTo(\App\Models\User\User::class , 'user_id');
     }
 
     public function bagian()
     {
-        return $this->belongsTo(\App\Models\Bagian\Bagians::class);
+        return $this->belongsTo(\App\Models\Bagian\Bagians::class , 'bagian_id');
     }
 
     public function level()
     {
-        return $this->belongsTo(\App\Models\Level\Level::class);
+        return $this->belongsTo(\App\Models\Level\Level::class , 'level_id');
     }
 
     public function status()
     {
-        return $this->belongsTo(\App\Models\Status\Statuses::class);
+        return $this->belongsTo(\App\Models\Status\Statuses::class , 'status_id');
     }
 }

@@ -49,24 +49,24 @@ input UpdateJamKerjaInput {
 
 extend type Query {
     allJamKerja: [JamKerja!]!
-        @all(model: "App\\Models\\JamKerja")
+        @all(model: "App\\Models\\JamKerja\\JamKerja")
 
     jamKerja(id: ID! @eq): JamKerja
-        @find(model: "App\\Models\\JamKerja")
+        @find(model: "App\\Models\\JamKerja\\JamKerja")
 }
 
 extend type Mutation {
     createJamKerja(input: CreateJamKerjaInput! @spread): JamKerja
-        @create(model: "App\\Models\\JamKerja")
+        @create(model: "App\\Models\\JamKerja\\JamKerja")
 
     updateJamKerja(
         id: ID! @eq(key: "id"),
         input: UpdateJamKerjaInput! @spread
     ): JamKerja
-        @update(model: "App\\Models\\JamKerja")
+        @update(model: "App\\Models\\JamKerja\\JamKerja")
 
     deleteJamKerja(id: ID! @eq(key: "id")): JamKerja
-        @delete(model: "App\\Models\\JamKerja")
+        @delete(model: "App\\Models\\JamKerja\\JamKerja")
 
     restoreJamKerja(id: ID!): JamKerja
         @field(resolver: "App\\GraphQL\\JamKerja\\Mutations\\JamKerjaMutation@restore")

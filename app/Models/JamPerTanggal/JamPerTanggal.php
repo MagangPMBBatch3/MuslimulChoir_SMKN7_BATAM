@@ -28,11 +28,11 @@ class JamPerTanggal extends Model
     // Relasi ke UserProfile
     public function userProfile()
     {
-        return $this->belongsTo(\App\Models\UserProfile\UserProfile::class);
+        return $this->belongsTo(\App\Models\UserProfile\UserProfile::class , 'users_profile_id');
     }
     // Relasi ke Proyek
     public function proyek()
     {
-        return $this->belongsTo(\App\Models\Proyek\Proyek::class);
+        return $this->belongsTo(\App\Models\Proyek\Proyek::class , 'proyek_id');
     }
 }
