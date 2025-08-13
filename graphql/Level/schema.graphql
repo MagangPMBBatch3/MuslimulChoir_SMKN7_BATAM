@@ -1,0 +1,52 @@
+type Level 
+{
+    id: ID!
+    nama: String!
+    created_at: DateTime
+    updated_at: DateTime
+    deleted_at: DateTime
+}
+
+input CreateLevelInput {
+    nama: String
+} 
+
+input UpdateLevelInput {
+    nama: String
+}
+
+extend type Query {
+    # ambil semua level (yang belum dihapus)
+    allLevel: [Level!]!
+    @all(model: "App\\Models\\Level\\Level")
+
+    # cari berdasarkan id
+    level(id: ID! @eq(key: "id")): Level
+    @find(model: "App\\Models\\Level\\Level")
+
+    # cari berdasarkan nama (like)
+    levelByNama(nama: String! @where(operator: "like", key: "nama")): [Level!]!
+    @all(model: "App\\Models\\Level\\Level")
+}
+
+extend type Mutation {
+    # tambah data
+    createLevel(input: CreateLevelInput! @spread): Level
+    @create(model: "App\\Models\\Level\\Level")
+
+    # ubah data
+    updateLevel(
+        id: ID! @eq(key: "id"),
+        input: UpdateLevelInput! @spread
+        ): Level
+    @update(model: "App\\Models\\Level\\Level")
+
+    deleteLevel(id: ID! @eq(key: "id")): Level
+    @delete(model: "App\\Models\\Level\\Level")
+
+    restoreLevel(id: ID!): Level
+    @field(resolver: "App\\GraphQL\\Level\\Mutations\\LevelMutation@restore")
+
+    forceDeleteLevel(id: ID!): Level
+    @field(resolver: "App\\GraphQL\\Level\\Mutations\\LevelMutation@forceDelete")
+}

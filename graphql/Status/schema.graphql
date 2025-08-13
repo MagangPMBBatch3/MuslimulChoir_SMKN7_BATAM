@@ -1,0 +1,50 @@
+type Status {
+    id: ID!
+    nama: String!
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime
+    deleted_at: DateTime
+}
+
+input CreateStatusInput {
+    nama: String!
+}
+
+input UpdateStatusInput {
+    nama: String
+}
+
+extend type Query {
+    # Ambil semua Status (yang belum dihapus)
+    allStatus: [Status!]!
+        @all(model: "App\\Models\\Status\\Statuses")
+
+    # cari Status berdasarkan ID
+    Status(id: ID! @eq(key: "id")): Status
+        @find(model: "App\\Models\\Status\\Statuses")
+
+    # cari Status berdasarkan nama (LIKE)
+    StatusByNama(nama: String! @where(operator: "like", key: "nama")): [Status!]!
+        @all(model: "App\\Models\\Status\\Statuses")
+}
+
+extend type Mutation {
+    createStatus(input: CreateStatusInput! @spread): Status
+        @create(model: "App\\Models\\Status\\Statuses")
+
+    updateStatus(
+        id: ID! @eq(key: "id"),
+        input: UpdateStatusInput! @spread
+    ): Status
+        @update(model: "App\\Models\\Status\\Statuses")
+
+    deleteStatus(id: ID! @eq(key: "id")): Status
+        @delete(model: "App\\Models\\Status\\Statuses")
+
+    restoreStatus(id: ID!): Status
+        @field(resolver: "App\\GraphQL\\Status\\Mutations\\StatusMutation@restore")
+
+    forceDeleteStatus(id: ID!): Status
+        @field(resolver: "App\\GraphQL\\Status\\Mutations\\StatusMutation@forceDelete")
+}

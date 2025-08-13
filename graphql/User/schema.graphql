@@ -1,0 +1,57 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    email_verified_at: DateTime
+    description: String
+    created_at: DateTime
+    updated_at: DateTime
+    deleted_at: DateTime
+}
+
+input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+}
+
+input UpdateUserInput {
+    name: String
+    email: String
+    password: String
+    email_verified_at: DateTime
+}
+
+extend type Query {
+    # Ambil semua User (yang belum dihapus)
+    allUser: [User!]!
+        @all(model: "App\\Models\\User\\User")
+
+    # cari User berdasarkan ID
+    User(id: ID! @eq(key: "id")): User
+        @find(model: "App\\Models\\User\\User")
+
+    # cari User berdasarkan name (LIKE)
+    UserByEmail(email: String! @where(operator: "like", key: "email")): [User!]!
+        @all(model: "App\\Models\\User\\User")
+}
+
+extend type Mutation {
+    createUser(input: CreateUserInput! @spread): User
+        @create(model: "App\\Models\\User\\User")
+
+    updateUser(
+        id: ID! @eq(key: "id"),
+        input: UpdateUserInput! @spread
+    ): User
+        @update(model: "App\\Models\\User\\User")
+
+    deleteUser(id: ID! @eq(key: "id")): User
+        @delete(model: "App\\Models\\User\\User")
+
+    restoreUser(id: ID!): User
+        @field(resolver: "App\\GraphQL\\User\\Mutations\\UserMutation@restore")
+
+    forceDeleteUser(id: ID!): User
+        @field(resolver: "App\\GraphQL\\User\\Mutations\\UserMutation@forceDelete")
+}
