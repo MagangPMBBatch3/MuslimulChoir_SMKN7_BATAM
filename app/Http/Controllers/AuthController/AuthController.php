@@ -34,6 +34,11 @@ class AuthController
     {
         return view('dashboard.index');
     }
+    
+    public function bagianIndex()
+    {
+        return view('bagian.index');
+    }
 
     public function logout(Request $request)
     {
