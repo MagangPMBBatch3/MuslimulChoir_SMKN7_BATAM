@@ -11,5 +11,7 @@ use App\Http\Controllers\AuthController\AuthController;
         Route::get('/dashboard', [AuthController::class, 'dashboard']);
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/bagian', [AuthController::class, 'bagianIndex'])->name('bagian.index');
+    Route::get('/bagian', [AuthController::class, 'bagian'])->name('bagian.index');
+
+    Route::get('/level', [AuthController::class, 'level'])->name('level.index');
 });

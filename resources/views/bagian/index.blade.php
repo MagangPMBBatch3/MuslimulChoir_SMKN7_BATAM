@@ -6,7 +6,7 @@
 
         <div class="flex justify-between mb-4">
            <input type="text" id="search" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchBagian()">
-            <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 rounded ">Tambah Data</button>
+            <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-800 rounded ">Tambah Data</button>
         </div>
 
         {{-- Tabel Data --}}

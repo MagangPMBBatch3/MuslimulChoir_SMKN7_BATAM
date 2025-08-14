@@ -35,9 +35,14 @@ class AuthController
         return view('dashboard.index');
     }
     
-    public function bagianIndex()
+    public function bagian()
     {
         return view('bagian.index');
+    }
+
+    public function level()
+    {
+        return view('level.index');
     }
 
     public function logout(Request $request)
