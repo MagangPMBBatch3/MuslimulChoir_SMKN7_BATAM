@@ -20,12 +20,15 @@ extend type Query {
     allStatus: [Status!]!
         @all(model: "App\\Models\\Status\\Statuses")
 
+    allStatusArsip: [Status!]!
+    @field(resolver: "App\\GraphQL\\Status\\Queries\\StatusQuery@allArsip")
+
     # cari Status berdasarkan ID
-    Status(id: ID! @eq(key: "id")): Status
+    status(id: ID! @eq(key: "id")): Status
         @find(model: "App\\Models\\Status\\Statuses")
 
     # cari Status berdasarkan nama (LIKE)
-    StatusByNama(nama: String! @where(operator: "like", key: "nama")): [Status!]!
+    statusByNama(nama: String! @where(operator: "like", key: "nama")): [Status!]!
         @all(model: "App\\Models\\Status\\Statuses")
 }
 

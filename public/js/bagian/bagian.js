@@ -56,9 +56,9 @@ async function loadData(queryType = "all") {
         if (!item) return;
         tbody.innerHTML += `
             <tr class="border-b">
-                <td class="border px-2 py-1">${item.id}</td>
-                <td class="border px-2 py-1">${item.nama}</td>
-                <td class="border px-2 py-1">
+                <td class="border px-2 py-1 text-center">${item.id}</td>
+                <td class="border px-2 py-1 text-center">${item.nama}</td>
+                <td class="border px-2 py-1 text-center">
                     <button onclick="openEditModal(${item.id}, '${item.nama}')" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</button>
                     <button onclick="hapusBagian(${item.id})" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button>
                 </td>

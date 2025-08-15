@@ -27,6 +27,9 @@ extend type Query {
     allKeterangan: [Keterangan!]!
         @all(model: "App\\Models\\Keterangan")
 
+     allKeteranganArsip: [Keterangan!]!
+    @field(resolver: "App\\GraphQL\\Keterangan\\Queries\\KeteranganQuery@allArsip")
+
     keterangan(id: ID! @eq): Keterangan
         @find(model: "App\\Models\\Keterangan")
 }

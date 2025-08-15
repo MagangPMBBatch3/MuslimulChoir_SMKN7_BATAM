@@ -27,9 +27,17 @@ extend type Query {
     # Ambil semua Proyek (yang belum dihapus)
     allProyek: [Proyek!]!
         @all(model: "App\\Models\\Proyek\\Proyek")
+    
+    proyek(id: ID! @eq(key: "id")): Proyek
+    @find(model: "App\\Models\\Proyek\\Proyek")
+
+    allProyekArsip: [Proyek!]!
+    @field(resolver: "App\\GraphQL\\Proyek\\Queries\\ProyekQuery@allArsip")
 
    getProyeks(search: String): [Proyek!]!
     @field(resolver: "App\\GraphQL\\Proyek\\Queries\\ProyekQuery@getProyeks")
+
+    
 
 }
 

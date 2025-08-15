@@ -20,6 +20,7 @@ extend type Query {
 
   allLevelArsip: [Level!]!
     @field(resolver: "App\\GraphQL\\Level\\Queries\\LevelQuery@allArsip")
+    
   level(id: ID! @eq(key: "id")): Level
     @find(model: "App\\Models\\Level\\Level")
 

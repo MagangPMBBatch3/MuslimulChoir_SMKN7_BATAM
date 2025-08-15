@@ -14,7 +14,10 @@
 <body class="bg-gray-100 flex">
     <!-- Sidebar -->
     <aside class="w-64 bg-blue-600 text-white p-4 min-h-screen">
-        <h2 class="text-xl font-bold mb-6">Menu</h2>
+        <h2 class="text-3xl font-extrabold mb-6 text-center bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg tracking-wide">
+    Menu
+</h2>
+
         <ul>
             {{-- Dashboard --}}
             <li class="mb-2">
@@ -42,35 +45,35 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('status.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('status.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-purchase-tag-alt' style="font-size: 24px;"></i>
                     <span class="ml-2">Status</span>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('proyek.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('proyek.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-briefcase' style="font-size: 24px;"></i>
                     <span class="ml-2">Proyek</span>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('mode.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('modejamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-time-five' style="font-size: 24px;"></i>
                     <span class="ml-2">Mode Jam Kerja</span>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('statusjam.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('statusjamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-check-circle' style="font-size: 24px;"></i>
                     <span class="ml-2">Status Jam Kerja</span>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('jenispesan.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jenispesanan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-list-ul' style="font-size: 24px;"></i>
                     <span class="ml-2">Jenis Pesanan</span>
@@ -85,59 +88,59 @@
             </li>
 
             {{-- Aktivitas & Operasional --}}
-            <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Aktivitas</li>
+            {{-- <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Aktivitas</li>
             <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('aktivitas.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-pulse' style="font-size: 24px;"></i>
                     <span class="ml-2">Aktivitas</span>
                 </a>
-            </li>
-            <li class="mb-2">
+            </li> --}}
+            {{-- <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-time-five' style="font-size: 24px;"></i>
                     <span class="ml-2">Jam Kerja</span>
                 </a>
-            </li>
-            <li class="mb-2">
+            </li> --}}
+            {{-- <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jamkerjapertanggal.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-calendar' style="font-size: 24px;"></i>
                     <span class="ml-2">Jam Kerja per Tanggal</span>
                 </a>
-            </li>
-            <li class="mb-2">
+            </li> --}}
+            {{-- <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('lembur.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-time' style="font-size: 24px;"></i>
                     <span class="ml-2">Lembur</span>
                 </a>
-            </li>
-            <li class="mb-2">
+            </li> --}}
+            {{-- <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('pesan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-message-detail' style="font-size: 24px;"></i>
                     <span class="ml-2">Pesan</span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- User & Profil --}}
-            <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">User</li>
+            {{-- <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">User</li>
             <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('user.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-user' style="font-size: 24px;"></i>
                     <span class="ml-2">Users</span>
                 </a>
-            </li>
-            <li class="mb-2">
+            </li> --}}
+            {{-- <li class="mb-2">
                 <a href="#"
                    class="flex items-center p-2 rounded {{ request()->routeIs('profile.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-user-circle' style="font-size: 24px;"></i>
                     <span class="ml-2">User Profile</span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- Logout --}}
             <li class="mt-4">

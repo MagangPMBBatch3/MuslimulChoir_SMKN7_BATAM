@@ -45,6 +45,36 @@ class AuthController
         return view('level.index');
     }
 
+    public function status()
+    {
+        return view('status.index');
+    }
+
+     public function proyek()
+    {
+        return view('proyek.index');
+    }
+
+     public function mode()
+    {
+        return view('mode.index');
+    }
+
+     public function statusjam()
+    {
+        return view('statusjam.index');
+    }
+
+    public function jenispesan()
+    {
+        return view('jenispesan.index');
+    }
+
+    public function keterangan()
+    {
+        return view('keterangan.index');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

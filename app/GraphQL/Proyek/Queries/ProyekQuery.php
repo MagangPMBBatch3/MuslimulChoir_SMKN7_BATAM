@@ -16,4 +16,13 @@ class ProyekQuery{
         }
         return $query->get();
     }
+
+     public function allArsip($_, array $args)
+   {
+       return Proyek::onlyTrashed()->get();
+   }
 }
+
+
+
+  

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\JenisPesanan;
+namespace App\Models\JenisPesan;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class JenisPesanan extends Model
+class JenisPesan extends Model
 {
    use SoftDeletes;
 
-    protected $table = 'jenis_pesanan';
+    protected $table = 'jenis_pesan';
     protected $primaryKey = 'id';
 
     protected $fillable = [
