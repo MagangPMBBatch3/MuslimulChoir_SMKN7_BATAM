@@ -25,29 +25,32 @@ input UpdateUserInput {
 extend type Query {
     # Ambil semua User (yang belum dihapus)
     allUser: [User!]!
-        @all(model: "App\\Models\\User\\User")
+        @all(model: "App\\Models\\User")
+
+     allUserArsip: [User!]!
+    @field(resolver: "App\\GraphQL\\User\\Queries\\UserQuery@allArsip")
 
     # cari User berdasarkan ID
     User(id: ID! @eq(key: "id")): User
-        @find(model: "App\\Models\\User\\User")
+        @find(model: "App\\Models\\User")
 
     # cari User berdasarkan name (LIKE)
     UserByEmail(email: String! @where(operator: "like", key: "email")): [User!]!
-        @all(model: "App\\Models\\User\\User")
+        @all(model: "App\\Models\\User")
 }
 
 extend type Mutation {
     createUser(input: CreateUserInput! @spread): User
-        @create(model: "App\\Models\\User\\User")
+        @create(model: "App\\Models\\User")
 
     updateUser(
         id: ID! @eq(key: "id"),
         input: UpdateUserInput! @spread
     ): User
-        @update(model: "App\\Models\\User\\User")
+        @update(model: "App\\Models\\User")
 
     deleteUser(id: ID! @eq(key: "id")): User
-        @delete(model: "App\\Models\\User\\User")
+        @delete(model: "App\\Models\\User")
 
     restoreUser(id: ID!): User
         @field(resolver: "App\\GraphQL\\User\\Mutations\\UserMutation@restore")

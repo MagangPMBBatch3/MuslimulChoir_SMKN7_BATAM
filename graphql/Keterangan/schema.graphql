@@ -2,7 +2,7 @@ type Keterangan {
     id: ID!
     bagian_id: ID
     proyek_id: ID
-    tanggal: Date
+    tanggal: String
     created_at: DateTime
     updated_at: DateTime
     deleted_at: DateTime
@@ -14,38 +14,42 @@ type Keterangan {
 input CreateKeteranganInput {
     bagian_id: ID!
     proyek_id: ID!
-    tanggal: Date!
+    tanggal: String!
 }
 
 input UpdateKeteranganInput {
     bagian_id: ID
     proyek_id: ID
-    tanggal: Date
+    tanggal: String
 }
 
 extend type Query {
     allKeterangan: [Keterangan!]!
-        @all(model: "App\\Models\\Keterangan")
+        @all(model: "App\\Models\\Keterangan\\Keterangan")
 
-     allKeteranganArsip: [Keterangan!]!
-    @field(resolver: "App\\GraphQL\\Keterangan\\Queries\\KeteranganQuery@allArsip")
+    allKeteranganArsip: [Keterangan!]!
+        @field(resolver: "App\\GraphQL\\Keterangan\\Queries\\KeteranganQuery@allArsip")
 
-    keterangan(id: ID! @eq): Keterangan
-        @find(model: "App\\Models\\Keterangan")
+    Keterangan(id: ID! @eq): Keterangan
+        @find(model: "App\\Models\\Keterangan\\Keterangan")
+
+    # Kalau memang ada kolom nama, pakai ini, kalau tidak hapus
+    KeteranganByNama(nama: String! @where(operator: "like", key: "nama")): [Keterangan!]!
+        @all(model: "App\\Models\\Keterangan\\Keterangan")
 }
 
 extend type Mutation {
     createKeterangan(input: CreateKeteranganInput! @spread): Keterangan
-        @create(model: "App\\Models\\Keterangan")
+        @create(model: "App\\Models\\Keterangan\\Keterangan")
 
     updateKeterangan(
         id: ID! @eq(key: "id"),
         input: UpdateKeteranganInput! @spread
     ): Keterangan
-        @update(model: "App\\Models\\Keterangan")
+        @update(model: "App\\Models\\Keterangan\\Keterangan")
 
     deleteKeterangan(id: ID! @eq(key: "id")): Keterangan
-        @delete(model: "App\\Models\\Keterangan")
+        @delete(model: "App\\Models\\Keterangan\\Keterangan")
 
     restoreKeterangan(id: ID!): Keterangan
         @field(resolver: "App\\GraphQL\\Keterangan\\Mutations\\KeteranganMutation@restore")

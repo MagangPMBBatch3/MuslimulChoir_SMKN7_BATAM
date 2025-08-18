@@ -11,21 +11,22 @@ function closeEditModeJamKerjaModal() {
 async function updateModeJamKerja() {
     const id = document.getElementById('editModeJamKerjaId').value;
     const nama = document.getElementById('editModeJamKerjaNama').value.trim();
-    if (!nama) {
-        alert("Nama ModeJamKerja harus diisi");
+    if(!nama) {
+        alert('Nama harus di isi');
         return;
-    } 
+    }
     const mutation = `
         mutation {
-            updateModeJamKerja(id: ${id}, input: { nama: "${nama}"}) {
-                id
-                nama
+            updateModeJamKerja(id: ${id}, input: { nama : "${nama}"}){
+            id
+            nama
             }
         }
     `;
-    await fetch('/graphql', {
+
+    await fetch ('/graphql', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({query: mutation})
     });
     closeEditModeJamKerjaModal();

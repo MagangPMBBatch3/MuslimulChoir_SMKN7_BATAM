@@ -1,10 +1,10 @@
-<x-layouts.main title="Data ModeJamKerja">
+<x-layouts.main title="Data User">
     <div class="bg-white p-4 rounded shadow w-full">
         <h1 class="text-2x1 font-bold mb-4">Data Mode Jam Kerja</h1>
 
         <div class="flex justify-between mb-4">
-            <input type="text" id="searchModeJamKerja" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchModeJamKerja()">
-            <button onclick="openAddModeJamKerjaModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
+            <input type="text" id="searchUser" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchUser()">
+            <button onclick="openAddUserModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
         </div>
 
         <div class="mb4">
@@ -20,10 +20,11 @@
                     <tr>
                         <th class="p-2 border">ID</th>
                         <th class="p-2 border">Nama</th>
+                        <th class="p-2 border">Email</th>
                         <th class="p-2 border">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataModeJamKerja"></tbody>
+                <tbody id="dataUser"></tbody>
             </table>
         </div>
         <div id="tableArsip" class="hidden">
@@ -32,21 +33,22 @@
                     <tr>
                         <th class="p-2 border">ID</th>
                         <th class="p-2 border">Nama</th>
+                        <th class="p-2 border">Email</th>
                         <th class="p-2 border">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataModeJamKerjaArsip"></tbody>
+                <tbody id="dataUserArsip"></tbody>
             </table>
         </div>
     </div>
 
 
-        @include('components.modeJamKerja.modal-add')
-        @include('components.modeJamKerja.modal-edit')
+        @include('components.user.modal-add')
+        @include('components.user.modal-edit')
 
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja.js') }}"></script>
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja-create.js') }}"></script>
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja-edit.js') }}"></script>
+        <script src="{{ asset('js/user/user.js') }}"></script>
+        <script src="{{ asset('js/user/user-create.js') }}"></script>
+        <script src="{{ asset('js/user/user-edit.js') }}"></script>
 
         <script>
             function showTab(tab) {

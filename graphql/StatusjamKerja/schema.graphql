@@ -19,11 +19,17 @@ extend type Query {
     allStatusJamKerja: [StatusJamKerja!]!
         @all(model: "App\\Models\\StatusJamKerja\\StatusJamKerja")
 
+    StatusJamKerja(id: ID! @eq) : StatusJamKerja
+    @find(model: "App\\Models\\StatusJamKerja\\StatusJamKerja")
+
      allStatusJamKerjaArsip: [StatusJamKerja!]!
     @field(resolver: "App\\GraphQL\\StatusJamKerja\\Queries\\StatusJamKerjaQuery@allArsip")
 
    getStatusJamKerjas(search: String): [StatusJamKerja!]!
     @field(resolver: "App\\GraphQL\\StatusJamKerja\\Queries\\StatusJamKerjaQuery@getStatusJamKerjas")
+
+    StatusJamKerjaByNama(nama: String! @where(operator: "like", key: "nama")): [StatusJamKerja!]!
+    @all(model: "App\\Models\\StatusJamKerja\\StatusJamKerja")
 
 }
 

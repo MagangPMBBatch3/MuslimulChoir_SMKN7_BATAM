@@ -1,11 +1,20 @@
-async function loadModeJamKerjaData() {
+async function loadKeteranganData() {
     const queryAktif = `
       query {
-        allModeJamKerja {
+        allKeterangan {
           id
-          nama
+         bagian_id
+         proyek_id
+         tanggal
+          bagian{
+            nama
+          }
+         proyek{
+         nama
+         }
         }
       }
+
     `;
 
     const resAktif = await fetch('/graphql', {
@@ -14,14 +23,21 @@ async function loadModeJamKerjaData() {
         body: JSON.stringify({ query: queryAktif })
     });
     const dataAktif = await resAktif.json();
-    renderModeJamKerjaTable(dataAktif?.data?.allModeJamKerja || [], 'dataModeJamKerja', true);
+    renderKeteranganTable(dataAktif?.data?.allKeterangan || [], 'dataKeterangan', true);
 
     const queryArsip = `
       query {
-        allModeJamKerjaArsip {
-          id
-          nama
-          deleted_at
+        allKeteranganArsip {
+           id
+         bagian_id
+         proyek_id
+         tanggal
+          bagian{
+            nama
+          }
+         proyek{
+         nama
+         }
         }
       }
     `;
@@ -32,14 +48,14 @@ async function loadModeJamKerjaData() {
         body: JSON.stringify({ query: queryArsip })
     });
     const dataArsip = await resArsip.json();
-    renderModeJamKerjaTable(dataArsip?.data?.allModeJamKerjaArsip || [], 'dataModeJamKerjaArsip', false);
+    renderKeteranganTable(dataArsip?.data?.allKeteranganArsip || [], 'dataKeteranganArsip', false);
 }
 
-function renderModeJamKerjaTable(modes, tableId, isActive) {
+function renderKeteranganTable(Statuss, tableId, isActive) {
     const tbody = document.getElementById(tableId);
     tbody.innerHTML = '';
 
-    if (!modes.length) {
+    if (!Statuss.length) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="3" class="text-center text-gray-500 p-3">Tidak ada data</td>
@@ -48,35 +64,37 @@ function renderModeJamKerjaTable(modes, tableId, isActive) {
         return;
     }
 
-    modes.forEach(item => {
+    Statuss.forEach(item => {
         let actions = '';
         if (isActive) {
             actions = `
-                <button onclick="openEditModeJamKerjaModal(${item.id}, '${item.nama}')" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</button>
-                <button onclick="archiveModeJamKerja(${item.id})" class="bg-red-500 text-white px-2 py-1 rounded">Arsipkan</button>
+                <button onclick="openEditKeteranganModal(${item.id}, '${item.nama}')" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</button>
+                <button onclick="archiveKeterangan(${item.id})" class="bg-red-500 text-white px-2 py-1 rounded">Arsipkan</button>
             `;
         } else {
             actions = `
-                <button onclick="restoreModeJamKerja(${item.id})" class="bg-green-500 text-white px-2 py-1 rounded">Restore</button>
-                <button onclick="forceDeleteModeJamKerja(${item.id})" class="bg-red-700 text-white px-2 py-1 rounded">Hapus Permanen</button>
+                <button onclick="restoreKeterangan(${item.id})" class="bg-green-500 text-white px-2 py-1 rounded">Restore</button>
+                <button onclick="forceDeleteKeterangan(${item.id})" class="bg-red-700 text-white px-2 py-1 rounded">Hapus Permanen</button>
             `;
         }
 
         tbody.innerHTML += `
             <tr>
                 <td class="border p-2 text-center">${item.id}</td>
-                <td class="border p-2 text-center">${item.nama}</td>
+                <td class="border p-2 text-center">${item.bagian?.nama || item.bagian_id}</td>
+                <td class="border p-2 text-center">${item.proyek?.nama || item.proyek_id}</td>
+                <td class="border p-2 text-center">${item.tanggal}</td>
                 <td class="border p-2 text-center">${actions}</td>
             </tr>
         `;
     });
 }
 
-async function archiveModeJamKerja(id) {
+async function archiveKeterangan(id) {
     if (!confirm('Pindahkan ke arsip?')) return;
     const mutation = `
     mutation {
-        deleteModeJamKerja(id: ${id}) { id }
+        deleteKeterangan(id: ${id}) { id }
     }
     `;
     await fetch('/graphql', {
@@ -84,14 +102,14 @@ async function archiveModeJamKerja(id) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: mutation })
     });
-    loadModeJamKerjaData();
+    loadKeteranganData();
 }
 
-async function restoreModeJamKerja(id) {
+async function restoreKeterangan(id) {
     if (!confirm('Kembalikan dari arsip?')) return;
     const mutation = `
     mutation {
-        restoreModeJamKerja(id: ${id}) { id }
+        restoreKeterangan(id: ${id}) { id }
     }
     `;
     await fetch('/graphql', {
@@ -99,14 +117,14 @@ async function restoreModeJamKerja(id) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: mutation })
     });
-    loadModeJamKerjaData();
+    loadKeteranganData();
 }
 
-async function forceDeleteModeJamKerja(id) {
+async function forceDeleteKeterangan(id) {
     if (!confirm('Hapus permanen? Data tidak bisa dikembalikan')) return;
     const mutation = `
     mutation {
-        forceDeleteModeJamKerja(id: ${id}) { id }
+        forceDeleteKeterangan(id: ${id}) { id }
     }
     `;
     await fetch('/graphql', {
@@ -114,26 +132,35 @@ async function forceDeleteModeJamKerja(id) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: mutation })
     });
-    loadModeJamKerjaData();
+    loadKeteranganData();
 }
 
-async function searchModeJamKerja() {
-    const keyword = document.getElementById('searchModeJamKerja').value.trim();
+async function searchKeterangan() {
+    const keyword = document.getElementById('searchKeterangan').value.trim();
     if (!keyword) {
-        loadModeJamKerjaData();
+        loadKeteranganData();
         return;
     }
 
     let query = '';
 
     if (!isNaN(keyword)) {
-        query = `
-        {
-            modeJamKerja(id: ${keyword}) {
+        query =` {
+            Keterangan(id: ${keyword} ) {
+                id
+                tanggal
+                bagian_id
+                proyek_id
+                bagian {
                 id
                 nama
+                }
+                proyek {
+                id
+                nama
+                }
             }
-        }
+            }
         `;
         const res = await fetch('/graphql', {
             method: 'POST',
@@ -141,25 +168,10 @@ async function searchModeJamKerja() {
             body: JSON.stringify({ query })
         });
         const data = await res.json();
-        renderModeJamKerjaTable(data.data.modeJamKerja ? [data.data.modeJamKerja] : [], 'dataModeJamKerja', true);
+        renderKeteranganTable(data.data.Keterangan ? [data.data.Keterangan] : [], 'dataKeterangan', true);
 
-    } else {
-        query = `
-        {
-            modeJamKerjaByNama(nama: "%${keyword}%") {
-                id
-                nama
-            }
-        }
-        `;
-        const res = await fetch('/graphql', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query })
-        });
-        const data = await res.json();
-        renderModeJamKerjaTable(data.data.modeJamKerjaByNama, 'dataModeJamKerja', true);
-    }
+    } 
+        
 }
 
-document.addEventListener('DOMContentLoaded', loadModeJamKerjaData);
+document.addEventListener('DOMContentLoaded', loadKeteranganData);

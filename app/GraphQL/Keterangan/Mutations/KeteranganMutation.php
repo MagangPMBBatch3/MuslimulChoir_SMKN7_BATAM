@@ -1,7 +1,7 @@
 <?php
 
 namespace App\GraphQL\Keterangan\Mutations;
-use App\Models\Keterangan;
+use App\Models\Keterangan\Keterangan;
 
 class KeteranganMutation {
     public function restore($_, array $args) {

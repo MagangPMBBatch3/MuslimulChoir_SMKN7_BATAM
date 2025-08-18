@@ -2,7 +2,7 @@
 
 namespace App\GraphQL\User\Mutations;
 
-use App\Models\User\User;
+use App\Models\User;
 
 class UserMutation
 {

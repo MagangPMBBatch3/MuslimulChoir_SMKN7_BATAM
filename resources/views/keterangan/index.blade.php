@@ -1,10 +1,10 @@
-<x-layouts.main title="Data ModeJamKerja">
+<x-layouts.main title="Data Keterangan">
     <div class="bg-white p-4 rounded shadow w-full">
-        <h1 class="text-2x1 font-bold mb-4">Data Mode Jam Kerja</h1>
+        <h1 class="text-2x1 font-bold mb-4">Data Keterangan</h1>
 
         <div class="flex justify-between mb-4">
-            <input type="text" id="searchModeJamKerja" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchModeJamKerja()">
-            <button onclick="openAddModeJamKerjaModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
+            <input type="text" id="searchKeterangan" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchKeterangan()">
+            <button onclick="openAddKeteranganModal()" class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-700 rounded">Tambah Data</button>
         </div>
 
         <div class="mb4">
@@ -19,11 +19,13 @@
                 <thead class="bg-gray-200">
                     <tr>
                         <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Nama</th>
+                        <th class="p-2 border">Bagian</th>
+                        <th class="p-2 border">Proyek</th>
+                        <th class="p-2 border">Tanggal</th>
                         <th class="p-2 border">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataModeJamKerja"></tbody>
+                <tbody id="dataKeterangan"></tbody>
             </table>
         </div>
         <div id="tableArsip" class="hidden">
@@ -31,22 +33,22 @@
                 <thead class="bg-gray-200">
                     <tr>
                         <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Nama</th>
+                        <th class="p-2 border">Bagian</th>
+                        <th class="p-2 border">Proyek</th>
+                        <th class="p-2 border">Tanggal</th>
                         <th class="p-2 border">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataModeJamKerjaArsip"></tbody>
+                <tbody id="dataKeteranganArsip"></tbody>
             </table>
         </div>
-    </div>
 
+        {{-- @include('components.Keterangan.modal-add')
+        @include('components.Keterangan.modal-edit') --}}
 
-        @include('components.modeJamKerja.modal-add')
-        @include('components.modeJamKerja.modal-edit')
-
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja.js') }}"></script>
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja-create.js') }}"></script>
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja-edit.js') }}"></script>
+        <script src="{{ asset('js/keterangan/keterangan.js') }}"></script>
+        {{-- <script src="{{ asset('js/Keterangan/Keterangan-create.js') }}"></script>
+        <script src="{{ asset('js/Keterangan/Keterangan-edit.js') }}"></script> --}}
 
         <script>
             function showTab(tab) {
@@ -70,8 +72,11 @@
                     tableArsip.classList.remove('hidden');
                     tableAktif.classList.add('hidden');
                 }
+
+                loadKeteranganData();
             }
 
         </script>
 
+    </div>
 </x-layouts.main>

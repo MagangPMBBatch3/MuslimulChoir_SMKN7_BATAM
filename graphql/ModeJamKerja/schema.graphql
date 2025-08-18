@@ -1,6 +1,6 @@
-type ModeJamKerja {
+ type ModeJamKerja {
     id: ID!
-    nama: String
+    nama: String!
     created_at: DateTime
     updated_at: DateTime
     deleted_at: DateTime
@@ -11,36 +11,41 @@ input CreateModeJamKerjaInput {
 }
 
 input UpdateModeJamKerjaInput {
-    nama: String
+    nama: String!
 }
 
 extend type Query {
     allModeJamKerja: [ModeJamKerja!]!
-        @all(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
+    @all(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
+
+    modeJamKerja(id: ID! @eq) : ModeJamKerja
+    @find(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
 
     allModeJamKerjaArsip: [ModeJamKerja!]!
     @field(resolver: "App\\GraphQL\\ModeJamKerja\\Queries\\ModeJamKerjaQuery@allArsip")
 
-    modeJamKerja(id: ID! @eq): ModeJamKerja
-        @find(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
+    modeJamKerjaByNama(nama: String! @where(operator: "like", key: "nama")): [ModeJamKerja!]!
+    @all(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
 }
 
 extend type Mutation {
+    # tambah data
     createModeJamKerja(input: CreateModeJamKerjaInput! @spread): ModeJamKerja
-        @create(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
+    @create(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
 
+    # ubah data
     updateModeJamKerja(
-        id: ID! @eq(key: "id"),
+        id: ID! @eq,
         input: UpdateModeJamKerjaInput! @spread
-    ): ModeJamKerja
-        @update(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
+        ): ModeJamKerja
+    @update(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
 
-    deleteModeJamKerja(id: ID! @eq(key: "id")): ModeJamKerja
-        @delete(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
+    deleteModeJamKerja(id: ID! @eq): ModeJamKerja
+    @delete(model: "App\\Models\\ModeJamKerja\\ModeJamKerja")
 
-     restoreModeJamKerja(id: ID!): ModeJamKerja
-        @field(resolver: "App\\GraphQL\\ModeJamKerja\\Mutations\\ModeJamKerjaMutation@restore")
+    restoreModeJamKerja(id: ID!): ModeJamKerja
+    @field(resolver: "App\\GraphQL\\ModeJamKerja\\Mutations\\ModeJamKerjaMutation@restore")
 
     forceDeleteModeJamKerja(id: ID!): ModeJamKerja
-        @field(resolver: "App\\GraphQL\\ModeJamKerja\\Mutations\\ModeJamKerjaMutation@forceDelete")
+    @field(resolver: "App\\GraphQL\\ModeJamKerja\\Mutations\\ModeJamKerjaMutation@forceDelete")
 }

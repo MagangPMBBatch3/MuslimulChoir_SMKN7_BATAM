@@ -24,24 +24,32 @@ input UpdateAktivitasInput {
 
 extend type Query {
     allAktivitas: [Aktivitas!]!
-        @all(model: "App\\Models\\Aktivitas")
+        @all(model: "App\\Models\\Aktivitas\\Aktivitas")
+
+    allAktivitasArsip: [Aktivitas!]!
+        @field(resolver: "App\\GraphQL\\Aktivitas\\Queries\\AktivitasQuery@allArsip")
 
     aktivitas(id: ID! @eq): Aktivitas
-        @find(model: "App\\Models\\Aktivitas")
+        @find(model: "App\\Models\\Aktivitas\\Aktivitas")
+
+     getAktivitas(search: String): [Aktivitas!]!
+        @field(
+            resolver: "App\\GraphQL\\Aktivitas\\Queries\\AktivitasQuery@getAktivitas"
+        )
 }
 
 extend type Mutation {
     createAktivitas(input: CreateAktivitasInput! @spread): Aktivitas
-        @create(model: "App\\Models\\Aktivitas")
+        @create(model: "App\\Models\\Aktivitas\\Aktivitas")
 
     updateAktivitas(
         id: ID! @eq(key: "id"),
         input: UpdateAktivitasInput! @spread
     ): Aktivitas
-        @update(model: "App\\Models\\Aktivitas")
+        @update(model: "App\\Models\\Aktivitas\\Aktivitas")
 
     deleteAktivitas(id: ID! @eq(key: "id")): Aktivitas
-        @delete(model: "App\\Models\\Aktivitas")
+        @delete(model: "App\\Models\\Aktivitas\\Aktivitas")
 
     restoreAktivitas(id: ID!): Aktivitas
         @field(resolver: "App\\GraphQL\\Aktivitas\\Mutations\\AktivitasMutation@restore")

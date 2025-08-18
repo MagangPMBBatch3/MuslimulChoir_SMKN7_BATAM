@@ -1,10 +1,10 @@
-<x-layouts.main title="Data ModeJamKerja">
+<x-layouts.main title="Data Aktivitas">
     <div class="bg-white p-4 rounded shadow w-full">
-        <h1 class="text-2x1 font-bold mb-4">Data Mode Jam Kerja</h1>
+        <h1 class="text-2x1 font-bold mb-4">Data Aktivitas</h1>
 
         <div class="flex justify-between mb-4">
-            <input type="text" id="searchModeJamKerja" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchModeJamKerja()">
-            <button onclick="openAddModeJamKerjaModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
+            <input type="text" id="search" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchAktivitas()">
+            <button onclick="openAddModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
         </div>
 
         <div class="mb4">
@@ -12,41 +12,44 @@
                 Aktif</button>
             <button onclick="showTab('arsip')" id="tabArsip" class="px-4 py-2 bg-gray-300 text-black rounded-t">Data
                 Arsip</button>
-
         </div>
         <div id="tableAktif">
             <table class="w-full border">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Nama</th>
-                        <th class="p-2 border">Aksi</th>
+                        <th class="border p-2 text-center ">ID</th>
+                        <th class="border p-2">Nama Bagian</th>
+                        <th class="border p-2">No WBS</th>
+                        <th class="border p-2">Nama</th>
+                        <th class="border p-2">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataModeJamKerja"></tbody>
+                <tbody id="dataAktivitas"></tbody>
             </table>
         </div>
         <div id="tableArsip" class="hidden">
             <table class="w-full border">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Nama</th>
-                        <th class="p-2 border">Aksi</th>
+                        <th class="border p-2 text-center ">ID</th>
+                        <th class="border p-2">Nama Bagian</th>
+                        <th class="border p-2">No WBS</th>
+                        <th class="border p-2">Nama</th>
+                        <th class="border p-2">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataModeJamKerjaArsip"></tbody>
+                <tbody id="dataAktivitasArsip"></tbody>
             </table>
         </div>
     </div>
 
 
-        @include('components.modeJamKerja.modal-add')
-        @include('components.modeJamKerja.modal-edit')
+        @include('components.aktivitas.modal-add')
+        @include('components.aktivitas.modal-edit')
 
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja.js') }}"></script>
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja-create.js') }}"></script>
-        <script src="{{ asset('js/modeJamKerja/modeJamKerja-edit.js') }}"></script>
+        <script src="{{ asset('js/aktivitas/aktivitas.js') }}"></script>
+        <script src="{{ asset('js/aktivitas/aktivitas-create.js') }}"></script>
+        <script src="{{ asset('js/aktivitas/aktivitas-edit.js') }}"></script>
 
         <script>
             function showTab(tab) {

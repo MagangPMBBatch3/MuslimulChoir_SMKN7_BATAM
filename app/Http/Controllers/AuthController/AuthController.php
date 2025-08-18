@@ -29,6 +29,7 @@ class AuthController
             'email' => 'Email atau password salah.',
         ]);
     }
+    
 
     public function dashboard()
     {
@@ -73,6 +74,20 @@ class AuthController
     public function keterangan()
     {
         return view('keterangan.index');
+    }
+
+    public function showRegis() { 
+return view ('auth.register');
+    }
+
+    public function user()
+    {
+        return view('user.index');
+    }
+
+     public function aktivitas()
+    {
+        return view('aktivitas.index');
     }
 
     public function logout(Request $request)

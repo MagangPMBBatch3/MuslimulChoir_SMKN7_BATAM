@@ -19,16 +19,22 @@ extend type Query {
     allJenisPesan: [JenisPesan!]!
         @all(model: "App\\Models\\JenisPesan\\JenisPesan")
 
+    JenisPesan(id: ID! @eq) : JenisPesan
+    @find(model: "App\\Models\\JenisPesan\\JenisPesan")
+
     allJenisPesanArsip: [JenisPesan!]!
     @field(resolver: "App\\GraphQL\\JenisPesan\\Queries\\JenisPesanQuery@allArsip")
 
    getJenisPesans(search: String): [JenisPesan!]!
     @field(resolver: "App\\GraphQL\\JenisPesan\\Queries\\JenisPesanQuery@getJenisPesans")
 
+    JenisPesanByNama(nama: String! @where(operator: "like", key: "nama")): [JenisPesan!]!
+    @all(model: "App\\Models\\JenisPesan\\JenisPesan")
+
 }
 
 extend type Mutation {
-    createJenisPesan(input: CreateJenisPesanInput! @spread): JenisPesan
+     createJenisPesan(input: CreateJenisPesanInput! @spread): JenisPesan
         @create(model: "App\\Models\\JenisPesan\\JenisPesan")
 
     updateJenisPesan(

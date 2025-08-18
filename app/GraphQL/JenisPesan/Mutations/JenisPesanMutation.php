@@ -1,9 +1,9 @@
 <?php
 
-namespace App\GraphQL\JenisPesanan\Mutations;
+namespace App\GraphQL\JenisPesan\Mutations;
 use App\Models\JenisPesan\JenisPesan;
 
-class JenisPesananMutation {
+class JenisPesanMutation {
     public function restore($_, array $args) {
         $JenisPesanan = JenisPesan::withTrashed()->findOrFail($args['id']);
         $JenisPesanan->restore();

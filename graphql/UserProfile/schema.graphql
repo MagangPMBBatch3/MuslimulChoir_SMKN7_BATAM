@@ -1,4 +1,4 @@
-type User {
+type UserProfile {
     id: ID!
     nama: String!
     nrp: String!
@@ -17,7 +17,7 @@ type User {
     status: Status @belongsTo
 }  
 
-input CreateUserInput {
+input CreateUserProfileInput {
     nama: String!
     nama_lengkap: String!
     nrp: String!
