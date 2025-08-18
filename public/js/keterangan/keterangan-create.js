@@ -1,49 +1,114 @@
-function openCreateKeteranganModal() {
-    // kosongkan form
-    document.getElementById('editKeteranganId').value = "";
-    document.getElementById('editKeteranganBagian_id').value = "";
-    document.getElementById('editKeteranganProyek_id').value = "";
-    document.getElementById('editKeteranganTanggal').value = "";
-    document.getElementById('modalEditKeterangan').classList.remove('hidden');
+async function loadBagianOptions() {
+    const query = `
+        query {
+            allBagian {
+                id
+                nama
+            }
+        }
+    `;
+
+    const response = await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+    });
+
+    const data = await response.json();
+    const select = document.getElementById("addKeteranganBagian");
+
+
+    while (select.options.length > 1) {
+        select.remove(1);
+    }
+
+    data.data.allBagian.forEach((bagian) => {
+        const option = new Option(bagian.nama, bagian.id);
+        select.add(option);
+    });
+}
+
+async function loadProyekOptions() {
+    const query = `
+        query {
+            allProyek {
+                id
+                nama
+            }
+        }
+    `;
+
+    const response = await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+    });
+
+    const data = await response.json();
+    const select = document.getElementById("addKeteranganProyek");
+
+
+    while (select.options.length > 1) {
+        select.remove(1);
+    }
+
+    data.data.allProyek.forEach((proyek) => {
+        const option = new Option(proyek.nama, proyek.id);
+        select.add(option);
+    });
+}
+
+
+function openAddModal() {
+    document.getElementById("modalAddKeterangan").classList.remove("hidden");
+    loadBagianOptions();
+    loadProyekOptions();
+}
+
+function closeAddKeteranganModal() {
+    document.getElementById("modalAddKeterangan").classList.add("hidden");
 }
 
 async function createKeterangan() {
-    const bagian_id = document.getElementById('editKeteranganBagian_id').value.trim();
-    const proyek_id = document.getElementById('editKeteranganProyek_id').value.trim();
-    const tanggal = document.getElementById('editKeteranganTanggal').value.trim();
+    const bagian_id = document.getElementById("addKeteranganBagian").value;
+    const proyek_id = document.getElementById("addKeteranganProyek").value;
+    const tanggal = document.getElementById("addKeteranganTanggal").value.trim();
 
     if (!bagian_id || !proyek_id || !tanggal) {
-        alert("Semua field harus diisi");
+        alert("Semua field harus diisi!");
         return;
     }
 
     const mutation = `
-      mutation {
-        createKeterangan(
-          input: {
-            bagian_id: ${bagian_id},
-            proyek_id: ${proyek_id},
-            tanggal: "${tanggal}"
-          }
-        ) {
-          id
-          bagian_id
-          proyek_id
-          tanggal
-        }
-      }
-    `;
+        mutation {
+            createKeterangan(input: { 
+                bagian_id: "${bagian_id}"
+                proyek_id: "${proyek_id}"
+                tanggal: "${tanggal}"
+            }) {
+                id
+                tanggal
+                bagian {
+                    nama
+                }
+                proyek {
+                    nama
+                }
+            }
+        }`;
 
-    try {
-        await fetch('/graphql', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: mutation })
-        });
+    await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: mutation }),
+    });
 
-        closeEditKeteranganModal();
-        loadKeteranganData(); // refresh tabel/list
-    } catch (error) {
-        console.error("Error create Keterangan:", error);
-    }
+    closeAddKeteranganModal();
+    loadKeteranganData();
 }

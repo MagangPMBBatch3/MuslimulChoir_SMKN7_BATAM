@@ -1,8 +1,8 @@
 type Keterangan {
     id: ID!
-    bagian_id: ID
-    proyek_id: ID
-    tanggal: String
+    bagian_id: ID!
+    proyek_id: ID!
+    tanggal: Date
     created_at: DateTime
     updated_at: DateTime
     deleted_at: DateTime
@@ -14,46 +14,47 @@ type Keterangan {
 input CreateKeteranganInput {
     bagian_id: ID!
     proyek_id: ID!
-    tanggal: String!
+    tanggal: Date!
 }
 
 input UpdateKeteranganInput {
     bagian_id: ID
     proyek_id: ID
-    tanggal: String
+    tanggal: Date
 }
 
 extend type Query {
     allKeterangan: [Keterangan!]!
-        @all(model: "App\\Models\\Keterangan\\Keterangan")
+    @all(model: "App\\Models\\Keterangan\\Keterangan")
+
+    keterangan(id: ID! @eq) : Keterangan
+    @find(model: "App\\Models\\Keterangan\\Keterangan")
 
     allKeteranganArsip: [Keterangan!]!
-        @field(resolver: "App\\GraphQL\\Keterangan\\Queries\\KeteranganQuery@allArsip")
+    @field(resolver: "App\\GraphQL\\Keterangan\\Queries\\KeteranganQuery@allArsip")
 
-    Keterangan(id: ID! @eq): Keterangan
-        @find(model: "App\\Models\\Keterangan\\Keterangan")
-
-    # Kalau memang ada kolom nama, pakai ini, kalau tidak hapus
-    KeteranganByNama(nama: String! @where(operator: "like", key: "nama")): [Keterangan!]!
-        @all(model: "App\\Models\\Keterangan\\Keterangan")
+    getKeterangans(search: String): [Keterangan!]!
+    @field(resolver: "App\\GraphQL\\Keterangan\\Queries\\KeteranganQuery@getKeterangans")
 }
 
 extend type Mutation {
+    # tambah data
     createKeterangan(input: CreateKeteranganInput! @spread): Keterangan
-        @create(model: "App\\Models\\Keterangan\\Keterangan")
+    @create(model: "App\\Models\\Keterangan\\Keterangan")
 
+    # ubah data
     updateKeterangan(
-        id: ID! @eq(key: "id"),
+        id: ID! @eq,
         input: UpdateKeteranganInput! @spread
-    ): Keterangan
-        @update(model: "App\\Models\\Keterangan\\Keterangan")
+        ): Keterangan
+    @update(model: "App\\Models\\Keterangan\\Keterangan")
 
-    deleteKeterangan(id: ID! @eq(key: "id")): Keterangan
-        @delete(model: "App\\Models\\Keterangan\\Keterangan")
+    deleteKeterangan(id: ID! @eq): Keterangan
+    @delete(model: "App\\Models\\Keterangan\\Keterangan")
 
     restoreKeterangan(id: ID!): Keterangan
-        @field(resolver: "App\\GraphQL\\Keterangan\\Mutations\\KeteranganMutation@restore")
+    @field(resolver: "App\\GraphQL\\Keterangan\\Mutations\\KeteranganMutation@restore")
 
     forceDeleteKeterangan(id: ID!): Keterangan
-        @field(resolver: "App\\GraphQL\\Keterangan\\Mutations\\KeteranganMutation@forceDelete")
+    @field(resolver: "App\\GraphQL\\Keterangan\\Mutations\\KeteranganMutation@forceDelete")
 }

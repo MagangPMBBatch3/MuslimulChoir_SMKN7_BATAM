@@ -1,177 +1,232 @@
 async function loadKeteranganData() {
-    const queryAktif = `
-      query {
+    //ambil data aktif
+    const queryAktif = `query {
         allKeterangan {
-          id
-         bagian_id
-         proyek_id
-         tanggal
-          bagian{
-            nama
-          }
-         proyek{
-         nama
-         }
-        }
-      }
-
-    `;
-
-    const resAktif = await fetch('/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: queryAktif })
+            id
+            bagian_id
+            proyek_id
+            tanggal
+            bagian {
+                nama
+            }
+            proyek {
+                nama
+            }
+    }
+}`;
+    const resAktif = await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: queryAktif }),
     });
     const dataAktif = await resAktif.json();
-    renderKeteranganTable(dataAktif?.data?.allKeterangan || [], 'dataKeterangan', true);
+    renderKeteranganTable(
+        dataAktif?.data?.allKeterangan || [],
+        "dataKeterangan",
+        true
+    );
 
-    const queryArsip = `
-      query {
+    const queryArsip = `query {
         allKeteranganArsip {
-           id
-         bagian_id
-         proyek_id
-         tanggal
-          bagian{
-            nama
-          }
-         proyek{
-         nama
-         }
-        }
-      }
-    `;
+            id
+            bagian_id
+            proyek_id
+            tanggal
+            bagian {
+                nama
+            }
+            proyek {
+                nama
+            }
+    }
+}`;
 
-    const resArsip = await fetch('/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: queryArsip })
+    const resArsip = await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: queryArsip }),
     });
     const dataArsip = await resArsip.json();
-    renderKeteranganTable(dataArsip?.data?.allKeteranganArsip || [], 'dataKeteranganArsip', false);
+    renderKeteranganTable(
+        dataArsip?.data?.allKeteranganArsip || [],
+        "dataKeteranganArsip",
+        false
+    );
 }
 
-function renderKeteranganTable(Statuss, tableId, isActive) {
+function renderKeteranganTable(keterangans, tableId, isActive) {
     const tbody = document.getElementById(tableId);
-    tbody.innerHTML = '';
+    tbody.innerHTML = "";
 
-    if (!Statuss.length) {
+    if (!keterangans.length) {
         tbody.innerHTML = `
-            <tr>
-                <td colspan="3" class="text-center text-gray-500 p-3">Tidak ada data</td>
-            </tr>
-        `;
+        <tr>
+            <td colspan="4" class="text-center text-red-500 p-3">Data tidak ditemukan</td>
+        </tr>`;
         return;
     }
 
-    Statuss.forEach(item => {
-        let actions = '';
+    keterangans.forEach((item) => {
+        let actions = "";
         if (isActive) {
             actions = `
-                <button onclick="openEditKeteranganModal(${item.id}, '${item.nama}')" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</button>
-                <button onclick="archiveKeterangan(${item.id})" class="bg-red-500 text-white px-2 py-1 rounded">Arsipkan</button>
-            `;
+                <button onclick="openEditKeteranganModal(${item.id}, '${item.bagian_id}', '${item.proyek_id}', '${item.tanggal}')" class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                    Edit
+                </button>
+                <button onclick="archiveKeterangan(${item.id})" class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                    Arsipkan
+                </button>`;
         } else {
             actions = `
-                <button onclick="restoreKeterangan(${item.id})" class="bg-green-500 text-white px-2 py-1 rounded">Restore</button>
-                <button onclick="forceDeleteKeterangan(${item.id})" class="bg-red-700 text-white px-2 py-1 rounded">Hapus Permanen</button>
-            `;
+                <button onclick="restoreKeterangan(${item.id})" class="px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600">
+                    Restore
+                </button>
+                <button onclick="forceDeleteKeterangan(${item.id})" class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+                    Hapus Permanen
+                </button>`;
         }
 
         tbody.innerHTML += `
             <tr>
-                <td class="border p-2 text-center">${item.id}</td>
-                <td class="border p-2 text-center">${item.bagian?.nama || item.bagian_id}</td>
-                <td class="border p-2 text-center">${item.proyek?.nama || item.proyek_id}</td>
-                <td class="border p-2 text-center">${item.tanggal}</td>
-                <td class="border p-2 text-center">${actions}</td>
-            </tr>
-        `;
+                <td class="p-2 border">${item.id}</td>
+                <td class="p-2 border">${item.bagian.nama}</td>
+                <td class="p-2 border">${item.proyek.nama}</td>
+                <td class="p-2 border">${item.tanggal}</td>
+                <td class="p-2 border">${actions}</td>
+            </tr>`;
     });
 }
 
 async function archiveKeterangan(id) {
-    if (!confirm('Pindahkan ke arsip?')) return;
+    if (!confirm("Pindahkan ke arsip?")) return;
     const mutation = `
-    mutation {
-        deleteKeterangan(id: ${id}) { id }
-    }
-    `;
-    await fetch('/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: mutation })
+        mutation {
+            deleteKeterangan( id: ${id} ) {
+                id
+            }
+        }`;
+
+    await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: mutation }),
     });
     loadKeteranganData();
 }
 
 async function restoreKeterangan(id) {
-    if (!confirm('Kembalikan dari arsip?')) return;
+    if (!confirm("Pulihkan data ini?")) return;
     const mutation = `
-    mutation {
-        restoreKeterangan(id: ${id}) { id }
-    }
-    `;
-    await fetch('/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: mutation })
+        mutation {
+            restoreKeterangan( id: ${id} ) {
+                id
+            }
+        }`;
+
+    await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: mutation }),
     });
     loadKeteranganData();
 }
 
 async function forceDeleteKeterangan(id) {
-    if (!confirm('Hapus permanen? Data tidak bisa dikembalikan')) return;
+    if (!confirm("Hapus data ini secara permanen?")) return;
     const mutation = `
-    mutation {
-        forceDeleteKeterangan(id: ${id}) { id }
-    }
-    `;
-    await fetch('/graphql', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: mutation })
+        mutation {
+            forceDeleteKeterangan( id: ${id} ) {
+                id
+            }
+        }`;
+
+    await fetch("/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: mutation }),
     });
     loadKeteranganData();
 }
 
 async function searchKeterangan() {
-    const keyword = document.getElementById('searchKeterangan').value.trim();
+    const keyword = document.getElementById("search").value.trim();
     if (!keyword) {
         loadKeteranganData();
         return;
     }
 
-    let query = '';
-
+    let query = "";
     if (!isNaN(keyword)) {
-        query =` {
-            Keterangan(id: ${keyword} ) {
-                id
-                tanggal
-                bagian_id
-                proyek_id
-                bagian {
-                id
-                nama
-                }
-                proyek {
-                id
-                nama
-                }
-            }
+        query = `
+            query {
+                keterangan(id: ${keyword}) {
+                    id
+                    bagian_id
+                    proyek_id
+                    tanggal
+                    bagian {
+                        nama
+                    }
+                    proyek {
+                        nama
+                    }
+                } 
             }
         `;
-        const res = await fetch('/graphql', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query })
+        const res = await fetch("/graphql", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ query }),
         });
         const data = await res.json();
-        renderKeteranganTable(data.data.Keterangan ? [data.data.Keterangan] : [], 'dataKeterangan', true);
-
-    } 
-        
+        renderKeteranganTable(
+            data.data.keterangan ? [data.data.keterangan] : [],
+            "dataKeterangan",
+            true
+        );
+    } else {
+        query = `
+            query {
+                getKeterangans(search: "${keyword}") {
+                    id
+                    bagian_id
+                    proyek_id
+                    tanggal
+                    bagian {
+                        nama
+                    }
+                    proyek {
+                        nama
+                    }
+                }
+            }
+        `;
+        const res = await fetch("/graphql", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ query }),
+        });
+        const data = await res.json();
+        renderKeteranganTable(
+            data.data.getKeterangans || [],
+            "dataKeterangan",
+            true
+        );
+    }
 }
 
-document.addEventListener('DOMContentLoaded', loadKeteranganData);
+document.addEventListener("DOMContentLoaded", loadKeteranganData);

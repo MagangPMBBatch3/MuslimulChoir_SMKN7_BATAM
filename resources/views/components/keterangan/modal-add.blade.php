@@ -1,39 +1,37 @@
-<!-- Modal Edit -->
-<div id="modalEditKeterangan" class="fixed inset-0 overflow-y-auto h-full w-full hidden">
+<!-- Modal Add -->
+<div id="modalAddKeterangan" class="fixed inset-0 overflow-y-auto h-full w-full hidden">
     <!-- Overlay -->
     <div class="fixed inset-0 bg-gray-500 opacity-50"></div>
     <!-- Modal Content -->
     <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white z-50">
         <div class="mt-3">
             <div class="flex justify-between items-center pb-3">
-                <h3 class="text-lg font-medium">Edit Keterangan</h3>
-                <button onclick="closeEditKeteranganModal()" class="text-black close-modal">&times;</button>
+                <h3 class="text-lg font-medium">Tambah Keterangan</h3>
+                <button onclick="closeAddKeteranganModal()" class="text-black close-modal">&times;</button>
             </div>
             <div class="mt-2 px-7 py-3">
-                <form id="formEditKeterangan" onsubmit="event.preventDefault(); updateKeterangan()">
+                <form id="formAddKeterangan" onsubmit="event.preventDefault(); createKeterangan()">
                     <div class="mb-4">
-                         <input type="hidden" id="editId">
-
-                        <label for="editBagian" class="block text-sm font-medium text-gray-700">Bagian</label>
-                        <select id="editKeteranganBagian" name="bagian_id"
+                        <label for="addBagian" class="block text-sm font-medium text-gray-700">Bagian</label>
+                        <select id="addKeteranganBagian" name="bagian_id"
                             class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0">
                             <option value="">Pilih Bagian</option>
                         </select>
 
-                        <label for="editProyek" class="block text-sm font-medium text-gray-700">Proyek</label>
-                        <select id="editKeteranganProyek" name="proyek_id"
+                        <label for="addProyek" class="block text-sm font-medium text-gray-700">Proyek</label>
+                        <select id="addKeteranganProyek" name="proyek_id"
                             class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0">
                             <option value="">Pilih Proyek</option>
                         </select>
 
-                        <label for="editTanggal" class="block text-sm font-medium text-gray-700">Tanggal</label>
-                        <input type="date" id="editKeteranganTanggal" name="tanggal"
+                        <label for="addTanggal" class="block text-sm font-medium text-gray-700">Tanggal</label>
+                        <input type="date" id="addKeteranganTanggal" name="Tanggal"
                             class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0"
                             placeholder="Masukkan Tanggal Keterangan">
 
                     </div>
                     <div class="flex justify-end gap-2">
-                        <button type="button" onclick="closeEditKeteranganModal()"
+                        <button type="button" onclick="closeAddKeteranganModal()"
                             class="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400">
                             Batal
                         </button>

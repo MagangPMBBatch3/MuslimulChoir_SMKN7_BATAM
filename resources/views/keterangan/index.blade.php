@@ -3,8 +3,8 @@
         <h1 class="text-2x1 font-bold mb-4">Data Keterangan</h1>
 
         <div class="flex justify-between mb-4">
-            <input type="text" id="searchKeterangan" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchKeterangan()">
-            <button onclick="openAddKeteranganModal()" class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-700 rounded">Tambah Data</button>
+            <input type="text" id="search" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchKeterangan()">
+            <button onclick="openAddModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
         </div>
 
         <div class="mb4">
@@ -12,17 +12,16 @@
                 Aktif</button>
             <button onclick="showTab('arsip')" id="tabArsip" class="px-4 py-2 bg-gray-300 text-black rounded-t">Data
                 Arsip</button>
-
         </div>
         <div id="tableAktif">
             <table class="w-full border">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Bagian</th>
-                        <th class="p-2 border">Proyek</th>
-                        <th class="p-2 border">Tanggal</th>
-                        <th class="p-2 border">Aksi</th>
+                        <th class="border p-2 text-center ">ID</th>
+                        <th class="border p-2">Nama Bagian</th>
+                        <th class="border p-2">Nama Proyek</th>
+                        <th class="border p-2">Tanggal</th>
+                        <th class="border p-2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="dataKeterangan"></tbody>
@@ -32,23 +31,25 @@
             <table class="w-full border">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Bagian</th>
-                        <th class="p-2 border">Proyek</th>
-                        <th class="p-2 border">Tanggal</th>
-                        <th class="p-2 border">Aksi</th>
+                        <th class="border p-2 text-center ">ID</th>
+                        <th class="border p-2">Nama Bagian</th>
+                        <th class="border p-2">Nama Proyek</th>
+                        <th class="border p-2">Tanggal</th>
+                        <th class="border p-2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="dataKeteranganArsip"></tbody>
             </table>
         </div>
+    </div>
 
-        {{-- @include('components.Keterangan.modal-add')
-        @include('components.Keterangan.modal-edit') --}}
+
+        @include('components.keterangan.modal-add')
+        @include('components.keterangan.modal-edit')
 
         <script src="{{ asset('js/keterangan/keterangan.js') }}"></script>
-        {{-- <script src="{{ asset('js/Keterangan/Keterangan-create.js') }}"></script>
-        <script src="{{ asset('js/Keterangan/Keterangan-edit.js') }}"></script> --}}
+        <script src="{{ asset('js/keterangan/keterangan-create.js') }}"></script>
+        <script src="{{ asset('js/keterangan/keterangan-edit.js') }}"></script>
 
         <script>
             function showTab(tab) {
@@ -72,11 +73,8 @@
                     tableArsip.classList.remove('hidden');
                     tableAktif.classList.add('hidden');
                 }
-
-                loadKeteranganData();
             }
 
         </script>
 
-    </div>
 </x-layouts.main>
