@@ -73,9 +73,9 @@ function renderModeJamKerjaTable(modeJamKerjas, tableId, isActive) {
 
         tbody.innerHTML += `
             <tr>
-                <td class="p-2 border">${item.id}</td>
-                <td class="p-2 border">${item.nama}</td>
-                <td class="p-2 border">${actions}</td>
+                <td class="p-2 border text-center">${item.id}</td>
+                <td class="p-2 border text-center">${item.nama}</td>
+                <td class="p-2 border text-center">${actions}</td>
             </tr>`;
     });
 }

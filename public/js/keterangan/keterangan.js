@@ -92,11 +92,11 @@ function renderKeteranganTable(keterangans, tableId, isActive) {
 
         tbody.innerHTML += `
             <tr>
-                <td class="p-2 border">${item.id}</td>
-                <td class="p-2 border">${item.bagian.nama}</td>
-                <td class="p-2 border">${item.proyek.nama}</td>
-                <td class="p-2 border">${item.tanggal}</td>
-                <td class="p-2 border">${actions}</td>
+                <td class="p-2 border text-center">${item.id}</td>
+                <td class="p-2 border text-center">${item.bagian.nama}</td>
+                <td class="p-2 border text-center">${item.proyek.nama}</td>
+                <td class="p-2 border text-center">${item.tanggal}</td>
+                <td class="p-2 border text-center">${actions}</td>
             </tr>`;
     });
 }

@@ -35,11 +35,11 @@ async function loadJenisPesanData() {
     renderJenisPesanTable(dataArsip?.data?.allJenisPesanArsip || [], 'dataJenisPesanArsip', false);
 }
 
-function renderJenisPesanTable(Statuss, tableId, isActive) {
+function renderJenisPesanTable(JenisPesan, tableId, isActive) {
     const tbody = document.getElementById(tableId);
     tbody.innerHTML = '';
 
-    if (!Statuss.length) {
+    if (!JenisPesan.length) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="3" class="text-center text-gray-500 p-3">Tidak ada data</td>
@@ -48,7 +48,7 @@ function renderJenisPesanTable(Statuss, tableId, isActive) {
         return;
     }
 
-    Statuss.forEach(item => {
+    JenisPesan.forEach(item => {
         let actions = '';
         if (isActive) {
             actions = `
