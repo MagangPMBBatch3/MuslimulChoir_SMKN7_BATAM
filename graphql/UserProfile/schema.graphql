@@ -1,12 +1,13 @@
 type UserProfile {
     id: ID!
-    nama: String!
+    user_id: ID
+    nama_lengkap: String!
     nrp: String!
     alamat: String
     foto: String
     bagian_id: ID
     level_id: ID
-    Status_id: ID
+    status_id: ID
     created_at: DateTime
     updated_at: DateTime
     deleted_at: DateTime
@@ -18,7 +19,7 @@ type UserProfile {
 }  
 
 input CreateUserProfileInput {
-    nama: String!
+    user_id: ID
     nama_lengkap: String!
     nrp: String!
     alamat: String
@@ -28,13 +29,31 @@ input CreateUserProfileInput {
     status_id: ID
 }
 
+input UpdateUserProfileInput {
+    user_id: ID
+    nama_lengkap: String
+    nrp: String
+    alamat: String
+    foto: String
+    bagian_id: ID
+    level_id: ID
+    status_id: ID
+}
+
+
 extend type Query {
     allUserProfile: [UserProfile!]!
         @all(model: "App\\Models\\UserProfile\\UserProfile")
 
+    allUserProfileArsip: [UserProfile!]!
+    @field(resolver: "App\\GraphQL\\UserProfile\\Queries\\UserProfileQuery@allArsip")
+
     # cari UserProfile berdasarkan ID
     UserProfile(id: ID! @eq ): UserProfile
         @find(model: "App\\Models\\UserProfile\\UserProfile")
+
+    getUserProfiles(search: String): [UserProfile!]!
+    @field(resolver: "App\\GraphQL\\UserProfile\\Queries\\UserProfileQuery@getUserProfiles")
         
 }
 
@@ -51,8 +70,8 @@ extend type Mutation {
         @delete(model: "App\\Models\\UserProfile\\UserProfile")
 
     restoreUserProfile(id: ID!): UserProfile
-        @field(resolver: "App\\GraphQL\\UserProfile\\Mutations\\UserMutation@restore")
+        @field(resolver: "App\\GraphQL\\UserProfile\\Mutations\\UserProfileMutation@restore")
 
     forceDeleteUserProfile(id: ID!): UserProfile
-        @field(resolver: "App\\GraphQL\\UserProfile\\Mutations\\UserMutation@forceDelete")
+        @field(resolver: "App\\GraphQL\\UserProfile\\Mutations\\UserProfileMutation@forceDelete")
 }

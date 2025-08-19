@@ -90,6 +90,11 @@ return view ('auth.register');
         return view('aktivitas.index');
     }
 
+     public function userprofile()
+    {
+        return view('userprofile.index');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

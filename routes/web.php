@@ -34,5 +34,7 @@ use App\Http\Controllers\AuthController\AuthController;
 
     Route::get('/aktivitas', [AuthController::class, 'aktivitas'])->name('aktivitas.index');
 
+    Route::get('/userprofile', [AuthController::class, 'userprofile'])->name('userprofile.index');
+
    
 });
