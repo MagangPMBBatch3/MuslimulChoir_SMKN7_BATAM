@@ -32,7 +32,7 @@ async function loadBagianOptionsForEdit() {
 async function loadProyekOptionsForEdit() {
     const query = `
         query {
-            allProyeks {
+            allProyek {
                 id
                 nama
             }
@@ -54,7 +54,7 @@ async function loadProyekOptionsForEdit() {
         select.remove(1);
     }
 
-    data.data.allProyeks.forEach((proyek) => {
+    data.data.allProyek.forEach((proyek) => {
         const option = new Option(proyek.nama, proyek.id);
         select.add(option);
     });
@@ -78,9 +78,7 @@ async function updateKeterangan() {
     const id = document.getElementById("editId").value;
     const bagian_id = document.getElementById("editKeteranganBagian").value;
     const proyek_id = document.getElementById("editKeteranganProyek").value;
-    const tanggal = document
-        .getElementById("editKeteranganTanggal")
-        .value.trim();
+    const tanggal = document.getElementById("editKeteranganTanggal").value.trim();
 
     if (!tanggal || !bagian_id || !proyek_id) {
         alert("Semua field harus diisi!");
