@@ -95,6 +95,15 @@ return view ('auth.register');
         return view('userprofile.index');
     }
 
+    public function proyekuser()
+    {
+        return view('proyekuser.index');
+    }
+    public function lembur()
+    {
+        return view('lembur.index');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

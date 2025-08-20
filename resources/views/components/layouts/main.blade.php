@@ -28,13 +28,13 @@
                 </a>
             </li>
 
-             <li class="mb-2">
-                <a href="/dashboard"
-                   class="flex items-center py-2 px-2 rounded {{ request()->is('dashboard') ? 'bg-blue-800 font-semibold' : 'hover:bg-blue-500' }}">
+             {{-- <li class="mb-2">
+                <a href="#"
+                   class="flex items-center py-2 px-2 rounded {{ request()->is('profile') ? 'bg-blue-800 font-semibold' : 'hover:bg-blue-500' }}">
                     <i class='bx bxs-user-rectangle' style="font-size: 20px;"></i> 
                     <span class="ml-2">Profile</span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- Master Data --}}
             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Master Data</li>
@@ -105,7 +105,7 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('proyekuser.index') }}"
                 class="flex items-center p-2 rounded {{ request()->routeIs('proyek.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                    <i class='bx bx-briefcase-alt-2'  style="font-size: 18px;"></i> 
                     <span class="ml-2">Proyek User</span>
@@ -126,7 +126,7 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('lembur.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('lembur.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-time' style="font-size: 18px;"></i>
                     <span class="ml-2">Lembur</span>

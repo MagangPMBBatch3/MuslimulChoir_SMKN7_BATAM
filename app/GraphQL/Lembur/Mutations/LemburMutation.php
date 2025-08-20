@@ -1,7 +1,7 @@
 <?php
 
 namespace App\GraphQL\Lembur\Mutations;
-use App\Models\Lembur;
+use App\Models\Lembur\Lembur;
 
 class LemburMutation {
     public function restore($_, array $args) {

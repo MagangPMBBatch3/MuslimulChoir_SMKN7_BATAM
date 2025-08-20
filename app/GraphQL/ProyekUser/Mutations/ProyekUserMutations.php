@@ -1,7 +1,7 @@
 <?php
 
 namespace App\GraphQL\ProyekUser\Mutations;
-use App\Models\ProyekUser;
+use App\Models\ProyekUser\ProyekUser;
 
 class ProyekUserMutation {
     public function restore($_, array $args) {

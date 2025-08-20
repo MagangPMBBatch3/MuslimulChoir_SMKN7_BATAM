@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\ProyekUser;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,7 +24,7 @@ class ProyekUser extends Model
     }
 
     // Relasi ke UserProfile
-    public function userProfile()
+    public function user_profile()
     {
         return $this->belongsTo(\App\Models\UserProfile\UserProfile::class , 'users_profile_id');
     }

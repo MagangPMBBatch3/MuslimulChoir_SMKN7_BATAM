@@ -25,8 +25,8 @@ extend type Query {
     allJenisPesanArsip: [JenisPesan!]!
     @field(resolver: "App\\GraphQL\\JenisPesan\\Queries\\JenisPesanQuery@allArsip")
 
-   getJenisPesans(search: String): [JenisPesan!]!
-    @field(resolver: "App\\GraphQL\\JenisPesan\\Queries\\JenisPesanQuery@getJenisPesans")
+#    getJenisPesans(search: String): [JenisPesan!]!
+#     @field(resolver: "App\\GraphQL\\JenisPesan\\Queries\\JenisPesanQuery@getJenisPesans")
 
     JenisPesanByNama(nama: String! @where(operator: "like", key: "nama")): [JenisPesan!]!
     @all(model: "App\\Models\\JenisPesan\\JenisPesan")

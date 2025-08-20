@@ -25,24 +25,30 @@ input UpdateLemburInput {
 
 extend type Query {
     allLembur: [Lembur!]!
-        @all(model: "App\\Models\\Lembur")
+        @all(model: "App\\Models\\Lembur\\Lembur")
 
     lembur(id: ID! @eq): Lembur
-        @find(model: "App\\Models\\Lembur")
+        @find(model: "App\\Models\\Lembur\\Lembur")
+
+   allLemburArsip: [Lembur!]!
+    @field(resolver: "App\\GraphQL\\Lembur\\Queries\\LemburQuery@allArsip")
+
+    getLemburs(search: String): [Lembur!]!
+    @field(resolver: "App\\GraphQL\\Lembur\\Queries\\LemburQuery@getLemburs")
 }
 
 extend type Mutation {
     createLembur(input: CreateLemburInput! @spread): Lembur
-        @create(model: "App\\Models\\Lembur")
+        @create(model: "App\\Models\\Lembur\\Lembur")
 
     updateLembur(
         id: ID! @eq(key: "id"),
         input: UpdateLemburInput! @spread
     ): Lembur
-        @update(model: "App\\Models\\Lembur")
+        @update(model: "App\\Models\\Lembur\\Lembur")
 
     deleteLembur(id: ID! @eq(key: "id")): Lembur
-        @delete(model: "App\\Models\\Lembur")
+        @delete(model: "App\\Models\\Lembur\\Lembur")
 
     restoreLembur(id: ID!): Lembur
         @field(resolver: "App\\GraphQL\\Lembur\\Mutations\\LemburMutation@restore")

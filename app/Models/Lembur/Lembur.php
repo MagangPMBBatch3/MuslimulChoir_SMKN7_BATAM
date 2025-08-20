@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Lembur;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,7 +19,7 @@ class Lembur extends Model
     ];
 
     // Relasi ke UserProfile
-    public function userProfile()
+    public function user_profile()
     {
         return $this->belongsTo(\App\Models\userProfile\UserProfile::class , 'users_profile_id');
     }
