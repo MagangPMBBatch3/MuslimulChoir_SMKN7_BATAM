@@ -114,6 +114,10 @@ return view ('auth.register');
     {
         return view('jamkerjapertanggal.index');
     }
+    public function jamkerja()
+    {
+        return view('jamkerja.index');
+    }
 
     public function logout(Request $request)
     {

@@ -111,13 +111,13 @@
                     <span class="ml-2">Proyek User</span>
                 </a>
             </li>
-          {{-- <li class="mb-2">
-                <a href="#"
+          <li class="mb-2">
+                <a href="{{ route('jamkerja.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-time-five' style="font-size: 18px;"></i>
                     <span class="ml-2">Jam Kerja</span>
                 </a>
-            </li>  --}}
+            </li> 
             <li class="mb-2">
                 <a href="{{ route('jamkerjapertanggal.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jamkerjapertanggal.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">

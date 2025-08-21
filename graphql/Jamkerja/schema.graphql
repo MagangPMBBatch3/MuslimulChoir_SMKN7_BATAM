@@ -14,11 +14,11 @@ type JamKerja {
     updated_at: DateTime
     deleted_at: DateTime
 
-    user_profile: UserProfile @belongsTo
+    userProfile: UserProfile @belongsTo
     proyek: Proyek @belongsTo
     aktivitas: Aktivitas @belongsTo
     status: Status @belongsTo
-    mode: ModeJamKerja @belongsTo
+    modeJamKerja: ModeJamKerja @belongsTo
 }
 
 input CreateJamKerjaInput {
@@ -53,6 +53,12 @@ extend type Query {
 
     jamKerja(id: ID! @eq): JamKerja
         @find(model: "App\\Models\\JamKerja\\JamKerja")
+
+     allJamKerjaArsip: [JamKerja!]!
+    @field(resolver: "App\\GraphQL\\JamKerja\\Queries\\JamKerjaQuery@allArsip")
+
+    getJamKerjas(search: String): [JamKerja!]!
+    @field(resolver: "App\\GraphQL\\JamKerja\\Queries\\JamKerjaQuery@getJamKerjas")
 }
 
 extend type Mutation {

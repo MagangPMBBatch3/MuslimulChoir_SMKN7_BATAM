@@ -1,7 +1,7 @@
 <?php
 
 namespace App\GraphQL\JamKerja\Mutations;
-use App\Models\JamKerja;
+use App\Models\JamKerja\JamKerja;
 
 class JamKerjaMutation {
     public function restore($_, array $args) {
