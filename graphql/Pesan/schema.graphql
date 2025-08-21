@@ -8,7 +8,9 @@ type Pesan {
     jenis_id: Int
     created_at: DateTime
     updated_at: DateTime
-    deleted_at: DateTimez
+    deleted_at: DateTime
+
+    jenis_pesan: JenisPesan @belongsTo
 }
 
 input CreatePesanInput {
@@ -36,11 +38,12 @@ extend type Query {
     Pesan(id: ID! @eq): Pesan
     @find(model: "App\\Models\\Pesan\\Pesan")
 
-    PesanByPengirim(pengirim: String! @where(operator: "like", key: "pengirim")): [Pesan!]!
-    @all(model: "App\\Models\\Pesan\\Pesan")
+    allPesanArsip: [Pesan!]!
+    @field(resolver: "App\\GraphQL\\Pesan\\Queries\\PesanQuery@allArsip")
 
-    PesanByPenerima(penerima: String! @where(operator: "like", key: "penerima")): [Pesan!]!
-    @all(model: "App\\Models\\Pesan\\Pesan")
+    getPesans(search: String): [Pesan!]!
+    @field(resolver: "App\\GraphQL\\Pesan\\Queries\\PesanQuery@getPesans")
+
 }
 
 extend type Mutation {

@@ -28,8 +28,8 @@ class Pesan extends Model
     ];
 
     // Relasi ke JenisPesan
-    public function jenisPesan()
+    public function jenis_pesan()
     {
-        return $this->belongsTo(\App\Models\JenisPesanan\JenisPesanan::class, 'jenis_id');
+       return $this->belongsTo(\App\Models\JenisPesan\JenisPesan::class , 'jenis_id');
     }
 }

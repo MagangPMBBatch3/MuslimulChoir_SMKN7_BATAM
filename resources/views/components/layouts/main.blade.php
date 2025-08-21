@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="{{ route('pesan.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('pesan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
                     <i class='bx bx-message-detail' style="font-size: 18px;"></i>
                     <span class="ml-2">Pesan</span>

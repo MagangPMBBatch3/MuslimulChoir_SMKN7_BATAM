@@ -99,9 +99,15 @@ return view ('auth.register');
     {
         return view('proyekuser.index');
     }
+
     public function lembur()
     {
         return view('lembur.index');
+    }
+
+    public function pesan()
+    {
+        return view('pesan.index');
     }
 
     public function logout(Request $request)
