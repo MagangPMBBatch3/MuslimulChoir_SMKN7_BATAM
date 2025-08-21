@@ -8,7 +8,7 @@ type JamPerTanggal {
     updated_at: DateTime
     deleted_at: DateTime
 
-    user_profile: UserProfile @belongsTo
+    userProfile: UserProfile @belongsTo
     proyek: Proyek @belongsTo
 }
 
@@ -16,22 +16,28 @@ input CreateJamPerTanggalInput {
     users_profile_id: ID!
     proyek_id: ID!
     tanggal: Date
-    jam: Decimal!
+    jam: Float!
 }
 
 input UpdateJamPerTanggalInput {
     users_profile_id: ID
     proyek_id: ID
     tanggal: Date
-    jam: Decimal
+    jam: Float
 }
 
 extend type Query {
     allJamPerTanggal: [JamPerTanggal!]!
     @all(model: "App\\Models\\JamPerTanggal\\JamPerTanggal")
 
-    JamPerTanggal(id: ID! @eq) : JamPerTanggal
+    jamPerTanggal(id: ID! @eq) : JamPerTanggal
     @find(model: "App\\Models\\JamPerTanggal\\JamPerTanggal")
+
+    allJamPerTanggalArsip: [JamPerTanggal!]!
+    @field(resolver: "App\\GraphQL\\JamPerTanggal\\Queries\\JamPerTanggalQuery@allArsip")
+
+    getJamPerTanggals(search: String): [JamPerTanggal!]!
+    @field(resolver: "App\\GraphQL\\JamPerTanggal\\Queries\\JamPerTanggalQuery@getJamPerTanggals")
 }
 
 extend type Mutation {

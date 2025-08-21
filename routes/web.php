@@ -42,5 +42,7 @@ use App\Http\Controllers\AuthController\AuthController;
 
     Route::get('/pesan', [AuthController::class, 'pesan'])->name('pesan.index');
 
+    Route::get('/jamkerjapertanggal', [AuthController::class, 'jamkerjapertanggal'])->name('jamkerjapertanggal.index');
+
    
 });

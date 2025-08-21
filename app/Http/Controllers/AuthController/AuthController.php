@@ -110,6 +110,11 @@ return view ('auth.register');
         return view('pesan.index');
     }
 
+    public function jamkerjapertanggal()
+    {
+        return view('jamkerjapertanggal.index');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
