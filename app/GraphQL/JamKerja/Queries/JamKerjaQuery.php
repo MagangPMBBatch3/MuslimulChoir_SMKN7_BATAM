@@ -29,8 +29,8 @@ class JamKerjaQuery
                     ->orWhereHas('aktivitas', function ($aktivitas) use ($searchTerm) {
                         $aktivitas->where('nama', 'like', '%' .  $searchTerm . '%');
                     })
-                    ->orWhereHas('status', function ($status) use ($searchTerm) {
-                        $status->where('nama', 'like', '%' .  $searchTerm . '%');
+                    ->orWhereHas('statusJamKerja', function ($statusJamKerja) use ($searchTerm) {
+                        $statusJamKerja->where('nama', 'like', '%' .  $searchTerm . '%');
                     })
                     ->orWhereHas('modeJamKerja', function ($modeJamKerja) use ($searchTerm) {
                         $modeJamKerja->where('nama', 'like', '%' .  $searchTerm . '%');
@@ -38,7 +38,7 @@ class JamKerjaQuery
             });
         }
 
-        return $query->with('userProfile', 'proyek', 'aktivitas', 'status', 'modeJamKerja')->get();
+        return $query->with('userProfile', 'proyek', 'aktivitas', 'statusJamKerja', 'modeJamKerja')->get();
     }
 
     public function allArsip($_, array $args)

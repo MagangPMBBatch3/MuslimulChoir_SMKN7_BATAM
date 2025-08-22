@@ -24,7 +24,7 @@ async function loadJamKerjaData() {
             aktivitas {
                 nama
             }
-            status {
+            statusJamKerja {
                 nama
             }
             modeJamKerja {
@@ -49,7 +49,7 @@ async function loadJamKerjaData() {
     // Data arsip
     const queryArsip = `query {
         allJamKerjaArsip {
-             id
+            id
             users_profile_id
             no_wbs
             kode_proyek
@@ -69,7 +69,7 @@ async function loadJamKerjaData() {
             aktivitas {
                 nama
             }
-            status {
+            statusJamKerja {
                 nama
             }
             modeJamKerja {
@@ -108,10 +108,25 @@ function renderJamKerjaTable(jamKerjas, tableId, isActive) {
         let actions = "";
         if (isActive) {
             actions = `
-                <button onclick="openEditJamKerjaModal(${item.id}, '${item.users_profile_id}', '${item.no_wbs}', '${item.kode_proyek}', '${item.proyek_id}', '${item.aktivitas_id}', ${item.tanggal}, '${item.jumlah_jam}','${item.keterangan}','${item.status_id}','${item.mode_id}')" 
+               <button 
+                    onclick="openEditModal(
+                        ${item.id}, 
+                        '${item.users_profile_id}', 
+                        '${item.no_wbs}', 
+                        '${item.kode_proyek}', 
+                        '${item.proyek_id}', 
+                        '${item.aktivitas_id}', 
+                        '${item.tanggal}', 
+                        '${item.jumlah_jam}', 
+                        '${item.keterangan}', 
+                        '${item.status_id}', 
+                        '${item.mode_id}'
+                    )" 
                     class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
                     Edit
                 </button>
+
+
                 <button onclick="archiveJamKerja(${item.id})" 
                     class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">
                    Arsipkan
@@ -139,7 +154,7 @@ function renderJamKerjaTable(jamKerjas, tableId, isActive) {
                 <td class="p-2 border text-center">${item.tanggal}</td>
                 <td class="p-2 border text-center">${item.jumlah_jam}</td>
                 <td class="p-2 border text-center">${item.keterangan || '-'}</td>
-                <td class="p-2 border text-center">${item.status.nama}</td>
+                <td class="p-2 border text-center">${item.statusJamKerja ? item.statusJamKerja.nama : '-'}</td>
                 <td class="p-2 border text-center">${item.modeJamKerja.nama}</td>
                 <td class="p-2 border text-center">${actions}</td>
             </tr>`;

@@ -1,3 +1,5 @@
+// ------------------- LOAD OPTIONS -------------------
+
 async function loadUserProfileOptions() {
     const query = `
         query {
@@ -7,24 +9,18 @@ async function loadUserProfileOptions() {
             }
         }
     `;
-
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
     });
-
     const data = await response.json();
     const select = document.getElementById("addJamKerjaUserProfile");
 
-    while (select.options.length > 1) {
-        select.remove(1);
-    }
+    while (select.options.length > 1) select.remove(1);
 
-    data.data.allUserProfile.forEach((userProfile) => {
-        const option = new Option(userProfile.nama_lengkap, userProfile.id);
+    data.data.allUserProfile.forEach(user => {
+        const option = new Option(user.nama_lengkap, user.id);
         select.add(option);
     });
 }
@@ -35,27 +31,23 @@ async function loadProyekOptions() {
             allProyek {
                 id
                 nama
+                kode
             }
         }
     `;
-
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
     });
-
     const data = await response.json();
-    const select = document.getElementById("addJamKerjaProyek");
+    const select = document.getElementById("addJamKerjaProyekID");
 
-    while (select.options.length > 1) {
-        select.remove(1);
-    }
+    while (select.options.length > 1) select.remove(1);
 
-    data.data.allProyeks.forEach((proyek) => {
+    data.data.allProyek.forEach(proyek => {
         const option = new Option(proyek.nama, proyek.id);
+        option.dataset.kode = proyek.kode; // simpan kode proyek
         select.add(option);
     });
 }
@@ -66,27 +58,23 @@ async function loadAktivitasOptions() {
             allAktivitas {
                 id
                 nama
+                no_wbs
             }
         }
     `;
-
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
     });
-
     const data = await response.json();
-    const select = document.getElementById("addJamKerjaAktivitas");
+    const select = document.getElementById("addJamKerjaAktivitasID");
 
-    while (select.options.length > 1) {
-        select.remove(1);
-    }
+    while (select.options.length > 1) select.remove(1);
 
-    data.data.allAktivitas.forEach((aktivitas) => {
-        const option = new Option(aktivitas.nama_lengkap, aktivitas.id);
+    data.data.allAktivitas.forEach(aktivitas => {
+        const option = new Option(aktivitas.nama, aktivitas.id);
+        option.dataset.wbs = aktivitas.no_wbs; // simpan no_wbs
         select.add(option);
     });
 }
@@ -100,24 +88,18 @@ async function loadStatusOptions() {
             }
         }
     `;
-
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
     });
-
     const data = await response.json();
-    const select = document.getElementById("addJamKerjaStatus");
+    const select = document.getElementById("addJamKerjaStatusID");
 
-    while (select.options.length > 1) {
-        select.remove(1);
-    }
+    while (select.options.length > 1) select.remove(1);
 
-    data.data.allStatus.forEach((status) => {
-        const option = new Option(status.nama_lengkap, status.id);
+    data.data.allStatus.forEach(status => {
+        const option = new Option(status.nama, status.id);
         select.add(option);
     });
 }
@@ -131,27 +113,41 @@ async function loadModeJamKerjaOptions() {
             }
         }
     `;
-
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
     });
-
     const data = await response.json();
-    const select = document.getElementById("addJamKerjaModeJamKerja");
+    const select = document.getElementById("addJamKerjaModeJamKerjaID");
 
-    while (select.options.length > 1) {
-        select.remove(1);
-    }
+    while (select.options.length > 1) select.remove(1);
 
-    data.data.allModeJamKerja.forEach((modejamkerja) => {
-        const option = new Option(modejamkerja.nama_lengkap, modejamkerja.id);
+    data.data.allModeJamKerja.forEach(mode => {
+        const option = new Option(mode.nama, mode.id);
         select.add(option);
     });
 }
+
+// ------------------- EVENT LISTENERS -------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Dropdown Proyek -> isi kode_proyek
+    const proyekSelect = document.getElementById("addJamKerjaProyekID");
+    proyekSelect.addEventListener("change", function () {
+        const selected = this.options[this.selectedIndex];
+        document.getElementById("kode_proyek").value = selected.dataset.kode || "";
+    });
+
+    // Dropdown Aktivitas -> isi no_wbs
+    const aktivitasSelect = document.getElementById("addJamKerjaAktivitasID");
+    aktivitasSelect.addEventListener("change", function () {
+        const selected = this.options[this.selectedIndex];
+        document.getElementById("no_wbs").value = selected.dataset.wbs || "";
+    });
+});
+
+// ------------------- MODAL -------------------
 
 function openAddModal() {
     document.getElementById("modalAddJamKerja").classList.remove("hidden");
@@ -159,41 +155,44 @@ function openAddModal() {
     loadProyekOptions();
     loadAktivitasOptions();
     loadStatusOptions();
-    loadModeJamKerjaptions();
+    loadModeJamKerjaOptions();
 }
 
 function closeAddJamKerjaModal() {
     document.getElementById("modalAddJamKerja").classList.add("hidden");
 }
 
+// ------------------- CREATE JAM KERJA -------------------
+
 async function createJamKerja() {
     const users_profile_id = document.getElementById("addJamKerjaUserProfile").value;
-    const no_wbs = document.getElementById("addJamKerjaNoWbs").value;
-    const kode_proyek = document.getElementById("addJamKerjaKodeProyek").value;
+    const no_wbs = document.getElementById("no_wbs").value;
+    const kode_proyek = document.getElementById("kode_proyek").value;
     const proyek_id = document.getElementById("addJamKerjaProyekID").value;
     const aktivitas_id = document.getElementById("addJamKerjaAktivitasID").value;
     const tanggal = document.getElementById("addJamKerjaTanggal").value;
     const jumlah_jam = document.getElementById("addJamKerjaJumlahJam").value;
     const keterangan = document.getElementById("addJamKerjaKeterangan").value;
     const status_id = document.getElementById("addJamKerjaStatusID").value;
-    const mode_id = document.getElementById("addJamKerjaModeID").value;
+    const mode_id = document.getElementById("addJamKerjaModeJamKerjaID").value;
 
+    // Validasi
     if (!users_profile_id || !no_wbs || !kode_proyek || !proyek_id || !aktivitas_id || !tanggal || !jumlah_jam || !keterangan || !status_id || !mode_id) {
         alert("Field tidak boleh kosong!");
         return;
     }
-    if (!jam || parseFloat(jam) <= 0) {
+    if (parseFloat(jumlah_jam) <= 0) {
         alert("Jam harus diisi dengan angka lebih dari 0!");
         return;
     }
 
     const mutation = `
-                    mutation {
-                createJamKerja(
-                    input: { 
+        mutation {
+            createJamKerja(
+                input: { 
                     users_profile_id: ${users_profile_id}
                     no_wbs: "${no_wbs}"
-                    kode_proyek: "${kode_proyek}""
+                    kode_proyek: "${kode_proyek}"
                     proyek_id: ${proyek_id}
                     aktivitas_id: ${aktivitas_id}
                     tanggal: "${tanggal}"
@@ -201,45 +200,19 @@ async function createJamKerja() {
                     keterangan: "${keterangan}"
                     status_id: ${status_id}
                     mode_id: ${mode_id}
-                    }
-                ) {
-                    id
-                    users_profile_id
-                    no_wbs
-                    kode_proyek
-                    tanggal
-                    jumlah_jam
-                    keterangan
-                    
-                    # Relasi
-                    userProfile {
-                    nama_lengkap
-                    }
-                    proyek {
-                    nama
-                    }
-                    aktivitas {
-                    nama
-                    }
-                    status {
-                    nama
-                    }
-                    modeJamKerja {
-                    nama
-                    }
                 }
-                }
-                `;
+            ) {
+                id
+            }
+        }
+    `;
 
-        const response = await fetch("/graphql", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ query: mutation }),
-        });
+    await fetch("/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: mutation }),
+    });
 
-            closeAddJamKerjaModal();
-            loadJamKerjaData();
-
+    closeAddJamKerjaModal();
+    loadJamKerjaData(); // pastikan fungsi ini ada untuk refresh data
 }

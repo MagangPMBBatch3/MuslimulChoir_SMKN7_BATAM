@@ -17,7 +17,7 @@ type JamKerja {
     userProfile: UserProfile @belongsTo
     proyek: Proyek @belongsTo
     aktivitas: Aktivitas @belongsTo
-    status: Status @belongsTo
+    statusJamKerja: StatusJamKerja @belongsTo
     modeJamKerja: ModeJamKerja @belongsTo
 }
 

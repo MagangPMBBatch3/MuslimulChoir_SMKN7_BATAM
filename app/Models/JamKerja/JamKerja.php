@@ -44,9 +44,9 @@ class JamKerja extends Model
     }
 
     // Relasi ke Status
-    public function status()
+    public function statusJamKerja()
     {
-        return $this->belongsTo(\App\Models\Status\Statuses::class , 'status_id');
+        return $this->belongsTo(\App\Models\StatusJamKerja\StatusjamKerja::class , 'status_id');
     }
 
     // Relasi ke ModeJamKerja

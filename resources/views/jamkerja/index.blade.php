@@ -26,7 +26,7 @@
                         <th class="border p-2">Tanggal</th>
                         <th class="border p-2">Jumlah Jam</th>
                         <th class="border p-2">Keterangan</th>
-                        <th class="border p-2">Nama Status</th>
+                        <th class="border p-2">Nama Status Jam Kerja</th>
                         <th class="border p-2">Nama Mode</th>
                         <th class="border p-2">Aksi</th>
                     </tr>
@@ -47,7 +47,7 @@
                         <th class="border p-2">Tanggal</th>
                         <th class="border p-2">Jumlah Jam</th>
                         <th class="border p-2">Keterangan</th>
-                        <th class="border p-2">Nama Status</th>
+                        <th class="border p-2">Nama Status Jam Kerja</th>
                         <th class="border p-2">Nama Mode</th>
                         <th class="border p-2">Aksi</th>
                     </tr>

@@ -6,7 +6,7 @@ import Chart from "chart.js/auto";
 const ctx = document.getElementById("aktivitasChart");
 if (ctx) {
     new Chart(ctx, {
-        type: "bar",
+        type: "line",
         data: {
             labels: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
             datasets: [
