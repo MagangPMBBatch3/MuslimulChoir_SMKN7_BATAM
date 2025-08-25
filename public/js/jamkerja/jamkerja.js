@@ -155,7 +155,7 @@ function renderJamKerjaTable(jamKerjas, tableId, isActive) {
                 <td class="p-2 border text-center">${item.jumlah_jam}</td>
                 <td class="p-2 border text-center">${item.keterangan || '-'}</td>
                 <td class="p-2 border text-center">${item.statusJamKerja ? item.statusJamKerja.nama : '-'}</td>
-                <td class="p-2 border text-center">${item.modeJamKerja.nama}</td>
+                <td class="p-2 border text-center">${item.modeJamKerja?.nama || '-'}</td>
                 <td class="p-2 border text-center">${actions}</td>
             </tr>`;
     });
@@ -223,26 +223,38 @@ async function searchJamKerja() {
     if (!isNaN(keyword)) {
         // Cari berdasarkan ID
         query = `
-            query {
-                jamKerja(id: ${keyword}) {
-                    id
-                    users_profile_id
-                    proyek_id
-                    aktivitas_id
-                    tanggal
-                    jumlah_jam
-                    keterangan
-                    userProfile {
-                        nama_lengkap
-                    }
-                    proyek {
-                        nama
-                    }
-                    aktivitas {
-                        nama
-                    }
-                } 
-            }`;
+           query {
+    jamKerja(id: ${keyword}) {
+        id
+        no_wbs
+        kode_proyek
+        users_profile_id
+        proyek_id
+        aktivitas_id
+        status_id
+        mode_id
+        tanggal
+        jumlah_jam
+        keterangan
+        
+        userProfile {
+            nama_lengkap
+        }
+        proyek {
+            nama
+        }
+        aktivitas {
+            nama
+        }
+        statusJamKerja {
+            nama
+        }
+        modeJamKerja {
+            nama
+        }
+    }
+}
+`;
 
         const res = await fetch("/graphql", {
             method: "POST",
@@ -259,26 +271,38 @@ async function searchJamKerja() {
     } else {
         // Cari berdasarkan nama / keyword
         query = `
-            query {
-                getJamKerjas(search: "${keyword}") {
-                    id
-                    users_profile_id
-                    proyek_id
-                    aktivitas_id
-                    tanggal
-                    jumlah_jam
-                    keterangan
-                    userProfile {
-                        nama_lengkap
-                    }
-                    proyek {
-                        nama
-                    }
-                    aktivitas {
-                        nama
-                    }
-                }
-            }`;
+           query {
+    getJamKerjas(search: "${keyword}") {
+        id
+        no_wbs
+        kode_proyek
+        users_profile_id
+        proyek_id
+        aktivitas_id
+        status_id
+        mode_id
+        tanggal
+        jumlah_jam
+        keterangan
+
+        userProfile {
+            nama_lengkap
+        }
+        proyek {
+            nama
+        }
+        aktivitas {
+            nama
+        }
+        statusJamKerja {
+            nama
+        }
+        modeJamKerja {
+            nama
+        }
+    }
+}
+`;
 
         const res = await fetch("/graphql", {
             method: "POST",
