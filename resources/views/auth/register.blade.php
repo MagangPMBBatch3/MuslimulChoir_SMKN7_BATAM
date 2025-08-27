@@ -4,46 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     @vite('resources/css/app.css')
-    <title>Document</title>
+    @vite('resources/css/app.css')
+    <title>Register</title>
 </head>
-<body>
+<body class="bg-gradient-to-r from-blue-100 via-white to-blue-50 min-h-screen flex items-center justify-center">
     <x-layouts.auth title="Register">
-    <form onsubmit="createRegister()"class="bg-white p-6 rounded shadow-md w-96">
-        @csrf
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <h1 class=" text-2xl font-bold mb-4 text-center">Register</h1>
+        <form onsubmit="createRegister()" 
+              class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md border border-gray-200">
+            @csrf
+            <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @if ($errors->any())
-            <div class="bg-red-100 text-red-700 p-2 rounded mb-4">
-                {{ $errors->first() }}
+            <!-- Judul -->
+            <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">Register</h1>
+
+            <!-- Error -->
+            @if ($errors->any())
+                <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            <!-- Input Nama -->
+            <div class="mb-4">
+                <label for="nama" class="block mb-1 font-semibold text-gray-700">Nama</label>
+                <input type="text" name="nama" id="nama" required
+                       class="border border-gray-300 p-3 rounded w-full transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500" 
+                       placeholder="Masukkan nama lengkap">
             </div>
-        @endif
 
-        <div class="mb-4">
-            <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
-            <input type="text" name="nama" id="nama" required
-                class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm outline-0">
-        </div>
+            <!-- Input Email -->
+            <div class="mb-4">
+                <label for="email" class="block mb-1 font-semibold text-gray-700">Email</label>
+                <input type="email" name="email" id="email" required
+                       class="border border-gray-300 p-3 rounded w-full transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500" 
+                       placeholder="Masukkan email">
+            </div>
 
-        <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" name="email" id="email" required
-                class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm outline-0">
-        </div>
+            <!-- Input Password -->
+            <div class="mb-6">
+                <label for="password" class="block mb-1 font-semibold text-gray-700">Password</label>
+                <input type="password" name="password" id="password" required
+                       class="border border-gray-300 p-3 rounded w-full transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500" 
+                       placeholder="Masukkan password">
+            </div>
 
-        <div class="mb-4">
-            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-            <input type="password" name="password" id="password" required
-                class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm outline-0">
-        </div>
+            <!-- Tombol -->
+            <x-button type="submit" variant="primary" class="w-full py-3">
+                Register
+            </x-button>
 
-        <button type="submit" class="bg-blue-500 text-white w-full p-2 rounded">Register</button>
+            <!-- Link ke Login -->
+            <p class="mt-6 text-center text-sm text-gray-600">
+                Sudah punya akun?
+                <a href="{{ route('login') }}" class="text-blue-600 font-semibold hover:underline">
+                    Login di sini
+                </a>
+            </p>
+        </form>
 
-        <span class="flex justify-end mt-4 text-gray-400">Already have account? <a class="text-blue-500 ml-1" href="{{ route('login') }}"> Login</a></span>
-    </form>
-
-    <script src="{{ asset('js/register/register-create.js') }}"></script>
-</x-layouts.auth>
+        <script src="{{ asset('js/register/register-create.js') }}"></script>
+    </x-layouts.auth>
 </body>
 </html>

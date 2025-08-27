@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController\AuthController;
+use App\Http\Controllers\ProfileController;
 
     // Auth routes
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -36,8 +37,21 @@ use App\Http\Controllers\AuthController\AuthController;
     // User
     Route::get('/user', [AuthController::class, 'user'])->name('user.index');
     Route::get('/userprofile', [AuthController::class, 'userprofile'])->name('userprofile.index');
+
+
+    // Profile
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile.index');
     
     
     
+    Route::get('/dashboard', [AuthController::class, 'index'])->name('dashboard.index');
     
+
+   
+Route::post('/profile/upload', [AuthController::class, 'updateProfile'])->name('profile.upload');
+Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->middleware('auth') ->name('profile.update');
 });
+
+use App\Http\Controllers\UploadController;
+
+Route::post('/upload', [UploadController::class, 'store']);

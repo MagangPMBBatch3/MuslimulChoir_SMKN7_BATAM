@@ -103,18 +103,19 @@ function renderUserProfileTable(UserProfiles, tableId, isActive) {
         }
 
         tbody.innerHTML += `
-            <tr>
-                <td class="p-2 border text-center">${item.id}</td>
-                <td class="p-2 border text-center">${item.user.email}</td>
-                <td class="p-2 border text-center">${item.nama_lengkap}</td>
-                <td class="p-2 border text-center">${item.nrp}</td>
-                <td class="p-2 border text-center">${item.alamat}</td>
-                <td class="p-2 border text-center">${item.foto}</td>
-                <td class="p-2 border text-center">${item.bagian.nama}</td>
-                <td class="p-2 border text-center">${item.level.nama}</td>
-                <td class="p-2 border text-center">${item.status.nama}</td>
-                <td class="p-2 border text-center">${actions}</td>
-            </tr>`;
+    <tr>
+        <td class="p-2 border text-center">${item.id ?? ''}</td>
+        <td class="p-2 border text-center">${item.user?.email ?? ''}</td>
+        <td class="p-2 border text-center">${item.nama_lengkap ?? ''}</td>
+        <td class="p-2 border text-center">${item.nrp ?? ''}</td>
+        <td class="p-2 border text-center">${item.alamat ?? ''}</td>
+        <td class="p-2 border text-center">${item.foto ?? ''}</td>
+        <td class="p-2 border text-center">${item.bagian?.nama ?? ''}</td>
+        <td class="p-2 border text-center">${item.level?.nama ?? ''}</td>
+        <td class="p-2 border text-center">${item.status?.nama ?? ''}</td>
+        <td class="p-2 border text-center">${actions ?? ''}</td>
+    </tr>`;
+
     });
 }
 

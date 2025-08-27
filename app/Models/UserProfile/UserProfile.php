@@ -44,4 +44,12 @@ class UserProfile extends Model
     {
         return $this->belongsTo(\App\Models\Status\Statuses::class , 'status_id');
     }
+
+    public function getFotoUrlAttribute()
+{
+    return $this->foto 
+        ? asset('storage/img/' . $this->foto) 
+        : asset('storage/img/default-avatar.png');
+}
+
 }

@@ -22,6 +22,7 @@ class Pesan extends Model
     ];
 
     protected $casts = [
+        'tgl_pesan' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',

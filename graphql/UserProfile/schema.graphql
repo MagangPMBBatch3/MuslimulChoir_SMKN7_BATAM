@@ -2,7 +2,7 @@ type UserProfile {
     id: ID!
     user_id: ID
     nama_lengkap: String!
-    nrp: String!
+    nrp: String
     alamat: String
     foto: String
     bagian_id: ID
@@ -21,7 +21,7 @@ type UserProfile {
 input CreateUserProfileInput {
     user_id: ID
     nama_lengkap: String!
-    nrp: String!
+    nrp: String
     alamat: String
     foto: String
     bagian_id: ID

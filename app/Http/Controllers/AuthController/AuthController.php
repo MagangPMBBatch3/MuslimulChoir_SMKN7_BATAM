@@ -4,10 +4,21 @@ namespace App\Http\Controllers\AuthController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Models\Proyek\Proyek;
+use App\Models\User;
+use App\Models\Lembur\Lembur;
+use App\Models\Pesan\Pesan;
+use App\Models\Bagian\Bagians;
+use App\Models\level\Level;
+use App\Models\status\Statuses;
 
 class AuthController
 {
+    /**
+     * ==============================
+     *  AUTHENTICATION
+     * ==============================
+     */
     public function showLogin()
     {
         return view('auth.login');
@@ -16,7 +27,7 @@ class AuthController
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email'    => 'required|email',
             'password' => 'required',
         ]);
 
@@ -29,13 +40,56 @@ class AuthController
             'email' => 'Email atau password salah.',
         ]);
     }
-    
+
+    public function showRegis()
+    {
+        return view('auth.register');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
+
+    /**
+     * ==============================
+     *  DASHBOARD
+     * ==============================
+     */
+    public function index()
+    {
+        $totalProyek = Proyek::count();
+        $totalUser   = User::count();
+        $totalLembur = Lembur::count();
+        $totalPesan  = Pesan::count();
+
+        // Ambil 3 pesan terbaru
+        $pesanTerbaru = Pesan::orderBy('tgl_pesan', 'desc')
+                            ->take(3)
+                            ->get();
+
+        return view('dashboard.index', compact(
+            'totalProyek',
+            'totalUser',
+            'totalLembur',
+            'totalPesan',
+            'pesanTerbaru'
+        ));
+    }
 
     public function dashboard()
     {
-        return view('dashboard.index');
+        return redirect()->route('dashboard'); 
     }
-    
+
+    /**
+     * ==============================
+     *  MASTER DATA
+     * ==============================
+     */
     public function bagian()
     {
         return view('bagian.index');
@@ -51,17 +105,17 @@ class AuthController
         return view('status.index');
     }
 
-     public function proyek()
+    public function proyek()
     {
         return view('proyek.index');
     }
 
-     public function mode()
+    public function mode()
     {
         return view('mode.index');
     }
 
-     public function statusjam()
+    public function statusjam()
     {
         return view('statusjam.index');
     }
@@ -76,23 +130,38 @@ class AuthController
         return view('keterangan.index');
     }
 
-    public function showRegis() { 
-return view ('auth.register');
-    }
-
+    /**
+     * ==============================
+     *  USER & PROFILE
+     * ==============================
+     */
     public function user()
     {
         return view('user.index');
     }
 
-     public function aktivitas()
-    {
-        return view('aktivitas.index');
-    }
-
-     public function userprofile()
+    public function userprofile()
     {
         return view('userprofile.index');
+    }
+
+    public function profile()
+    {
+        $user = Auth::user(); 
+        $bagians = Bagians::all();
+        $levels = Level::all();
+        $statuses = Statuses::all();
+        return view('profile.index', compact('user', 'bagians', 'statuses', 'levels'));
+    }
+
+    /**
+     * ==============================
+     *  AKTIVITAS & PROYEK
+     * ==============================
+     */
+    public function aktivitas()
+    {
+        return view('aktivitas.index');
     }
 
     public function proyekuser()
@@ -114,16 +183,9 @@ return view ('auth.register');
     {
         return view('jamkerjapertanggal.index');
     }
+
     public function jamkerja()
     {
         return view('jamkerja.index');
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/login');
     }
 }

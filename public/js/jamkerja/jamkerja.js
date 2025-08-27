@@ -223,38 +223,38 @@ async function searchJamKerja() {
     if (!isNaN(keyword)) {
         // Cari berdasarkan ID
         query = `
-           query {
-    jamKerja(id: ${keyword}) {
-        id
-        no_wbs
-        kode_proyek
-        users_profile_id
-        proyek_id
-        aktivitas_id
-        status_id
-        mode_id
-        tanggal
-        jumlah_jam
-        keterangan
-        
-        userProfile {
-            nama_lengkap
+                query {
+                jamKerja(id: ${keyword}) {
+                id
+                no_wbs
+                kode_proyek
+                users_profile_id
+                proyek_id
+                aktivitas_id
+                status_id
+                mode_id
+                tanggal
+                jumlah_jam
+                keterangan
+                
+                userProfile {
+                    nama_lengkap
+                }
+                proyek {
+                    nama
+                }
+                aktivitas {
+                    nama
+                }
+                statusJamKerja {
+                    nama
+                }
+                modeJamKerja {
+                    nama
+                }
+            }
         }
-        proyek {
-            nama
-        }
-        aktivitas {
-            nama
-        }
-        statusJamKerja {
-            nama
-        }
-        modeJamKerja {
-            nama
-        }
-    }
-}
-`;
+        `;
 
         const res = await fetch("/graphql", {
             method: "POST",

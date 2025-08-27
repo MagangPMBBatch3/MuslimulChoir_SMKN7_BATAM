@@ -4,7 +4,7 @@
 
         <div class="flex justify-between mb-4">
             <input type="text" id="search" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchLembur()">
-            <button onclick="openAddModal()" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Data</button>
+             <x-button variant="primary" onclick="openAddModal()">Tambah Data</x-button>
         </div>
 
         <div class="mb4">

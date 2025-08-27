@@ -28,15 +28,16 @@
                 </a>
             </li>
 
-             {{-- <li class="mb-2">
-                <a href="#"
+             <li class="mb-2">
+                <a href="{{ route('profile.index') }}"
                    class="flex items-center py-2 px-2 rounded {{ request()->is('profile') ? 'bg-blue-800 font-semibold' : 'hover:bg-blue-500' }}">
                     <i class='bx bxs-user-rectangle' style="font-size: 20px;"></i> 
                     <span class="ml-2">Profile</span>
                 </a>
-            </li> --}}
+            </li>
 
             {{-- Master Data --}}
+            @if(Auth::user()->role === 'admin')
             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Master Data</li>
             <li class="mb-2">
                 <a href="{{ route('bagian.index') }}"
@@ -58,89 +59,10 @@
                     <i class='bx bx-purchase-tag-alt' style="font-size: 18px;"></i>
                     <span class="ml-2">Status</span>
                 </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('proyek.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('proyek.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-briefcase' style="font-size: 18px;"></i>
-                    <span class="ml-2">Proyek</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('mode.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('modejamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-time-five' style="font-size: 18px;"></i>
-                    <span class="ml-2">Mode Jam Kerja</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('statusjam.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('statusjamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-check-circle' style="font-size: 18px;"></i>
-                    <span class="ml-2">Status Jam Kerja</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('jenispesan.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('jenispesanan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-list-ul' style="font-size: 18px;"></i>
-                    <span class="ml-2">Jenis Pesanan</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('keterangan.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('keterangan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-info-circle' style="font-size: 18px;"></i>
-                    <span class="ml-2">Keterangan</span>
-                </a>
-            </li>
+            </li>         
+    @endif
 
-            {{-- Aktivitas & Operasional --}}
-           <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Aktivitas</li>
-            <li class="mb-2">
-                <a href="{{ route('aktivitas.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('aktivitas.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-pulse' style="font-size: 18px;"></i>
-                    <span class="ml-2">Aktivitas</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('proyekuser.index') }}"
-                class="flex items-center p-2 rounded {{ request()->routeIs('proyek.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                   <i class='bx bx-briefcase-alt-2'  style="font-size: 18px;"></i> 
-                    <span class="ml-2">Proyek User</span>
-                </a>
-            </li>
-          <li class="mb-2">
-                <a href="{{ route('jamkerja.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('jamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-time-five' style="font-size: 18px;"></i>
-                    <span class="ml-2">Jam Kerja</span>
-                </a>
-            </li> 
-            <li class="mb-2">
-                <a href="{{ route('jamkerjapertanggal.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('jamkerjapertanggal.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-calendar' style="font-size: 18px;"></i>
-                    <span class="ml-2">Jam Kerja per Tanggal</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('lembur.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('lembur.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-time' style="font-size: 18px;"></i>
-                    <span class="ml-2">Lembur</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="{{ route('pesan.index') }}"
-                   class="flex items-center p-2 rounded {{ request()->routeIs('pesan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
-                    <i class='bx bx-message-detail' style="font-size: 18px;"></i>
-                    <span class="ml-2">Pesan</span>
-                </a>
-            </li>
-
-            {{-- User & Profil --}}
+     {{-- User & Profil --}}
             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">User</li>
             <li class="mb-2">
                 <a href="{{ route('user.index') }}"
@@ -157,15 +79,106 @@
                 </a>
             </li>
 
+
+
+             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Proyek</li>
+            <li class="mb-2">
+                <a href="{{ route('proyek.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('proyek.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-briefcase' style="font-size: 18px;"></i>
+                    <span class="ml-2">Proyek</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('proyekuser.index') }}"
+                class="flex items-center p-2 rounded {{ request()->routeIs('proyek.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                   <i class='bx bx-briefcase-alt-2'  style="font-size: 18px;"></i> 
+                    <span class="ml-2">Proyek User</span>
+                </a>
+            </li>
+
+
+        <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Aktivitas</li>
+            <li class="mb-2">
+                <a href="{{ route('aktivitas.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('aktivitas.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-pulse' style="font-size: 18px;"></i>
+                    <span class="ml-2">Aktivitas</span>
+                </a>
+            </li>
+
+
+             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Jam Kerja</li>
+            <li class="mb-2">
+                <a href="{{ route('jamkerja.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('jamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-time-five' style="font-size: 18px;"></i>
+                    <span class="ml-2">Jam Kerja</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('lembur.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('lembur.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-time' style="font-size: 18px;"></i>
+                    <span class="ml-2">Lembur</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('mode.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('modejamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-time-five' style="font-size: 18px;"></i>
+                    <span class="ml-2">Mode Jam Kerja</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('jamkerjapertanggal.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('jamkerjapertanggal.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-calendar' style="font-size: 18px;"></i>
+                    <span class="ml-2">Jam Kerja per Tanggal</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('statusjam.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('statusjamkerja.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-check-circle' style="font-size: 18px;"></i>
+                    <span class="ml-2">Status Jam Kerja</span>
+                </a>
+            </li>
+
+             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Pesan</li>
+             <li class="mb-2">
+                <a href="{{ route('pesan.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('pesan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-message-detail' style="font-size: 18px;"></i>
+                    <span class="ml-2">Pesan</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('jenispesan.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('jenispesanan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-list-ul' style="font-size: 18px;"></i>
+                    <span class="ml-2">Jenis Pesanan</span>
+                </a>
+            </li>
+
+             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Keterangan</li>
+            <li class="mb-2">
+                <a href="{{ route('keterangan.index') }}"
+                   class="flex items-center p-2 rounded {{ request()->routeIs('keterangan.*') ? 'bg-blue-800 font-semibold' : 'hover:bg-cyan-400' }}">
+                    <i class='bx bx-info-circle' style="font-size: 18px;"></i>
+                    <span class="ml-2">Keterangan</span>
+                </a>
+            </li>
+
+
             {{-- Logout --}}
             <li class="mt-4">
                 <form action="/logout" method="POST">
                     @csrf
-                    <button type="submit"
-                            class="bg-red-500 w-full text-left flex items-center p-2 rounded hover:bg-red-500">
-                        <i class='bx bx-log-out' style="font-size: 18px;"></i>
-                        <span class="ml-2">Logout</span>
-                    </button>
+                <x-button type="submit" variant="danger" class="w-full text-left">
+                       <i class='bx bx-log-out text-lg'></i><span class="ml-2">Logout</span>
+                </x-button>
+
                 </form>
             </li>
         </ul>

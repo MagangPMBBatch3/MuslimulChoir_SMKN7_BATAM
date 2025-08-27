@@ -4,7 +4,7 @@
 
         <div class="flex justify-between mb-4">
             <input type="text" id="searchStatusJamKerja" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchStatusJamKerja()">
-            <button onclick="openAddStatusJamKerjaModal()" class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-700 rounded">Tambah Data</button>
+             <x-button variant="primary" onclick="openAddStatusJamKerjaModal()">Tambah Data</x-button>
         </div>
 
         <div class="mb4">

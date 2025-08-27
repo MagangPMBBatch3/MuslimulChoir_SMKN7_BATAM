@@ -58,12 +58,14 @@ function renderUserTable(users, tableId, isActive) {
             actions = `
                 <button onclick="openEditUserModal('${item.id}', '${item.name}', '${item.email}')" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</button>
                 <button onclick="arsipUser(${item.id})" class="bg-red-500 text-white px-2 py-1 rounded">Arsipkan</button>
-                <button onclick="#(${item.id})" class="bg-blue-500 text-white px-2 py-1 rounded">Profile</button>
+                <button onclick="viewUserProfile(${item.id})" class="bg-blue-500 text-white px-2 py-1 rounded">Profile</button>
             `;
         } else {
             actions = `
                 <button onclick="restoreUser(${item.id})" class="bg-green-500 text-white px-2 py-1 rounded">Restore</button>
                 <button onclick="forceDeleteUser(${item.id})" class="bg-red-700 text-white px-2 py-1 rounded">Hapus Permanen</button>
+                <button onclick="viewUserProfile(${item.id})" class="bg-blue-500 text-white px-2 py-1 rounded">Profile</button>
+
             `;
         }
 
@@ -76,6 +78,10 @@ function renderUserTable(users, tableId, isActive) {
             </tr>
         `;
     });
+}
+
+function viewUserProfile(userId) {
+    window.location.href =`/profile/${userId}`;
 }
 
 async function arsipUser(id) {
