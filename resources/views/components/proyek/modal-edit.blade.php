@@ -1,42 +1,54 @@
-<div id="modalEditProyek" class="hidden">
-    <div class="fixed inset-0 bg-white/50 items-center justify-center flex z-50">
-        <div class="bg-white p-6 rounded-lg shadow-lg shadow-blue-400 w-96">
-            <h2 class="text-lg font-bold mb-4 text-center">Edit Bagian</h2>
-            <form id="formEditProyek" >
-                @csrf
-                <input type="hidden" id="editProyekId" name="id">
-                  <div class="mb-4">
+<!-- Modal Edit Proyek -->
+<div id="modalEditProyek" class="fixed inset-0 hidden items-center justify-center flex z-50">
+    <!-- Overlay -->
+    <div class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+    <!-- Modal Content -->
+    <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-96 p-6 shadow-lg shadow-blue-400 z-50">
+        <h2 class="text-lg font-bold mb-6 text-center">Edit Proyek</h2>
+
+        <form id="formEditProyek" onsubmit="event.preventDefault(); updateProyek()">
+            @csrf
+            <input type="hidden" id="editProyekId" name="id">
+
+            <div class="mb-4">
                 <label for="editProyekKode" class="block text-sm font-medium mb-1">Kode Proyek</label>
-                <input type="text" id="editProyekKode" name="kodeProyek"
-                    class="border border-gray-300 p-2 rounded transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500 w-full" required>
+                <input type="text" id="editProyekKode" name="kodeProyek" required
+                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                           focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
                 <label for="editProyekNama" class="block text-sm font-medium mb-1">Nama Proyek</label>
-                <input type="text" id="editProyekNama" name="namaProyek"
-                    class="border border-gray-300 p-2 rounded transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500 w-full" required>
+                <input type="text" id="editProyekNama" name="namaProyek" required
+                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                           focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
                 <label for="editProyekTanggal" class="block text-sm font-medium mb-1">Tanggal Proyek</label>
-                <input type="date" id="editProyekTanggal" name="tanggalProyek"
-                    class="border border-gray-300 p-2 rounded transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500 w-full" required>
+                <input type="date" id="editProyekTanggal" name="tanggalProyek" required
+                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                           focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
                 <label for="editProyekNamaSekolah" class="block text-sm font-medium mb-1">Nama Sekolah</label>
-                <input type="text" id="editProyekNamaSekolah" name="namasekolah"
-                    class="border border-gray-300 p-2 rounded transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500 w-full" required>
+                <input type="text" id="editProyekNamaSekolah" name="namasekolah" required
+                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                           focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
-                <div class="flex justify-end gap-2">
-                    <button type="button" onclick="closeEditProyekModal()" class="bg-gray-500 text-white px-4 py-2 hover:bg-gray-700 rounded">
-                        Batal
-                    </button>
-                    <button onclick="updateProyek()"  class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-700 rounded">
-                        Update
-                    </button>
-                </div>
-            </form>
-        </div>
+
+            <div class="flex justify-end gap-2 mt-4">
+                <button type="button" onclick="closeEditProyekModal()"
+                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
+                    Batal
+                </button>
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                    Update
+                </button>
+            </div>
+        </form>
     </div>
 </div>

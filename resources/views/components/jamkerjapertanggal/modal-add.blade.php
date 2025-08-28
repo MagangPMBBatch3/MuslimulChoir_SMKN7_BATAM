@@ -1,49 +1,63 @@
-<!-- Modal Add -->
-<div id="modalAddJamPerTanggal" class="fixed inset-0 overflow-y-auto h-full w-full hidden">
+<!-- Modal Add Jam Per Tanggal -->
+<div id="modalAddJamPerTanggal" class="fixed inset-0 hidden items-center justify-center flex z-50">
     <!-- Overlay -->
-    <div class="fixed inset-0 bg-gray-500 opacity-50"></div>
+    <div class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+
     <!-- Modal Content -->
-    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white z-50">
-        <div class="mt-3">
-            <div class="flex justify-between items-center pb-3">
-                <h3 class="text-lg font-medium">Tambah Jam Per Tanggal</h3>
-                <button onclick="closeAddJamPerTanggalModal()" class="text-black close-modal">&times;</button>
-            </div>
-            <div class="mt-2 px-7 py-3">
-                <form id="formAddJamPerTanggal" onsubmit="event.preventDefault(); createJamPerTanggal()">
-                    <div class="mb-4">
-                        <label for="addJamPerTanggal" class="block text-sm font-medium text-gray-700">Jam Per Tanggal</label>
-                        <select id="addJamPerTanggalUserProfile" name="users_profile_id"
-                            class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0">
-                            <option value="">Pilih User Profile</option>
-                        </select>
-
-                        <label for="addProyek" class="block text-sm font-medium text-gray-700">Proyek</label>
-                        <select id="addJamPerTanggalProyek" name="proyek_id"
-                            class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0">
-                            <option value="">Pilih Proyek</option>
-                        </select>
-
-                        <label for="addTanggal" class="block text-sm font-medium text-gray-700">Tanggal</label>
-                        <input type="date" id="addJamPerTanggalTanggal" name="tanggal"
-                            class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0">
-
-                        <label for="addJam" class="block text-sm font-medium text-gray-700">Jam</label>
-                        <input type="number" id="addJamPerTanggalJam" name="jam" step="0.5" min="0" 
-                            class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0">
-
-                    </div>
-                    <div class="flex justify-end gap-2">
-                        <button type="button" onclick="closeAddJamPerTanggalModal()"
-                            class="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400">
-                            Batal
-                        </button>
-                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                            Simpan
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-[28rem] p-6 shadow-lg shadow-blue-400 z-50">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-center flex-1">Tambah Jam Per Tanggal</h3>
+            <button onclick="closeAddJamPerTanggalModal()" class="text-gray-200 hover:text-white text-xl">&times;</button>
         </div>
+
+        <!-- Form -->
+        <form id="formAddJamPerTanggal" onsubmit="event.preventDefault(); createJamPerTanggal()">
+            <div class="grid grid-cols-1 gap-4">
+                <!-- User Profile -->
+                <div>
+                    <label for="addJamPerTanggalUserProfile" class="block mb-1 text-sm">User Profile</label>
+                    <select id="addJamPerTanggalUserProfile" name="users_profile_id" required
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="">Pilih User Profile</option>
+                    </select>
+                </div>
+
+                <!-- Proyek -->
+                <div>
+                    <label for="addJamPerTanggalProyek" class="block mb-1 text-sm">Proyek</label>
+                    <select id="addJamPerTanggalProyek" name="proyek_id" required
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="">Pilih Proyek</option>
+                    </select>
+                </div>
+
+                <!-- Tanggal -->
+                <div>
+                    <label for="addJamPerTanggalTanggal" class="block mb-1 text-sm">Tanggal</label>
+                    <input type="date" id="addJamPerTanggalTanggal" name="tanggal" required
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+
+                <!-- Jam -->
+                <div>
+                    <label for="addJamPerTanggalJam" class="block mb-1 text-sm">Jam</label>
+                    <input type="number" id="addJamPerTanggalJam" name="jam" step="0.5" min="0"
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-end gap-2 mt-6 border-t border-slate-700 pt-4">
+                <button type="button" onclick="closeAddJamPerTanggalModal()"
+                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
+                    Batal
+                </button>
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                    Simpan
+                </button>
+            </div>
+        </form>
     </div>
 </div>

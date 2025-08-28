@@ -1,23 +1,28 @@
 <!-- Modal Tambah Data Level -->
-<div id="modalAddLevel" class="fixed inset-0 bg-white/50 items-center justify-center flex z-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg shadow-blue-400 w-96">
-        <h2 class="text-xl font-bold mb-4 text-center">Tambah Data Level</h2>
-        
+<div id="modalAddLevel" class="fixed inset-0 hidden items-center justify-center flex z-50">
+    <!-- Overlay -->
+    <div class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+    <!-- Modal Content -->
+    <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-[28rem] p-6 shadow-lg shadow-blue-400 z-50">
+        <h2 class="text-xl font-bold mb-6 text-center">Tambah Data Level</h2>
+
         <form id="formAddLevel" onsubmit="createLevel(event)">
             @csrf
             <div class="mb-4">
-                <label for="addLevelNama" class="block text-sm font-medium mb-1">Nama Level</label>
-                <input type="text" id="addLevelNama" name="namaLevel"
-                    class="border border-gray-300 p-2 rounded transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:ring-2 hover:ring-blue-500 w-full" required>
+                <label for="addLevelNama" class="block mb-1 text-sm">Nama Level</label>
+                <input type="text" id="addLevelNama" name="namaLevel" required
+                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                           focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
-            <div class="flex justify-end space-x-2">
-                <button type="button" onclick="closeAddLevelModal()" 
-                        class="px-4 py-2 bg-gray-500 text-white hover:bg-gray-700  rounded">
+            <div class="flex justify-end gap-2 mt-4">
+                <button type="button" onclick="closeAddLevelModal()"
+                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
                     Batal
                 </button>
-                <button type="submit" 
-                        class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700  rounded">
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
                     Simpan
                 </button>
             </div>
