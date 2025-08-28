@@ -1,47 +1,62 @@
 <x-layouts.main title="Data JenisPesan">
-    <div class="bg-white p-4 rounded shadow w-full">
-        <h1 class="text-2x1 font-bold mb-4">Data JenisPesan</h1>
+    <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
+        <h1 class="text-2xl font-bold mb-4 text-white">Data JenisPesan</h1>
 
+        {{-- Search & Tambah --}}
         <div class="flex justify-between mb-4">
-            <input type="text" id="searchJenisPesan" placeholder="Cari ID atau Nama..." class="border p-2 rounded w-64" oninput="searchJenisPesan()">
+            <input 
+                type="text" 
+                id="searchJenisPesan" 
+                placeholder="Cari ID atau Nama..." 
+                class="bg-slate-700/70 text-gray-200 placeholder-gray-400 border border-slate-600 p-2 rounded-lg w-64 focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                oninput="searchJenisPesan()">
+            
             <x-button variant="primary" onclick="openAddJenisPesanModal()">Tambah Data</x-button>
         </div>
 
-        <div class="mb4">
-            <button class="px-4 py-2 bg-blue-500 text-white rounded-t" onclick="showTab('aktif')" id="tabAktif">Data
-                Aktif</button>
-            <button onclick="showTab('arsip')" id="tabArsip" class="px-4 py-2 bg-gray-300 text-black rounded-t">Data
-                Arsip</button>
-
+        {{-- Tabs --}}
+        <div class="mb-4">
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-t" 
+                    onclick="showTab('aktif')" 
+                    id="tabAktif">Data Aktif</button>
+            <button onclick="showTab('arsip')" 
+                    id="tabArsip" 
+                    class="px-4 py-2 bg-slate-600 text-gray-300 rounded-t">Data Arsip</button>
         </div>
+
+        {{-- Table Aktif --}}
         <div id="tableAktif">
-            <table class="w-full border">
-                <thead class="bg-gray-200">
+            <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
+                <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
                     <tr>
-                        <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Nama</th>
-                        <th class="p-2 border">Aksi</th>
+                        <th class="p-2 border border-slate-600 text-center">ID</th>
+                        <th class="p-2 border border-slate-600">Nama</th>
+                        <th class="p-2 border border-slate-600 text-center">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="dataJenisPesan"></tbody>
-            </table>
-        </div>
-        <div id="tableArsip" class="hidden">
-            <table class="w-full border">
-                <thead class="bg-gray-200">
-                    <tr>
-                        <th class="p-2 border">ID</th>
-                        <th class="p-2 border">Nama</th>
-                        <th class="p-2 border">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="dataJenisPesanArsip"></tbody>
+                <tbody id="dataJenisPesan" class="divide-y divide-slate-700 text-gray-200"></tbody>
             </table>
         </div>
 
+        {{-- Table Arsip --}}
+        <div id="tableArsip" class="hidden">
+            <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
+                <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
+                    <tr>
+                        <th class="p-2 border border-slate-600 text-center">ID</th>
+                        <th class="p-2 border border-slate-600">Nama</th>
+                        <th class="p-2 border border-slate-600 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="dataJenisPesanArsip" class="divide-y divide-slate-700 text-gray-200"></tbody>
+            </table>
+        </div>
+
+        {{-- Modal Tambah & Edit --}}
         @include('components.jenispesan.modal-add')
         @include('components.jenispesan.modal-edit')
 
+        {{-- Scripts --}}
         <script src="{{ asset('js/jenispesan/jenispesan.js') }}"></script>
         <script src="{{ asset('js/jenispesan/jenispesan-create.js') }}"></script>
         <script src="{{ asset('js/jenispesan/jenispesan-edit.js') }}"></script>
@@ -55,24 +70,22 @@
 
                 if (tab === 'aktif') {
                     tabAktif.classList.add('bg-blue-500', 'text-white');
-                    tabAktif.classList.remove('bg-gray-300', 'text-black');
+                    tabAktif.classList.remove('bg-slate-600', 'text-gray-300');
                     tabArsip.classList.remove('bg-blue-500', 'text-white');
-                    tabArsip.classList.add('bg-gray-300', 'text-black');
+                    tabArsip.classList.add('bg-slate-600', 'text-gray-300');
                     tableAktif.classList.remove('hidden');
                     tableArsip.classList.add('hidden');
                 } else {
                     tabArsip.classList.add('bg-blue-500', 'text-white');
-                    tabArsip.classList.remove('bg-gray-300', 'text-black');
+                    tabArsip.classList.remove('bg-slate-600', 'text-gray-300');
                     tabAktif.classList.remove('bg-blue-500', 'text-white');
-                    tabAktif.classList.add('bg-gray-300', 'text-black');
+                    tabAktif.classList.add('bg-slate-600', 'text-gray-300');
                     tableArsip.classList.remove('hidden');
                     tableAktif.classList.add('hidden');
                 }
 
                 loadJenisPesanData();
             }
-
         </script>
-
     </div>
 </x-layouts.main>

@@ -139,38 +139,10 @@ async function createUserProfile() {
         const nama_lengkap = document.getElementById("addUserProfileNamaLengkap").value.trim();
         const nrp = document.getElementById("addUserProfileNrp").value.trim();
         const alamat = document.getElementById("addUserProfileAlamat").value.trim();
-        const foto = document.getElementById("addUserProfileFoto").files[0];
+        const foto = document.getElementById("addUserProfileFoto").value.trim();
         const bagian_id = document.getElementById("addUserProfileBagian").value;
         const level_id = document.getElementById("addUserProfileLevel").value;
         const status_id = document.getElementById("addUserProfileStatus").value;
-
-        let fotoPath ="";
-        if (foto) {
-            const uploadData = new FormData();
-            uploadData.append("foto",foto);
-
-            const token = document
-            .querySelector('meta[name="csrf-token"]')
-            .getAttribute("content");
-
-            const uploadRes = await fetch("/upload",{
-                method: "POST",
-                headers: {
-                    "X-CSRF-TOKEN": token,
-                },
-                body: uploadData,
-            })
-
-            const uploadResult = await uploadRes.json();
-            if (uploadResult.success) {
-                fotoPath = uploadResult.path;
-            } else {
-                alert("Upload Foto Gagal!");
-                return;
-            }
-        }
-
-
 
         if (!user_id || !nama_lengkap || !foto || !bagian_id || !level_id || !status_id) {
             alert("Semua field harus diisi!");

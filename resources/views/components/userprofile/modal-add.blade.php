@@ -12,6 +12,8 @@
             <div class="mt-2 px-7 py-3">
                 <form id="formAddUserProfile" onsubmit="event.preventDefault(); createUserProfile()">
                     <div class="mb-4">
+                        @csrf
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
 
                         <label for="addUser" class="block text-sm font-medium text-gray-700">User</label>
                         <select id="addUserProfileUser" name="user_id"
@@ -35,7 +37,7 @@
                             placeholder="Masukkan Alamat">
 
                         <label for="addFoto" class="block text-sm font-medium text-gray-700">Foto</label>
-                        <input type="text" id="addUserProfileFoto" name="foto"
+                        <input type="file" id="addUserProfileFoto" name="foto"
                             class="mt-1 block w-full rounded-md border-gray-300 p-2 shadow-sm mb-2 outline-0"
                             placeholder="Masukkan Foto">
 
