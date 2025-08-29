@@ -199,7 +199,7 @@ async function openEditUserProfileModal(
     }
 }
 
-function closeEditAktivitasModal() {
+function closeEditUserProfileModal() {
     document.getElementById("modalEditUserProfile").classList.add("hidden");
 }
 
@@ -270,7 +270,7 @@ async function updateUserProfile() {
             throw new Error(result.errors[0].message);
         }
 
-        closeEditAktivitasModal();
+        closeEditUserProfileModal();
         loadUserProfileData();
         alert("Data berhasil diupdate!");
     } catch (error) {

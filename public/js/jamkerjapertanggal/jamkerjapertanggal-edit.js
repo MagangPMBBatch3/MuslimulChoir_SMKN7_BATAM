@@ -32,7 +32,7 @@ async function loadUserProfileOptionsForEdit() {
 async function loadProyekOptionsForEdit() {
     const query = `
         query {
-            allProyeks {
+            allProyek {
                 id
                 nama
             }
@@ -54,7 +54,7 @@ async function loadProyekOptionsForEdit() {
         select.remove(1);
     }
 
-    data.data.allProyeks.forEach((proyek) => {
+    data.data.allProyek.forEach((proyek) => {
         const option = new Option(proyek.nama, proyek.id);
         select.add(option);
     });
