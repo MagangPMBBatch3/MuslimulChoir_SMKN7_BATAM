@@ -85,47 +85,48 @@
 
 
          {{-- Tabel Proyek --}}
-        <div class="bg-slate-800 p-6 rounded-xl shadow">
-            <h3 class="text-lg font-bold text-white mb-4">Daftar Proyek</h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full text-sm text-left border-collapse">
-                    <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
-                        <tr>
-                            <th class="px-6 py-3">Nama Proyek</th>
-                            <th class="px-6 py-3">Status</th>
-                            <th class="px-6 py-3">Deadline</th>
-                            <th class="px-6 py-3 text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-700">
-                        <tr>
-                            <td class="px-6 py-3 text-gray-100">Proyek Website</td>
-                            <td class="px-6 py-3"><span class="bg-green-900/30 text-green-400 px-2 py-1 rounded text-xs">Aktif</span></td>
-                            <td class="px-6 py-3 text-gray-300">30 Agustus 2025</td>
-                            <td class="px-6 py-3 text-center">
-                                <a href="#" class="text-blue-400 hover:underline">Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-3 text-gray-100">Proyek Mobile App</td>
-                            <td class="px-6 py-3"><span class="bg-yellow-900/30 text-yellow-400 px-2 py-1 rounded text-xs">Proses</span></td>
-                            <td class="px-6 py-3 text-gray-300">15 September 2025</td>
-                            <td class="px-6 py-3 text-center">
-                                <a href="#" class="text-blue-400 hover:underline">Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-3 text-gray-100">Proyek ERP</td>
-                            <td class="px-6 py-3"><span class="bg-red-900/30 text-red-400 px-2 py-1 rounded text-xs">Tertunda</span></td>
-                            <td class="px-6 py-3 text-gray-300">-</td>
-                            <td class="px-6 py-3 text-center">
-                                <a href="#" class="text-blue-400 hover:underline">Detail</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="bg-slate-800 p-6 rounded-xl shadow">
+    <h3 class="text-lg font-bold text-white mb-4">Daftar Proyek</h3>
+    <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left border-collapse">
+            <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
+                <tr>
+                    <th class="px-6 py-3">Nama Proyek</th>
+                    <th class="px-6 py-3">Status</th>
+                    <th class="px-6 py-3">Deadline</th>
+                    <th class="px-6 py-3 text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-700">
+                @forelse($proyek as $item)
+                    <tr>
+                        <td class="px-6 py-3 text-gray-100">{{ $item->nama }}</td>
+                        <td class="px-6 py-3">
+                            @if($item->status == 'Aktif')
+                                <span class="bg-green-900/30 text-green-400 px-2 py-1 rounded text-xs">Aktif</span>
+                            @else
+                                <span class="bg-red-900/30 text-red-400 px-2 py-1 rounded text-xs">Tidak Aktif</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-3 text-gray-300">
+                            {{ \Carbon\Carbon::parse($item->deadline)->format('d M Y') }}
+                        </td>
+                        <td class="px-6 py-3 text-center">
+                            <a href="#" class="text-blue-400 hover:underline">Detail</a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="px-6 py-3 text-center text-gray-400">
+                            Belum ada proyek
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
+
     </div>
 </x-layouts.main>
 

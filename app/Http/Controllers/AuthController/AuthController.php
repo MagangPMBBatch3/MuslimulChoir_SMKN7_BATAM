@@ -71,20 +71,20 @@ class AuthController
                             ->take(3)
                             ->get();
 
+        $proyek = Proyek::orderBy('nama')
+                        ->take(5)
+                        ->get();
+
         return view('dashboard.index', compact(
             'totalProyek',
             'totalUser',
             'totalLembur',
             'totalPesan',
-            'pesanTerbaru'
+            'pesanTerbaru',
+            'proyek'
         ));
     }
-
-    // public function dashboard()
-    // {
-    //     return redirect()->route('dashboard'); 
-    // }
-
+    
     /**
      * ==============================
      *  MASTER DATA

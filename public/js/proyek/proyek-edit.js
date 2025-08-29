@@ -1,10 +1,10 @@
-function openEditProyekModal(id, nama, kode, tanggal, nama_sekolah) {
+function openEditProyekModal(id,kode, nama, tanggal, nama_sekolah) {
     document.getElementById('editProyekId').value = id;
     document.getElementById('editProyekKode').value = kode;
     document.getElementById('editProyekNama').value = nama;
     document.getElementById('editProyekTanggal').value = tanggal;
     document.getElementById('editProyekNamaSekolah').value = nama_sekolah;
-    console.log(id, nama, kode, tanggal, nama_sekolah);
+    console.log(id, kode, nama, tanggal, nama_sekolah);
 
     document.getElementById('modalEditProyek').classList.remove('hidden');
 }
