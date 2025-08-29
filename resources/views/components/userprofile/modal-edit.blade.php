@@ -1,4 +1,3 @@
-<!-- Modal Edit User Profile -->
 <div id="modalEditUserProfile" class="fixed inset-0 hidden items-center justify-center flex z-50">
     <!-- Overlay -->
     <div class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
@@ -10,7 +9,8 @@
         <form id="formEditUserProfile" onsubmit="event.preventDefault(); updateUserProfile()">
             <input type="hidden" id="editId" name="id">
 
-            <div class="grid grid-cols-1 gap-4">
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Kolom 1 -->
                 <div>
                     <label for="editUserProfileUserID" class="block mb-1 text-sm">User</label>
                     <select id="editUserProfileUserID" name="user_id" required
@@ -41,6 +41,7 @@
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
+                <!-- Kolom 2 -->
                 <div>
                     <label for="editUserProfileFoto" class="block mb-1 text-sm">Foto</label>
                     <input type="text" id="editUserProfileFoto" name="foto" placeholder="Masukkan Foto"

@@ -42,7 +42,7 @@
                 <!-- Jam -->
                 <div>
                     <label for="addJamPerTanggalJam" class="block mb-1 text-sm">Jam</label>
-                    <input type="number" id="addJamPerTanggalJam" name="jam" step="0.5" min="0"
+                    <input type="number" id="addJamPerTanggalJam" name="jam" step="0.5" min="0" placeholder="Masukkan jam"
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
             </div>

@@ -11,7 +11,7 @@
             @csrf
             <div class="mb-4">
                 <label for="addStatusNama" class="block text-sm font-medium mb-1">Nama Status</label>
-                <input type="text" id="addStatusNama" name="namaStatus" required
+                <input type="text" id="addStatusNama" name="namaStatus" placeholder="Masukkan Nama Status" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
             </div>

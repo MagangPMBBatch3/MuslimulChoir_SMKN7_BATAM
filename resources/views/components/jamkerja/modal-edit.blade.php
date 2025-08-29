@@ -11,12 +11,12 @@
             @csrf
             <input type="hidden" id="editJamKerjaId" name="id">
 
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-0.5">
                 <!-- User Profile -->
                 <div>
                     <label for="editJamKerjaUserProfile" class="block mb-1 text-sm">Nama User Profile</label>
                     <select id="editJamKerjaUserProfile" name="users_profile_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                         <option value="">Pilih User Profile</option>
                     </select>
                 </div>
@@ -25,21 +25,21 @@
                 <div>
                     <label for="editNoWbs" class="block mb-1 text-sm">No WBS</label>
                     <input type="text" id="editNoWbs" name="no_wbs" readonly
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-400 p-2 cursor-not-allowed">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-400 p-1 cursor-not-allowed">
                 </div>
 
                 <!-- Kode Proyek -->
                 <div>
                     <label for="editKodeProyek" class="block mb-1 text-sm">Kode Proyek</label>
                     <input type="text" id="editKodeProyek" name="kode_proyek" readonly
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-400 p-2 cursor-not-allowed">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-400 p-1 cursor-not-allowed">
                 </div>
 
                 <!-- Proyek -->
                 <div>
                     <label for="editJamKerjaProyekID" class="block mb-1 text-sm">Proyek</label>
                     <select id="editJamKerjaProyekID" name="proyek_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                         <option value="">Pilih Nama Proyek</option>
                     </select>
                 </div>
@@ -48,7 +48,7 @@
                 <div>
                     <label for="editJamKerjaAktivitasID" class="block mb-1 text-sm">Aktivitas</label>
                     <select id="editJamKerjaAktivitasID" name="aktivitas_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                         <option value="">Pilih Nama Aktivitas</option>
                     </select>
                 </div>
@@ -57,7 +57,7 @@
                 <div>
                     <label for="editJamKerjaTanggal" class="block mb-1 text-sm">Tanggal</label>
                     <input type="date" id="editJamKerjaTanggal" name="tanggal" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                 </div>
 
                 <!-- Jumlah Jam -->
@@ -65,14 +65,14 @@
                     <label for="editJamKerjaJumlahJam" class="block mb-1 text-sm">Jumlah Jam</label>
                     <input type="number" id="editJamKerjaJumlahJam" name="jumlah_jam" required
                         placeholder="Masukkan Jumlah Jam"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                 </div>
 
                 <!-- Status -->
                 <div>
                     <label for="editJamKerjaStatusID" class="block mb-1 text-sm">Status</label>
                     <select id="editJamKerjaStatusID" name="status_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                         <option value="">Pilih Status</option>
                     </select>
                 </div>
@@ -81,7 +81,7 @@
                 <div>
                     <label for="editJamKerjaModeJamKerjaID" class="block mb-1 text-sm">Mode Jam Kerja</label>
                     <select id="editJamKerjaModeJamKerjaID" name="mode_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1">
                         <option value="">Pilih Mode</option>
                     </select>
                 </div>
@@ -91,7 +91,7 @@
                     <label for="editJamKerjaKeterangan" class="block mb-1 text-sm">Keterangan</label>
                     <textarea id="editJamKerjaKeterangan" name="keterangan"
                         placeholder="Masukkan Keterangan"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2"></textarea>
+                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-1"></textarea>
                 </div>
             </div>
 

@@ -11,7 +11,7 @@
             @csrf
             <div class="mb-4">
                 <label for="addLevelNama" class="block mb-1 text-sm">Nama Level</label>
-                <input type="text" id="addLevelNama" name="namaLevel" required
+                <input type="text" id="addLevelNama" name="namaLevel" placeholder="Masukkan Nama Level" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                            focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
