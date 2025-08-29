@@ -48,6 +48,8 @@ async function createUser() {
 
         const userId = result.data.createUser.id;
         console.log("User created:", nama, userId);
+        closeAddUserModal();
+        loadUserData();
 
         // Lanjut ke pembuatan user profile
         await insertUserProfile(userId, nama);

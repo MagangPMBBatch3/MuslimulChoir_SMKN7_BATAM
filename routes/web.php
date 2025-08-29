@@ -18,11 +18,12 @@ Route::get('/regis', [AuthController::class, 'showRegis'])->name('register');
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard & Logout
-   
     Route::get('/dashboard', [AuthController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Master Data
+    // =======================
+    // MASTER DATA
+    // =======================
     Route::get('/bagian', [AuthController::class, 'bagian'])->name('bagian.index');
     Route::get('/level', [AuthController::class, 'level'])->name('level.index');
     Route::get('/status', [AuthController::class, 'status'])->name('status.index');
@@ -32,7 +33,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jenispesan', [AuthController::class, 'jenispesan'])->name('jenispesan.index');
     Route::get('/keterangan', [AuthController::class, 'keterangan'])->name('keterangan.index');
 
-    // Aktivitas
+    // =======================
+    // AKTIVITAS
+    // =======================
     Route::get('/aktivitas', [AuthController::class, 'aktivitas'])->name('aktivitas.index');
     Route::get('/proyekuser', [AuthController::class, 'proyekuser'])->name('proyekuser.index');
     Route::get('/jamkerja', [AuthController::class, 'jamkerja'])->name('jamkerja.index');
@@ -40,19 +43,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lembur', [AuthController::class, 'lembur'])->name('lembur.index');
     Route::get('/pesan', [AuthController::class, 'pesan'])->name('pesan.index');
 
-    // User
+    // =======================
+    // USER MANAGEMENT
+    // =======================
     Route::get('/user', [AuthController::class, 'user'])->name('user.index');
     Route::get('/userprofile', [AuthController::class, 'userprofile'])->name('userprofile.index');
 
-    // Profile
-    Route::get('/profile', [AuthController::class, 'profile'])->name('profile.index'); // profil sendiri
-    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show'); // profil user lain
+    // =======================
+    // PROFILE
+    // =======================
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');       // profil login
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');    // profil user lain
 
-    Route::post('/profile/upload', [AuthController::class, 'updateProfile'])->name('profile.upload');
-    Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/profile/upload', [ProfileController::class, 'store'])->name('profile.upload'); // upload foto
+    Route::put('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update'); // update profile
 });
 
 // =======================
-// Upload file (umum, tidak pakai auth)
+// UPLOAD FILE (PUBLIC)
 // =======================
 Route::post('/upload', [UploadController::class, 'store']);

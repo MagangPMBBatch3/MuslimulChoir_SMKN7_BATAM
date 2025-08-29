@@ -1,6 +1,4 @@
-
-<x-layouts.main title="profile">
-
+<x-layouts.main title="Profile">
 
   <div class="w-full max-w-5xl bg-gray-800 shadow-2xl rounded-2xl p-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -15,7 +13,7 @@
         
         <h2 class="mt-4 text-2xl font-bold text-white">{{ $user->name }}</h2>
         <p class="text-gray-400">{{ $user->email }}</p>
-        <p class="bg-gray-500 bg-opacity-70 p-6 rounded-lg text-white px-3 py-1 text-sm mt-2 font-bold">
+        <p class="bg-gray-500 bg-opacity-70 px-3 py-1 mt-2 font-bold text-white rounded-lg">
           {{ $user->role }}
         </p>
 
@@ -54,13 +52,17 @@
 
         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
           @csrf
+          @method('PUT')
+
+          <!-- Hidden User ID -->
+          <input type="hidden" name="user_id" value="{{ $user->id }}">
 
           <!-- NRP Input -->
           <div>
             <label class="block text-sm font-medium text-gray-300 mb-1">NRP</label>
             <input type="text" name="nrp" 
               value="{{ old('nrp', $user->userProfile->nrp ?? '') }}" 
-              class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required>
           </div>
 
@@ -68,7 +70,7 @@
           <div>
             <label class="block text-sm font-medium text-gray-300 mb-1">Alamat</label>
             <textarea name="alamat" rows="3"
-              class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required>{{ old('alamat', $user->userProfile->alamat ?? '') }}</textarea>
           </div>
 
@@ -119,7 +121,6 @@
           </div>
 
           <!-- File Upload -->
-          <meta name="csrf-token" content="{{ csrf_token() }}">
           <div class="border-2 border-dashed border-gray-600 rounded-xl p-6 text-center hover:border-blue-500 hover:bg-gray-700 transition">
             <input type="file" name="foto" id="fileInput" accept="image/*" class="hidden">
             <label for="fileInput" class="cursor-pointer text-gray-300">
@@ -145,37 +146,37 @@
     </div>
   </div>
 
-<script>
-const fileInput = document.getElementById('fileInput');
-const fileName = document.getElementById('fileName');
-const preview = document.getElementById('preview');
-const previewImg = document.getElementById('previewImg');
+  <!-- JS Preview Upload -->
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const preview = document.getElementById('preview');
+    const previewImg = document.getElementById('previewImg');
 
-fileInput.addEventListener('change', async () => {
-  const file = fileInput.files[0];
-  if (file) {
-    fileName.textContent = "File: " + file.name;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      previewImg.src = e.target.result;
-      preview.classList.remove("hidden");
-    };
-    reader.readAsDataURL(file);
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        fileName.textContent = "File: " + file.name;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImg.src = e.target.result;
+          preview.classList.remove("hidden");
+        };
+        reader.readAsDataURL(file);
 
-    if (!file.type.match('image.*')) {
-      alert('Harap pilih file gambar!');
-      return;
-    }
-    if (file.size > 4048000) {
-      alert('Ukuran file maksimal 4MB!');
-      return;
-    }
-  } else {
-    fileName.textContent = "";
-    preview.classList.add("hidden");
-  }
-});
-</script>
+        if (!file.type.match('image.*')) {
+          alert('Harap pilih file gambar!');
+          return;
+        }
+        if (file.size > 4048000) {
+          alert('Ukuran file maksimal 4MB!');
+          return;
+        }
+      } else {
+        fileName.textContent = "";
+        preview.classList.add("hidden");
+      }
+    });
+  </script>
 
 </x-layouts.main>
-

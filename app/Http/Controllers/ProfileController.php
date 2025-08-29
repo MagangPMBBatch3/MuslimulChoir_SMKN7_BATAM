@@ -10,89 +10,94 @@ use App\Models\UserProfile\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
 class ProfileController extends Controller
 {
+    // Profil milik user login
     public function index()
     {
-        $user = Auth::user();
-        $bagians = Bagians::all();
-        $level = Level::all();
+$user = User::with(['userProfile.bagian', 'userProfile.level', 'userProfile.status'])
+            ->findOrFail(Auth::id());
+        $bagians  = Bagians::all();
+        $levels   = Level::all();
         $statuses = Statuses::all();
 
-
-        return view('profile.index', compact( 'user', 'bagians', 'levels', 'statuses'));
+        return view('profile.index', compact('user', 'bagians', 'levels', 'statuses'));
     }
 
- 
-public function updateProfile(Request $request)
-{
-    $request->validate([
-        'nrp' => 'required|string',
-        'alamat' => 'required|string',
-        'bagian_id' => 'required|exists:bagian,id',
-        'level_id' => 'required|exists:levels,id',
-        'status_id' => 'required|exists:statuses,id',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:4048'
-    ]);
+    // Tampilkan profil user lain
+    public function show($id)
+    {
+        $user = User::with(['userProfile.bagian', 'userProfile.level', 'userProfile.status'])
+            ->findOrFail($id);
 
-    $user = Auth::user();
-    $userProfile = $user->userProfile ?? new UserProfile();
-    
-    if ($request->hasFile('foto')) {
-        // Delete old photo if exists
-        if ($userProfile->foto && Storage::disk('public')->exists('img/' . $userProfile->foto)) {
-    Storage::disk('public')->delete('img/' . $userProfile->foto);
-}
+        $bagians  = Bagians::all();
+        $levels   = Level::all();
+        $statuses = Statuses::all();
 
-
-        // Simpan file ke storage/app/public/img
-        $fileName = time() . '_' . $request->file('foto')->getClientOriginalName();
-        $request->file('foto')->move(storage_path('app/public/img'), $fileName);
-
-        // Simpan ke database
-        $userProfile->foto = $fileName;
+        return view('profile.index', compact('user', 'bagians', 'levels', 'statuses'));
     }
 
-    $userProfile->user_id = $user->id;
-    $userProfile->nrp = $request->nrp;
-    $userProfile->alamat = $request->alamat;
-    $userProfile->bagian_id = $request->bagian_id;
-    $userProfile->level_id = $request->level_id;
-    $userProfile->status_id = $request->status_id;
-    
-    $userProfile->save();
+    // Update profil (user sendiri atau user lain jika admin)
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'user_id'   => 'required|exists:users,id',
+            'nrp'       => 'required|string',
+            'alamat'    => 'required|string',
+            'bagian_id' => 'required|exists:bagian,id',   // <- perbaikan nama tabel
+            'level_id'  => 'required|exists:levels,id',
+            'status_id' => 'required|exists:statuses,id',
+            'foto'      => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096',
+        ]);
 
-    return back()->with('success', 'Profile updated successfully');
-}
+        $targetUser = User::findOrFail($request->user_id);
 
-public function store(Request $request)
+        // Hanya boleh: pemilik profil atau admin
+        $auth = Auth::user();
+        $isAdmin = strtolower((string) $auth->role) === 'admin';
+        if (!$isAdmin && $auth->id !== $targetUser->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $profile = $targetUser->userProfile ?: new UserProfile(['user_id' => $targetUser->id]);
+
+        // Handle foto
+        if ($request->hasFile('foto')) {
+            if ($profile->foto && Storage::disk('public')->exists('img/'.$profile->foto)) {
+                Storage::disk('public')->delete('img/'.$profile->foto);
+            }
+            $fileName = time().'_'.uniqid().'.'.$request->file('foto')->getClientOriginalExtension();
+            $request->file('foto')->storeAs('img', $fileName, 'public');
+            $profile->foto = $fileName;
+        }
+
+        // Update field
+        $profile->nrp       = $request->nrp;
+        $profile->alamat    = $request->alamat;
+        $profile->bagian_id = $request->bagian_id;
+        $profile->level_id  = $request->level_id;
+        $profile->status_id = $request->status_id;
+        $profile->save();
+
+        return back()->with('success', 'Profile updated successfully');
+    }
+
+    // Upload via AJAX (opsional)
+    public function store(Request $request)
     {
         if (!$request->hasFile('foto')) {
             return response()->json(['success' => false, 'message' => 'No file uploaded'], 400);
         }
 
         $file = $request->file('foto');
-        $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-
-        $file->move(public_path('image'), $filename);
+        $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+        $file->storeAs('image', $filename, 'public');
 
         return response()->json([
             'success' => true,
-            'path' => 'image/' . $filename,
-            'url' => asset('image/' . $filename) 
+            'path' => 'storage/image/'.$filename,
+            'url'  => asset('storage/image/'.$filename),
         ]);
     }
-
-    public function show($id)
-{
-    $user = User::with('userProfile.bagian', 'userProfile.level', 'userProfile.status')
-                ->findOrFail($id);
-
-    $bagians = Bagians::all();
-    $levels = Level::all();
-    $statuses = Statuses::all();
-
-    return view('profile.index', compact('user', 'bagians', 'levels', 'statuses'));
-}
-
 }

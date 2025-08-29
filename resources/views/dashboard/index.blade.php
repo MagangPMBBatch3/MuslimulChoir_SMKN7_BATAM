@@ -112,7 +112,7 @@
                             {{ \Carbon\Carbon::parse($item->deadline)->format('d M Y') }}
                         </td>
                         <td class="px-6 py-3 text-center">
-                            <a href="#" class="text-blue-400 hover:underline">Detail</a>
+                            <a href="{{ route('proyek.index') }}" class="text-blue-400 hover:underline">Detail</a>
                         </td>
                     </tr>
                 @empty
