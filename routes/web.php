@@ -3,17 +3,23 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UploadController;
 
-    // Auth routes
-    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/regis', [AuthController::class, 'showRegis'])->name('register');
+// =======================
+// AUTH ROUTES
+// =======================
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/regis', [AuthController::class, 'showRegis'])->name('register');
 
-    // Protected routes (hanya bisa diakses setelah login)
-    Route::middleware(['auth'])->group(function () {
+// =======================
+// PROTECTED ROUTES
+// =======================
+Route::middleware(['auth'])->group(function () {
 
     // Dashboard & Logout
-    Route::get('/dashboard', [AuthController::class, 'dashboard']);
+   
+    Route::get('/dashboard', [AuthController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Master Data
@@ -38,20 +44,15 @@ use App\Http\Controllers\ProfileController;
     Route::get('/user', [AuthController::class, 'user'])->name('user.index');
     Route::get('/userprofile', [AuthController::class, 'userprofile'])->name('userprofile.index');
 
-
     // Profile
-    Route::get('/profile', [AuthController::class, 'profile'])->name('profile.index');
-    
-    
-    
-    Route::get('/dashboard', [AuthController::class, 'index'])->name('dashboard.index');
-    
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile.index'); // profil sendiri
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show'); // profil user lain
 
-   
-Route::post('/profile/upload', [AuthController::class, 'updateProfile'])->name('profile.upload');
-Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->middleware('auth') ->name('profile.update');
+    Route::post('/profile/upload', [AuthController::class, 'updateProfile'])->name('profile.upload');
+    Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
-use App\Http\Controllers\UploadController;
-
+// =======================
+// Upload file (umum, tidak pakai auth)
+// =======================
 Route::post('/upload', [UploadController::class, 'store']);

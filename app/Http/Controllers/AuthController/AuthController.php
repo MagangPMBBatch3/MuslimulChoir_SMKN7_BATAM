@@ -80,10 +80,10 @@ class AuthController
         ));
     }
 
-    public function dashboard()
-    {
-        return redirect()->route('dashboard'); 
-    }
+    // public function dashboard()
+    // {
+    //     return redirect()->route('dashboard'); 
+    // }
 
     /**
      * ==============================

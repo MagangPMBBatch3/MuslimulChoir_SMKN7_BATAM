@@ -3,6 +3,7 @@ type User {
     name: String!
     email: String!
     email_verified_at: DateTime
+    role: String
     description: String
     created_at: DateTime
     updated_at: DateTime

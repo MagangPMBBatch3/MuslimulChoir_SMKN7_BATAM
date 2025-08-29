@@ -32,6 +32,7 @@
                         <th class="p-2 border border-slate-600">ID</th>
                         <th class="p-2 border border-slate-600">Nama</th>
                         <th class="p-2 border border-slate-600">Email</th>
+                        <th class="p-2 border border-slate-600">Role</th>
                         <th class="p-2 border border-slate-600">Aksi</th>
                     </tr>
                 </thead>
@@ -47,6 +48,7 @@
                         <th class="p-2 border border-slate-600">ID</th>
                         <th class="p-2 border border-slate-600">Nama</th>
                         <th class="p-2 border border-slate-600">Email</th>
+                        <th class="p-2 border border-slate-600">Role</th>
                         <th class="p-2 border border-slate-600">Aksi</th>
                     </tr>
                 </thead>

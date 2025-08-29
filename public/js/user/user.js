@@ -5,6 +5,7 @@ async function loadUserData() {
                 id
                 name
                 email
+                role
             }
         }
     `;
@@ -24,6 +25,7 @@ async function loadUserData() {
                 id
                 name
                 email
+                role
                 deleted_at
             }
         }
@@ -74,6 +76,7 @@ function renderUserTable(users, tableId, isActive) {
                 <td class="border p-2 text-center">${item.id}</td>
                 <td class="border p-2 text-center">${item.name}</td>
                 <td class="border p-2 text-center">${item.email}</td>
+                <td class="border p-2 text-center">${item.role}</td>
                 <td class="border p-2 text-center">${actions}</td>
             </tr>
         `;

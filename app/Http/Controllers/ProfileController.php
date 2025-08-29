@@ -82,4 +82,17 @@ public function store(Request $request)
             'url' => asset('image/' . $filename) 
         ]);
     }
+
+    public function show($id)
+{
+    $user = User::with('userProfile.bagian', 'userProfile.level', 'userProfile.status')
+                ->findOrFail($id);
+
+    $bagians = Bagians::all();
+    $levels = Level::all();
+    $statuses = Statuses::all();
+
+    return view('profile.index', compact('user', 'bagians', 'levels', 'statuses'));
+}
+
 }
