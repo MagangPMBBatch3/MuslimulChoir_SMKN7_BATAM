@@ -182,12 +182,10 @@
             <li class="mt-6">
                 <form action="/logout" method="POST">
                     @csrf
-                    <button type="submit" 
-                            class="flex items-center w-full py-2 px-3 rounded-lg transition duration-200 
-                                   bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md">
+                    <x-button type="submit" variant="danger" class="flex items-center w-full shadow-md">
                         <i class='bx bx-log-out text-lg'></i>
                         <span class="ml-3">Logout</span>
-                    </button>
+                    </x-button>
                 </form>
             </li>
         </ul>

@@ -3,7 +3,7 @@
 ])
 
 <th {{ $attributes->merge([
-    'class' => "border border-slate-600 p-2 text-{$align}"
+    'class' => "border border-slate-600 p-3 text-{$align}"
 ]) }}>
     {{ $slot }}
 </th>
