@@ -42,15 +42,6 @@
                        placeholder="Masukkan password" required>
             </div>
 
-            <!-- Remember & Forgot -->
-            <div class="flex items-center justify-between mb-6">
-                <label class="flex items-center text-gray-300 text-sm">
-                    <input type="checkbox" class="rounded border-gray-600 bg-gray-800 text-blue-400 focus:ring-blue-400">
-                    <span class="ml-2">Ingat saya</span>
-                </label>
-                <a href="#" class="text-sm text-blue-400 hover:underline">Lupa password?</a>
-            </div>
-
             <!-- Tombol -->
             <x-button type="submit" variant="primary"
                       class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg py-3 
