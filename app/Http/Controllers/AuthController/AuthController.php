@@ -67,13 +67,13 @@ class AuthController
         $totalPesan  = Pesan::count();
 
         // Ambil 3 pesan terbaru
-        $pesanTerbaru = Pesan::orderBy('tgl_pesan', 'desc')
-                            ->take(3)
-                            ->get();
-
-        $proyek = Proyek::orderBy('nama')
-                        ->take(5)
-                        ->get();
+        $pesanTerbaru = Pesan::orderBy('id', 'desc')
+            ->take(3)
+            ->get();
+        // Ambil 5 proyek terbaru
+        $proyek = Proyek::orderBy('id', 'desc')
+            ->take(5)
+            ->get();
 
         return view('dashboard.index', compact(
             'totalProyek',
