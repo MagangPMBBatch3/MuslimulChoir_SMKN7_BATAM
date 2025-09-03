@@ -5,6 +5,7 @@
 
     <!-- Modal Content -->
     <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-96 p-6 shadow-lg shadow-blue-400 z-50">
+        <button onclick="closeAddUserModal()" class="text-gray-200 hover:text-red-400 text-xl font-bold absolute right-5">&times;</button>
         <h2 class="text-xl font-bold mb-6 text-center">Tambah Data User</h2>
 
         <form id="formAddUser" onsubmit="event.preventDefault(); createUser()">
@@ -32,14 +33,10 @@
             </div>
 
             <div class="flex justify-end gap-2 mt-4">
-                <button type="button" onclick="closeAddUserModal()"
-                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
-                    Batal
-                </button>
-                <button type="submit"
-                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                    Simpan
-                </button>
+                <x-button type="button" variant="secondary" onclick="closeAddUserModal()"> Batal</x-button>
+           
+                <x-button type="submit" variant="primary" >Tambah Data</x-button>
+
             </div>
         </form>
     </div>

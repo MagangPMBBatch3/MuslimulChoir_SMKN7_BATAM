@@ -8,7 +8,7 @@
         <!-- Header -->
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold text-center flex-1">Tambah Jam Per Tanggal</h3>
-            <button onclick="closeAddJamPerTanggalModal()" class="text-gray-200 hover:text-white text-xl">&times;</button>
+            <button onclick="closeAddJamPerTanggalModal()" class="text-gray-200 hover:text-red-400 text-xl font-bold">&times;</button>
         </div>
 
         <!-- Form -->
@@ -49,14 +49,10 @@
 
             <!-- Buttons -->
             <div class="flex justify-end gap-2 mt-6 border-t border-slate-700 pt-4">
-                <button type="button" onclick="closeAddJamPerTanggalModal()"
-                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
-                    Batal
-                </button>
-                <button type="submit"
-                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                    Simpan
-                </button>
+                <x-button type="button" variant="secondary" onclick="closeAddJamPerTanggalModal()"> Batal</x-button>
+           
+                <x-button type="submit" variant="primary" >Tambah Data</x-button>
+                
             </div>
         </form>
     </div>

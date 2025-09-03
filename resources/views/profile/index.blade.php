@@ -13,7 +13,7 @@
         
         <h2 class="mt-4 text-2xl font-bold text-white">{{ $user->name }}</h2>
         <p class="text-gray-400">{{ $user->email }}</p>
-        <p class="bg-gray-500 bg-opacity-70 px-3 py-1 mt-2 font-bold text-white rounded-lg">
+        <p class="bg-gray-600 bg-opacity-70 px-3 py-1 mt-2 font-bold text-white rounded-lg">
           {{ $user->role }}
         </p>
 

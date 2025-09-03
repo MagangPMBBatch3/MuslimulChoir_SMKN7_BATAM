@@ -5,6 +5,8 @@
 
     <!-- Modal Content -->
     <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-[28rem] p-6 shadow-lg shadow-blue-400 z-50">
+        <button onclick="closeAddJamKerjaModal()"class="text-gray-400 hover:text-red-400 text-xl font-bold absolute right-5">&times;</button>
+
         <h2 class="text-xl font-bold mb-6 text-center">Tambah Jam Kerja</h2>
 
         <form id="formAddJamKerja" onsubmit="event.preventDefault(); createJamKerja()">
@@ -97,14 +99,12 @@
 
             <!-- Actions -->
             <div class="flex justify-end gap-2 mt-6 border-t border-slate-700 pt-4">
-                <button type="button" onclick="closeAddJamKerjaModal()"
-                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
-                    Batal
-                </button>
-                <button type="submit"
-                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                    Simpan
-                </button>
+                 <x-button type="button" variant="secondary" onclick="closeAddJamKerjaModal()"> Batal</x-button>
+           
+                <x-button type="submit" variant="primary" >Tambah Data</x-button>
+
+                
+                
             </div>
         </form>
     </div>

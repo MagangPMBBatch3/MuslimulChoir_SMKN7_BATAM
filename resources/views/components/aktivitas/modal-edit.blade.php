@@ -46,14 +46,12 @@
 
                 <!-- Buttons -->
                 <div class="flex justify-end gap-2 border-t border-slate-700 pt-3">
-                    <button type="button" onclick="closeEditAktivitasModal()"
-                        class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
-                        Batal
-                    </button>
-                    <button type="submit"
-                        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                        Simpan
-                    </button>
+                    <x-button type="button" variant="secondary" onclick="closeEditAktivitasModal()"> Batal</x-button>
+           
+                     <x-button type="submit" variant="primary" >Update</x-button>
+
+                    
+                    
                 </div>
             </form>
         </div>

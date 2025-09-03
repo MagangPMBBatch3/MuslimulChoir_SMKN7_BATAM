@@ -5,6 +5,7 @@
 
     <!-- Modal Content -->
     <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-[28rem] p-6 shadow-lg shadow-blue-400 z-50">
+        <button onclick="closeEditJamKerjaModal()" class="text-gray-200 hover:text-red-400 text-xl font-bold absolute right-5">&times;</button>
         <h2 class="text-xl font-bold mb-6 text-center">Edit Jam Kerja</h2>
 
         <form id="formEditJamKerja" onsubmit="event.preventDefault(); updateJamKerja()">
@@ -97,14 +98,10 @@
 
             <!-- Tombol Aksi -->
             <div class="flex justify-end gap-2 mt-6 border-t border-slate-700 pt-4">
-                <button type="button" onclick="closeEditJamKerjaModal()"
-                    class="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-500 transition">
-                    Batal
-                </button>
-                <button type="submit"
-                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
-                    Update
-                </button>
+                <x-button type="button" variant="secondary" onclick="closeEditJamKerjaModal()"> Batal</x-button>
+           
+                <x-button type="submit" variant="primary" >Update</x-button>
+
             </div>
         </form>
     </div>
