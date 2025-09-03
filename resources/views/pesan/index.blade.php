@@ -26,40 +26,34 @@
 
         {{-- Table Aktif --}}
         <div id="tableAktif">
-            <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
-                <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
-                    <tr>
-                        <th class="border border-slate-600 p-2 text-center">ID</th>
-                        <th class="border border-slate-600 p-2">Pengirim</th>
-                        <th class="border border-slate-600 p-2">Penerima</th>
-                        <th class="border border-slate-600 p-2">Isi</th>
-                        <th class="border border-slate-600 p-2">Parent ID</th>
-                        <th class="border border-slate-600 p-2">Tanggal Pesan</th>
-                        <th class="border border-slate-600 p-2">Jenis Pesan</th>
-                        <th class="border border-slate-600 p-2 text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="dataPesan" class="divide-y divide-slate-700 text-gray-200 hover:[&>tr:hover]:bg-slate-700/50"></tbody>
-            </table>
+            <x-table id="dataPesan">
+                    <x-slot:head>
+                        <x-th align="center">ID</x-th>
+                        <x-th align="center">Pengirim</x-th>
+                        <x-th align="center">Penerima</x-th>
+                        <x-th align="center">Isi</x-th>
+                        <x-th align="center">Prent ID</x-th>
+                        <x-th align="center">Tanggal Pesan</x-th>
+                        <x-th align="center">Jenis Pesan</x-th>
+                        <x-th align="center">Aksi</x-th>
+                    </x-slot:head>
+            </x-table>
         </div>
 
         {{-- Table Arsip --}}
         <div id="tableArsip" class="hidden">
-            <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
-                <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
-                    <tr>
-                        <th class="border border-slate-600 p-2 text-center">ID</th>
-                        <th class="border border-slate-600 p-2">Pengirim</th>
-                        <th class="border border-slate-600 p-2">Penerima</th>
-                        <th class="border border-slate-600 p-2">Isi</th>
-                        <th class="border border-slate-600 p-2">Parent ID</th>
-                        <th class="border border-slate-600 p-2">Tanggal Pesan</th>
-                        <th class="border border-slate-600 p-2">Jenis Pesan</th>
-                        <th class="border border-slate-600 p-2 text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="dataPesanArsip" class="divide-y divide-slate-700 text-gray-200 hover:[&>tr:hover]:bg-slate-700/50"></tbody>
-            </table>
+            <x-table id="dataPesanArsip">
+                    <x-slot:head>
+                        <x-th align="center">ID</x-th>
+                        <x-th align="center">Pengirim</x-th>
+                        <x-th align="center">Penerima</x-th>
+                        <x-th align="center">Isi</x-th>
+                        <x-th align="center">Prent ID</x-th>
+                        <x-th align="center">Tanggal Pesan</x-th>
+                        <x-th align="center">Jenis Pesan</x-th>
+                        <x-th align="center">Aksi</x-th>
+                    </x-slot:head>
+            </x-table>
         </div>
     </div>
 

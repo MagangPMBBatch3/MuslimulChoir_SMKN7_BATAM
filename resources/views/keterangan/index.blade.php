@@ -26,34 +26,29 @@
 
         {{-- Table Aktif --}}
         <div id="tableAktif">
-            <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
-                <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
-                    <tr>
-                        <th class="border border-slate-600 p-2 text-center">ID</th>
-                        <th class="border border-slate-600 p-2">Nama Bagian</th>
-                        <th class="border border-slate-600 p-2">Nama Proyek</th>
-                        <th class="border border-slate-600 p-2">Tanggal</th>
-                        <th class="border border-slate-600 p-2 text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="dataKeterangan" class="divide-y divide-slate-700 text-gray-200"></tbody>
-            </table>
+            <x-table id="dataKeterangan">
+                    <x-slot:head>
+                        <x-th align="center">ID</x-th>
+                        <x-th align="center">Nama Bagian</x-th>
+                        <x-th align="center">Nama Proyek</x-th>
+                        <x-th align="center">Tanggal</x-th>
+                        <x-th align="center">Aksi</x-th>
+                    </x-slot:head>
+            </x-table>
+
         </div>
 
         {{-- Table Arsip --}}
         <div id="tableArsip" class="hidden">
-            <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
-                <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
-                    <tr>
-                        <th class="border border-slate-600 p-2 text-center">ID</th>
-                        <th class="border border-slate-600 p-2">Nama Bagian</th>
-                        <th class="border border-slate-600 p-2">Nama Proyek</th>
-                        <th class="border border-slate-600 p-2">Tanggal</th>
-                        <th class="border border-slate-600 p-2 text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="dataKeteranganArsip" class="divide-y divide-slate-700 text-gray-200"></tbody>
-            </table>
+            <x-table id="dataKeteranganArsip">
+                    <x-slot:head>
+                        <x-th align="center">ID</x-th>
+                        <x-th align="center">Nama Bagian</x-th>
+                        <x-th align="center">Nama Proyek</x-th>
+                        <x-th align="center">Tanggal</x-th>
+                        <x-th align="center">Aksi</x-th>
+                    </x-slot:head>
+            </x-table>
         </div>
     </div>
 

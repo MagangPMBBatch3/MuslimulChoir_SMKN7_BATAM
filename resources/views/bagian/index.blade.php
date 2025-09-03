@@ -15,16 +15,13 @@
         </div>
 
         {{-- Tabel Data --}}
-        <table class="w-full border border-slate-700 rounded-lg overflow-hidden">
-            <thead class="bg-slate-700 text-gray-300 uppercase text-xs">
-                <tr>
-                    <th class="border border-slate-600 p-2 text-center">ID</th>
-                    <th class="border border-slate-600 p-2">Nama</th>
-                    <th class="border border-slate-600 p-2 text-center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody id="dataBagian" class="divide-y divide-slate-700 text-gray-200"></tbody>
-        </table>
+        <x-table id="dataBagian">
+            <x-slot:head>
+                <x-th align="center">ID</x-th>
+                <x-th align="center">Nama</x-th>
+                <x-th align="center">Aksi</x-th>
+            </x-slot:head>
+        </x-table>
     </div>
 
     {{-- Include Modal Tambah --}}
