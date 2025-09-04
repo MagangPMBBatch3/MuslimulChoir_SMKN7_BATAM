@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     // =======================
     Route::get('/user', [AuthController::class, 'user'])->name('user.index');
     Route::get('/userprofile', [AuthController::class, 'userprofile'])->name('userprofile.index');
+    Route::get('/member', [AuthController::class, 'member'])->name('member.index');
 
     // =======================
     // PROFILE

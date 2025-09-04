@@ -27,7 +27,7 @@
     <div class="text-left">
         <h2 class="text-xl font-bold text-white">Selamat Datang</h2>
         <p class="text-sm text-gray-300">
-            Anda login sebagai <strong class="text-blue-400">{{ Auth::user()->name }}</strong>
+            Anda login sebagai <strong class="text-blue-400">{{ Auth::user()->role }}</strong>
         </p>
     </div>
 </div>

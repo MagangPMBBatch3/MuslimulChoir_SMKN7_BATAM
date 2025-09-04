@@ -188,4 +188,9 @@ class AuthController
     {
         return view('jamkerja.index');
     }
+
+    public function member()
+    {
+        return view('member.index');
+    }
 }

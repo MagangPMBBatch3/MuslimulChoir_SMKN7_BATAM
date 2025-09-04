@@ -11,12 +11,23 @@
 
     @vite('resources/css/app.css')
 </head>
+    <style>
+    @keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+    }
+
+    .animate-text {
+    background-size: 200% 200%;
+    animation: gradient-move 4s ease infinite;
+    }
+    </style>
 <body class="bg-gray-900 flex text-gray-100">
     <!-- Sidebar -->
     <aside class="w-64 bg-gradient-to-b from-gray-800 to-gray-900 text-gray-200 p-4 min-h-screen shadow-xl">
-        <h2 class="text-3xl font-extrabold mb-6 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent tracking-wide">
-            Menu
-        </h2>
+        <h1 class="text-4xl font-extrabold mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent tracking-wider drop-shadow-lg animate-text">Menu</h1>
+
 
         <ul class="space-y-2">
             {{-- Dashboard --}}
@@ -37,6 +48,16 @@
                     <span class="ml-3">Profile</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{ route('member.index') }}"
+                class="flex items-center py-2 px-3 rounded-lg transition duration-200 
+                        {{ request()->is('member') ? 'bg-gray-900 text-white shadow-md' : 'hover:bg-gray-700 hover:text-white' }}">
+                    <i class='bx bxs-user text-lg'></i> 
+                    <span class="ml-3">Member</span>
+                </a>
+            </li>
+
 
             {{-- Master Data --}}
             @if(Auth::user()->role === 'admin')
@@ -65,6 +86,7 @@
     @endif
 
      {{-- User & Profil --}}
+             @if(Auth::user()->role === 'admin')
             <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">User</li>
             <li class="mb-2">
                 <a href="{{ route('user.index') }}"
@@ -81,7 +103,7 @@
                     <span class="ml-2">User Profile</span>
                 </a>
             </li>
-
+        @endif
 
         {{-- Proyek & Proyek User  --}}
              <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Proyek</li>
@@ -120,6 +142,7 @@
                     <span class="ml-2">Jam Kerja</span>
                 </a>
             </li>
+
             <li class="mb-2">
                 <a href="{{ route('lembur.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('lembur.*') ? 'bg-gray-900 text-with shadow-md font-semibold' : 'hover:bg-gray-700' }}">
@@ -127,6 +150,8 @@
                     <span class="ml-2">Lembur</span>
                 </a>
             </li>
+
+             @if(Auth::user()->role === 'admin')
             <li class="mb-2">
                 <a href="{{ route('mode.index') }}"
                   class="flex items-center py-2 px-3 rounded-lg transition duration-200 
@@ -135,6 +160,10 @@
                     <span class="ml-2">Mode Jam Kerja</span>
                 </a>
             </li>
+        @endif
+
+             {{-- Jam Kerja per Tanggal --}}
+             {{-- <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Jam Kerja per Tanggal</li> --}}
             <li class="mb-2">
                 <a href="{{ route('jamkerjapertanggal.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jamkerjapertanggal.*') ? 'bg-gray-900 text-with shadow-md font-semibold' : 'hover:bg-gray-700' }}">
@@ -142,6 +171,8 @@
                     <span class="ml-2">Jam Kerja per Tanggal</span>
                 </a>
             </li>
+
+             @if(Auth::user()->role === 'admin')
             <li class="mb-2">
                 <a href="{{ route('statusjam.index') }}"
                   class="flex items-center py-2 px-3 rounded-lg transition duration-200 
@@ -150,6 +181,7 @@
                     <span class="ml-2">Status Jam Kerja</span>
                 </a>
             </li>
+        @endif
 
             {{-- Pesan & Jenis Pesan --}}
              <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Pesan</li>
@@ -160,6 +192,8 @@
                     <span class="ml-2">Pesan</span>
                 </a>
             </li>
+
+             @if(Auth::user()->role === 'admin')
             <li class="mb-2">
                 <a href="{{ route('jenispesan.index') }}"
                    class="flex items-center py-2 px-3 rounded-lg transition duration-200 
@@ -168,6 +202,7 @@
                     <span class="ml-2">Jenis Pesanan</span>
                 </a>
             </li>
+        @endif
 
              <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Keterangan</li>
             <li class="mb-2">
