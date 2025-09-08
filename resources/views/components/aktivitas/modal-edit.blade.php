@@ -20,7 +20,7 @@
                 <div class="mb-4 space-y-3">
                     <!-- Bagian -->
                     <div>
-                        <label for="editBagian" class="block text-sm font-medium text-gray-300">Bagian</label>
+                        <label for="editBagian" class="block text-sm font-medium text-gray-300">Nama Bagian:</label>
                         <select id="editAktivitasBagian" name="bagian_id"
                             class="mt-1 block w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Pilih Bagian</option>
@@ -29,7 +29,7 @@
 
                     <!-- No WBS -->
                     <div>
-                        <label for="editNoWbs" class="block text-sm font-medium text-gray-300">No WBS</label>
+                        <label for="editNoWbs" class="block text-sm font-medium text-gray-300">No WBS:</label>
                         <input type="text" id="editAktivitasNoWbs" name="NoWbs"
                             class="mt-1 block w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             placeholder="Masukkan No WBS Aktivitas">
@@ -37,7 +37,7 @@
 
                     <!-- Nama Aktivitas -->
                     <div>
-                        <label for="editNama" class="block text-sm font-medium text-gray-300">Nama Aktivitas</label>
+                        <label for="editNama" class="block text-sm font-medium text-gray-300">Nama Aktivitas:</label>
                         <input type="text" id="editAktivitasNama" name="nama"
                             class="mt-1 block w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             placeholder="Masukkan nama Aktivitas">

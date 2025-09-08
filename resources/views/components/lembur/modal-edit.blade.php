@@ -18,7 +18,7 @@
             <div class="grid grid-cols-1 gap-4">
                 <!-- User Profile -->
                 <div>
-                    <label for="editLemburUserProfile" class="block mb-1 text-sm">User Profile</label>
+                    <label for="editLemburUserProfile" class="block mb-1 text-sm">User Profile:</label>
                     <select id="editLemburUserProfile" name="users_profile_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -28,7 +28,7 @@
 
                 <!-- Proyek -->
                 <div>
-                    <label for="editLemburProyek" class="block mb-1 text-sm">Proyek</label>
+                    <label for="editLemburProyek" class="block mb-1 text-sm">Nama Proyek:</label>
                     <select id="editLemburProyek" name="proyek_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -38,7 +38,7 @@
 
                 <!-- Tanggal -->
                 <div>
-                    <label for="editLemburTanggal" class="block mb-1 text-sm">Tanggal</label>
+                    <label for="editLemburTanggal" class="block mb-1 text-sm">Tanggal:</label>
                     <input type="date" id="editLemburTanggal" name="tanggal" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none"

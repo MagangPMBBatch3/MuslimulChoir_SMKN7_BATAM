@@ -17,7 +17,7 @@
             <div class="grid grid-cols-1 gap-4">
                 <!-- Bagian -->
                 <div>
-                    <label for="addKeteranganBagian" class="block mb-1 text-sm">Bagian</label>
+                    <label for="addKeteranganBagian" class="block mb-1 text-sm">Nama Bagian:</label>
                     <select id="addKeteranganBagian" name="bagian_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -27,7 +27,7 @@
 
                 <!-- Proyek -->
                 <div>
-                    <label for="addKeteranganProyek" class="block mb-1 text-sm">Proyek</label>
+                    <label for="addKeteranganProyek" class="block mb-1 text-sm">Nama Proyek:</label>
                     <select id="addKeteranganProyek" name="proyek_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -37,7 +37,7 @@
 
                 <!-- Tanggal -->
                 <div>
-                    <label for="addKeteranganTanggal" class="block mb-1 text-sm">Tanggal</label>
+                    <label for="addKeteranganTanggal" class="block mb-1 text-sm">Tanggal:</label>
                     <input type="date" id="addKeteranganTanggal" name="Tanggal" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none"

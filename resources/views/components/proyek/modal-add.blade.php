@@ -12,28 +12,28 @@
             @csrf
 
             <div class="mb-4">
-                <label for="addProyekKode" class="block text-sm font-medium mb-1">Kode Proyek</label>
+                <label for="addProyekKode" class="block text-sm font-medium mb-1">Kode Proyek:</label>
                 <input type="text" id="addProyekKode" name="kodeProyek" placeholder="Masukkan Kode Proyek" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
-                <label for="addProyekNama" class="block text-sm font-medium mb-1">Nama Proyek</label>
+                <label for="addProyekNama" class="block text-sm font-medium mb-1">Nama Proyek:</label>
                 <input type="text" id="addProyekNama" name="namaProyek" placeholder="Masukkan Nama proyek" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
-                <label for="addProyekTanggal" class="block text-sm font-medium mb-1">Tanggal Proyek</label>
+                <label for="addProyekTanggal" class="block text-sm font-medium mb-1">Tanggal Proyek:</label>
                 <input type="date" id="addProyekTanggal" name="tanggalProyek" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
-                <label for="addProyekNamaSekolah" class="block text-sm font-medium mb-1">Nama Sekolah</label>
+                <label for="addProyekNamaSekolah" class="block text-sm font-medium mb-1">Nama Sekolah:</label>
                 <input type="text" id="addProyekNamaSekolah" name="namasekolah" placeholder="Masukkan Nama sekolah" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">

@@ -16,7 +16,7 @@
             <div class="grid grid-cols-1 gap-4">
                 <!-- User Profile -->
                 <div>
-                    <label for="addJamPerTanggalUserProfile" class="block mb-1 text-sm">User Profile</label>
+                    <label for="addJamPerTanggalUserProfile" class="block mb-1 text-sm">User Profile:</label>
                     <select id="addJamPerTanggalUserProfile" name="users_profile_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih User Profile</option>
@@ -25,7 +25,7 @@
 
                 <!-- Proyek -->
                 <div>
-                    <label for="addJamPerTanggalProyek" class="block mb-1 text-sm">Proyek</label>
+                    <label for="addJamPerTanggalProyek" class="block mb-1 text-sm">Nama Proyek:</label>
                     <select id="addJamPerTanggalProyek" name="proyek_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Proyek</option>
@@ -34,14 +34,14 @@
 
                 <!-- Tanggal -->
                 <div>
-                    <label for="addJamPerTanggalTanggal" class="block mb-1 text-sm">Tanggal</label>
+                    <label for="addJamPerTanggalTanggal" class="block mb-1 text-sm">Tanggal:</label>
                     <input type="date" id="addJamPerTanggalTanggal" name="tanggal" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <!-- Jam -->
                 <div>
-                    <label for="addJamPerTanggalJam" class="block mb-1 text-sm">Jam</label>
+                    <label for="addJamPerTanggalJam" class="block mb-1 text-sm">Jam:</label>
                     <input type="number" id="addJamPerTanggalJam" name="jam" step="0.5" min="0" placeholder="Masukkan jam"
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>

@@ -15,7 +15,7 @@
             <div class="grid grid-cols-2 gap-4">
     <!-- Kolom 1 -->
     <div>
-        <label for="addUserProfileUser" class="block mb-1 text-sm">User</label>
+        <label for="addUserProfileUser" class="block mb-1 text-sm">User:</label>
         <select id="addUserProfileUser" name="user_id" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -24,21 +24,21 @@
     </div>
 
     <div>
-        <label for="addUserProfileNamaLengkap" class="block mb-1 text-sm">Nama Lengkap</label>
+        <label for="addUserProfileNamaLengkap" class="block mb-1 text-sm">Nama Lengkap:</label>
         <input type="text" id="addUserProfileNamaLengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
     </div>
 
     <div>
-        <label for="addUserProfileNrp" class="block mb-1 text-sm">NRP</label>
+        <label for="addUserProfileNrp" class="block mb-1 text-sm">NRP:</label>
         <input type="text" id="addUserProfileNrp" name="nrp" placeholder="Masukkan NRP" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
     </div>
 
     <div>
-        <label for="addUserProfileAlamat" class="block mb-1 text-sm">Alamat</label>
+        <label for="addUserProfileAlamat" class="block mb-1 text-sm">Alamat:</label>
         <input type="text" id="addUserProfileAlamat" name="alamat" placeholder="Masukkan Alamat" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -46,14 +46,14 @@
 
     <!-- Kolom 2 -->
     <div>
-        <label for="addUserProfileFoto" class="block mb-1 text-sm">Foto</label>
+        <label for="addUserProfileFoto" class="block mb-1 text-sm">Foto:</label>
         <input type="file" id="addUserProfileFoto" name="foto"
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
     </div>
 
     <div>
-        <label for="addUserProfileBagian" class="block mb-1 text-sm">Nama Bagian</label>
+        <label for="addUserProfileBagian" class="block mb-1 text-sm">Nama Bagian:</label>
         <select id="addUserProfileBagian" name="bagian_id" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -62,7 +62,7 @@
     </div>
 
     <div>
-        <label for="addUserProfileLevel" class="block mb-1 text-sm">Nama Level</label>
+        <label for="addUserProfileLevel" class="block mb-1 text-sm">Nama Level:</label>
         <select id="addUserProfileLevel" name="level_id" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -71,7 +71,7 @@
     </div>
 
     <div>
-        <label for="addUserProfileStatus" class="block mb-1 text-sm">Nama Status</label>
+        <label for="addUserProfileStatus" class="block mb-1 text-sm">Nama Status:</label>
         <select id="addUserProfileStatus" name="status_id" required
             class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                    focus:ring-2 focus:ring-blue-500 focus:outline-none">

@@ -13,7 +13,7 @@
             <div class="grid grid-cols-2 gap-4">
                 <!-- Kolom 1 -->
                 <div>
-                    <label for="editUserProfileUserID" class="block mb-1 text-sm">User</label>
+                    <label for="editUserProfileUserID" class="block mb-1 text-sm">User:</label>
                     <select id="editUserProfileUserID" name="user_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -22,21 +22,21 @@
                 </div>
 
                 <div>
-                    <label for="editUserProfileNama" class="block mb-1 text-sm">Nama Lengkap</label>
+                    <label for="editUserProfileNama" class="block mb-1 text-sm">Nama Lengkap:</label>
                     <input type="text" id="editUserProfileNama" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
-                    <label for="editUserProfileNrp" class="block mb-1 text-sm">NRP</label>
+                    <label for="editUserProfileNrp" class="block mb-1 text-sm">NRP:</label>
                     <input type="text" id="editUserProfileNrp" name="nrp" placeholder="Masukkan NRP" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
-                    <label for="editUserProfileAlamat" class="block mb-1 text-sm">Alamat</label>
+                    <label for="editUserProfileAlamat" class="block mb-1 text-sm">Alamat:</label>
                     <input type="text" id="editUserProfileAlamat" name="alamat" placeholder="Masukkan Alamat" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -44,14 +44,14 @@
 
                 <!-- Kolom 2 -->
                 <div>
-                    <label for="editUserProfileFoto" class="block mb-1 text-sm">Foto</label>
+                    <label for="editUserProfileFoto" class="block mb-1 text-sm">Foto:</label>
                     <input type="text" id="editUserProfileFoto" name="foto" placeholder="Masukkan Foto"
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
-                    <label for="editUserProfileBagian" class="block mb-1 text-sm">Nama Bagian</label>
+                    <label for="editUserProfileBagian" class="block mb-1 text-sm">Nama Bagian:</label>
                     <select id="editUserProfileBagian" name="bagian_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -60,7 +60,7 @@
                 </div>
 
                 <div>
-                    <label for="editUserProfileLevel" class="block mb-1 text-sm">Nama Level</label>
+                    <label for="editUserProfileLevel" class="block mb-1 text-sm">Nama Level:</label>
                     <select id="editUserProfileLevel" name="level_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -69,7 +69,7 @@
                 </div>
 
                 <div>
-                    <label for="editUserProfileStatus" class="block mb-1 text-sm">Nama Status</label>
+                    <label for="editUserProfileStatus" class="block mb-1 text-sm">Nama Status:</label>
                     <select id="editUserProfileStatus" name="status_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">

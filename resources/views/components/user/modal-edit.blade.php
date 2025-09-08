@@ -14,14 +14,14 @@
             <input type="hidden" id="editUserId" name="id">
 
             <div class="mb-4">
-                <label for="editUserNama" class="block text-sm font-medium mb-1">Nama User</label>
+                <label for="editUserNama" class="block text-sm font-medium mb-1">Nama User:</label>
                 <input type="text" id="editUserNama" name="nama" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
-                <label for="editUserEmail" class="block text-sm font-medium mb-1">Email User</label>
+                <label for="editUserEmail" class="block text-sm font-medium mb-1">Email User:</label>
                 <input type="email" id="editUserEmail" name="Email" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">

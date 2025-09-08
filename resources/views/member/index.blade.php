@@ -37,6 +37,10 @@
     {{-- Scripts --}}
     <script src="{{ asset('js/member/member.js') }}"></script>
     <script>
+    const currentUserRole = "{{ Auth::user()->role }}";
+</script>
+
+    <script>
         function generateCards() {
             const aktifContainer = document.getElementById('tableAktif');
             const arsipContainer = document.getElementById('tableArsip');

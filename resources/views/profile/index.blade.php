@@ -32,7 +32,7 @@
 
       <!-- Right Side: Update Form -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-6 border-b border-gray-700 pb-2">Update Profil</h3>
+        <h3 class="text-xl font-semibold text-white mb-6 border-b border-gray-700 pb-2 text-center">Update Profil</h3>
 
         @if(session('success'))
           <div class="bg-green-900 border-l-4 border-green-500 text-green-300 p-4 mb-4 rounded-md">
@@ -59,7 +59,7 @@
 
           <!-- NRP Input -->
           <div>
-            <label class="block text-sm font-medium text-gray-300 mb-1">NRP</label>
+            <label class="block text-sm font-medium text-gray-300 mb-1">NRP:</label>
             <input type="text" name="nrp" 
               value="{{ old('nrp', $user->userProfile->nrp ?? '') }}" 
               class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -68,7 +68,7 @@
 
           <!-- Alamat Input -->
           <div>
-            <label class="block text-sm font-medium text-gray-300 mb-1">Alamat</label>
+            <label class="block text-sm font-medium text-gray-300 mb-1">Alamat:</label>
             <textarea name="alamat" rows="3"
               class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required>{{ old('alamat', $user->userProfile->alamat ?? '') }}</textarea>
@@ -77,7 +77,7 @@
           <!-- Bagian & Level Selects -->
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-1">Bagian</label>
+              <label class="block text-sm font-medium text-gray-300 mb-1">Nama Bagian:</label>
               <select name="bagian_id" required 
                 class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Pilih Bagian</option>
@@ -91,7 +91,7 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-1">Level</label>
+              <label class="block text-sm font-medium text-gray-300 mb-1">Nama Level:</label>
               <select name="level_id" required 
                 class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Pilih Level</option>
@@ -107,7 +107,7 @@
 
           <!-- Status Select -->
           <div>
-            <label class="block text-sm font-medium text-gray-300 mb-1">Status</label>
+            <label class="block text-sm font-medium text-gray-300 mb-1">Nama Status:</label>
             <select name="status_id" required 
               class="w-full border rounded-lg p-2 bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option value="">Pilih Status</option>

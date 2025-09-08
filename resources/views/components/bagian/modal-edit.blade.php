@@ -15,7 +15,7 @@
 
             <!-- Input -->
             <div class="mb-4">
-                <label for="editNama" class="block text-sm font-medium mb-1">Nama Bagian</label>
+                <label for="editNama" class="block text-sm font-medium mb-1">Nama Bagian:</label>
                 <input type="text" id="editNama" name="nama" required
                        class="w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 
                               placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 

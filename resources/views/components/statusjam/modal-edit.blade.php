@@ -13,7 +13,7 @@
             <input type="hidden" id="editStatusJamKerjaId" name="id">
 
             <div class="mb-4">
-                <label for="editStatusJamKerjaNama" class="block text-sm font-medium mb-1">Nama StatusJamKerja</label>
+                <label for="editStatusJamKerjaNama" class="block text-sm font-medium mb-1">Nama StatusJamKerja:</label>
                 <input type="text" id="editStatusJamKerjaNama" name="nama" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">

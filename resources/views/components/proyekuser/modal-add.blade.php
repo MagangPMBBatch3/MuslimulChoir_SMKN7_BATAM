@@ -11,14 +11,14 @@
         <form id="formAddProyekUser" onsubmit="event.preventDefault(); createProyekUser()">
             @csrf
             <div class="mb-4">
-                <label for="addProyekUserProyek" class="block text-sm font-medium mb-1">Proyek</label>
+                <label for="addProyekUserProyek" class="block text-sm font-medium mb-1">Nama Proyek:</label>
                 <select id="addProyekUserProyek" name="proyek_id" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
                     <option value="">Pilih Proyek</option>
                 </select>
 
-                <label for="addProyekUserUserProfile" class="block text-sm font-medium mt-4 mb-1">User Profile</label>
+                <label for="addProyekUserUserProfile" class="block text-sm font-medium mt-4 mb-1">User Profile:</label>
                 <select id="addProyekUserUserProfile" name="users_profile_id" required
                     class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
