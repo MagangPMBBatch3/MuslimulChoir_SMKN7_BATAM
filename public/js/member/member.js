@@ -78,7 +78,7 @@ function renderUserProfileCards(UserProfiles, containerId) {
 
         // Tombol aksi
         let actions = "";
-        if (currentUserRole === "admin") {   // ⬅️ cek role login sekarang
+        if (currentUserRole === "admin") {   //  cek role login sekarang
             if (containerId === "tableAktif") {
                 actions = `
                     <button class="btn-arsip" onclick="archiveUserProfile(${item.id})">Arsipkan</button>
