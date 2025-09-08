@@ -13,10 +13,9 @@ class Pesan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'pengirim',
-        'penerima',
+        'pengirim_id',
+        'penerima_id',
         'isi',
-        'parent_id',
         'tgl_pesan',
         'jenis_id',
     ];
@@ -33,4 +32,15 @@ class Pesan extends Model
     {
        return $this->belongsTo(\App\Models\JenisPesan\JenisPesan::class , 'jenis_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class ,'pengirim_id', 'id');
+    }
+
+    public function penerima()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'penerima_id', 'id');
+    }
+
 }

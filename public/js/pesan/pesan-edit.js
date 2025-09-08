@@ -10,9 +10,7 @@ async function loadJenisPesanOptionsForEdit() {
 
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
     });
 
@@ -29,16 +27,52 @@ async function loadJenisPesanOptionsForEdit() {
     });
 }
 
-async function openEditPesanModal(id, pengirim, penerima, isi, parent_id, tgl_pesan, jenis_id) {
+async function loadUserOptionsForEdit() {
+    const query = `
+        query {
+            allUser {
+                id
+                name
+            }
+        }
+    `;
+
+    const response = await fetch("/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+    });
+
+    const data = await response.json();
+    const pengirimSelect = document.getElementById("editPesanPengirim");
+    const penerimaSelect = document.getElementById("editPesanPenerima");
+
+    while (pengirimSelect.options.length > 1) {
+        pengirimSelect.remove(1);
+    }
+    while (penerimaSelect.options.length > 1) {
+        penerimaSelect.remove(1);
+    }
+
+    data.data.allUser.forEach((user) => {
+        const option1 = new Option(user.name, user.id);
+        const option2 = new Option(user.name, user.id);
+        pengirimSelect.add(option1);
+        penerimaSelect.add(option2);
+    });
+}
+
+async function openEditPesanModal(id, pengirim_id, penerima_id, isi, tgl_pesan, jenis_id) {
     await loadJenisPesanOptionsForEdit();
+    await loadUserOptionsForEdit();
+
     document.getElementById("editId").value = id;
-    document.getElementById("editPesanPengirim").value = pengirim;
-    document.getElementById("editPesanPenerima").value = penerima;
+    document.getElementById("editPesanPengirim").value = pengirim_id;
+    document.getElementById("editPesanPenerima").value = penerima_id;
     document.getElementById("editPesanIsi").value = isi;
-    document.getElementById("editPesanParentID").value = parent_id;
     document.getElementById("editPesanTglPesan").value = tgl_pesan;
     document.getElementById("editPesanJenisPesan").value = jenis_id;
- 
+
     document.getElementById("modalEditPesan").classList.remove("hidden");
 }
 
@@ -48,58 +82,61 @@ function closeEditPesanModal() {
 
 async function updatePesan() {
     const id = document.getElementById("editId").value;
-    const pengirim = document.getElementById("editPesanPengirim").value;
-    const penerima = document.getElementById("editPesanPenerima").value;
+    const pengirim_id = document.getElementById("editPesanPengirim").value;
+    const penerima_id = document.getElementById("editPesanPenerima").value;
     const isi = document.getElementById("editPesanIsi").value;
-    const parent_id = document.getElementById("editPesanParentID").value;
     let tgl_pesan = document.getElementById("editPesanTglPesan").value;
     const jenis_id = document.getElementById("editPesanJenisPesan").value;
 
-    if (!pengirim || !penerima || !parent_id || !isi || !parent_id || !tgl_pesan || !jenis_id) {
+    if (!pengirim_id || !penerima_id || !isi || !tgl_pesan || !jenis_id) {
         alert("Semua field harus diisi!");
         return;
     }
 
-        if (tgl_pesan.includes("T")) {
-            tgl_pesan = tgl_pesan.replace("T", " ") + ":00";
-        }
+    if (tgl_pesan.includes("T")) {
+        tgl_pesan = tgl_pesan.replace("T", " ") + ":00";
+    }
 
     const mutation = `
-            mutation {
-                updatePesan(
-                 id: ${id},
-            input:{
-                pengirim : "${pengirim}"
-                penerima : "${penerima}"
-                isi : "${isi}"
-                parent_id : ${parent_id}
-                tgl_pesan : "${tgl_pesan}"
-                jenis_id : ${jenis_id}
-            }) {
+        mutation {
+            updatePesan(
+                id: ${id},
+                input: {
+                    pengirim_id: ${pengirim_id}
+                    penerima_id: ${penerima_id}
+                    isi: "${isi.replace(/"/g, '\\"')}"
+                    tgl_pesan: "${tgl_pesan}"
+                    jenis_id: ${jenis_id}
+                }
+            ) {
                 id
-                pengirim
-                penerima
+                pengirim_id
+                penerima_id
                 isi
-                parent_id
                 tgl_pesan
                 jenis_id
+                user {
+                    name
+                }
+                penerima {
+                    name
+                }
                 jenis_pesan {
                     nama
                 }
-                }
-            }`;
-          console.log(mutation);
+            }
+        }`;
 
+    console.log(mutation);
 
     const response = await fetch("/graphql", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: mutation }),
     });
     const result = await response.json();
     console.log(result);
+
     loadPesanData();
     closeEditPesanModal();
 }

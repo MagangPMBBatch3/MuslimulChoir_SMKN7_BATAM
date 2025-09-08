@@ -11,7 +11,7 @@
 }
 </style>
 
-<x-layouts.main title="Data User Profile">
+<x-layouts.main title="Data Member">
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
 
 <h1 class="text-3xl font-extrabold mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent tracking-wider drop-shadow-lg animate-text">Data Member</h1>

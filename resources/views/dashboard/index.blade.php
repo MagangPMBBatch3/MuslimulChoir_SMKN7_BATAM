@@ -21,7 +21,7 @@
         ? asset('storage/img/' . Auth::user()->userProfile->foto)
         : asset('storage/img/default-avatar.png') }}"
         alt="Profile Photo"
-        class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-lg">
+        class="w-20 h-20 rounded-full object-cover border-4 border-gray-500 shadow-lg">
 
     <!-- Teks -->
     <div class="text-left">
@@ -72,7 +72,7 @@
         <ul class="divide-y divide-gray-200">
             @forelse($pesanTerbaru as $pesan)
                 <li class="py-3">
-                    <p class="font-semibold">{{ $pesan->pengirim }}</p>
+                    <p class="font-semibold">{{ $pesan->user->name }}</p>
                     <p class="text-sm text-gray-600">{{ $pesan->isi }}</p>
                     <p class="text-xs text-gray-400">{{ $pesan->tgl_pesan->format('d M Y H:i') }}</p>
                 </li>

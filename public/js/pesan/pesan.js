@@ -3,12 +3,17 @@ async function loadPesanData() {
     const queryAktif = `query {
         allPesan {
             id
-            pengirim
-            penerima
+            pengirim_id
+            penerima_id
             isi
-            parent_id
             tgl_pesan
             jenis_id
+            user {
+                name
+            }
+            penerima {
+                name
+            }
             jenis_pesan {
                 nama
             }
@@ -30,13 +35,18 @@ async function loadPesanData() {
 
     const queryArsip = `query {
         allPesanArsip {
-             id
-            pengirim
-            penerima
+            id
+            pengirim_id
+            penerima_id
             isi
-            parent_id
             tgl_pesan
             jenis_id
+            user {
+                name
+            }
+            penerima {
+                name
+            }
             jenis_pesan {
                 nama
             }
@@ -72,9 +82,10 @@ function renderPesanTable(keterangans, tableId, isActive) {
 
     keterangans.forEach((item) => {
         let actions = "";
+        console.log(item)
         if (isActive) {
             actions = `
-                <button onclick="openEditPesanModal('${item.id}', '${item.pengirim}','${item.penerima}','${item.isi}','${item.parent_id}' ,'${item.tgl_pesan}', '${item.jenis_id}')" class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                <button onclick="openEditPesanModal('${item.id}', '${item.pengirim_id}','${item.penerima_id}','${item.isi}' ,'${item.tgl_pesan}', '${item.jenis_id}')" class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
                     Edit
                 </button>
                 <button onclick="archivePesan(${item.id})" class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">
@@ -93,10 +104,9 @@ function renderPesanTable(keterangans, tableId, isActive) {
         tbody.innerHTML += `
             <tr>
                 <td class="p-2 border text-center">${item.id}</td>
-                <td class="p-2 border text-center">${item.pengirim}</td>
-                <td class="p-2 border text-center">${item.penerima}</td>
+                <td class="p-2 border text-center">${item.user.name}</td>
+                <td class="p-2 border text-center">${item.penerima.name}</td>
                 <td class="p-2 border text-center">${item.isi}</td>
-                <td class="p-2 border text-center">${item.parent_id}</td>
                 <td class="p-2 border text-center">${item.tgl_pesan}</td>
                 <td class="p-2 border text-center">${item.jenis_pesan.nama}</td>
                 <td class="p-2 border text-center">${actions}</td>
@@ -177,7 +187,6 @@ async function searchPesan() {
             pengirim
             penerima
             isi
-            parent_id
             tgl_pesan
             jenis_id
             jenis_pesan {
@@ -207,7 +216,6 @@ async function searchPesan() {
             pengirim
             penerima
             isi
-            parent_id
             tgl_pesan
             jenis_id
             jenis_pesan {

@@ -7,49 +7,56 @@
     <div class="relative bg-slate-800/95 text-gray-200 rounded-xl w-96 p-6 shadow-lg shadow-blue-400 z-50">
         <button onclick="closeAddPesanModal()" class="text-gray-200 hover:text-red-400 text-xl font-bold absolute right-5">&times;</button>
         <h3 class="text-lg font-bold mb-6 text-center">Tambah Pesan</h3>
+
         <form id="formAddPesan" onsubmit="event.preventDefault(); createPesan()">
             <div class="grid grid-cols-2 gap-4">
                 <!-- Kiri -->
                 <div class="flex flex-col gap-3">
-                    <label for="addPesanPengirim" class="block text-sm font-medium">Pengirim</label>
-                    <input type="text" id="addPesanPengirim" name="pengirim" placeholder="Masukkan Pengirim" required
+                    <!-- Pengirim -->
+                    <label for="addPengirim" class="block text-sm font-medium">Pengirim</label>
+                    <select id="addPengirim" name="pengirim" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
                                focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
+                        <option value="">Pilih Pengirim</option>
+                    </select>
 
-                    <label for="addPesanPenerima" class="block text-sm font-medium">Penerima</label>
-                    <input type="text" id="addPesanPenerima" name="penerima" placeholder="Masukkan Penerima" required
+                    <!-- Penerima -->
+                    <label for="addPenerima" class="block text-sm font-medium">Penerima</label>
+                    <select id="addPenerima" name="penerima" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
                                focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
+                        <option value="">Pilih Penerima</option>
+                    </select>    
 
-                    <label for="addPesanIsi" class="block text-sm font-medium">Isi</label>
-                    <input type="text" id="addPesanIsi" name="isi" placeholder="Masukkan Isi" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
-                               focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
                 </div>
 
                 <!-- Kanan -->
                 <div class="flex flex-col gap-3">
-                    <label for="addPesanParentID" class="block text-sm font-medium">Parent ID</label>
-                    <input type="text" id="addPesanParentID" name="parent_id" placeholder="Boleh kosong"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
-
+                    <!-- Tanggal Pesan -->
                     <label for="addPesanTglPesan" class="block text-sm font-medium">Tgl Pesan</label>
-                    <input type="datetime-local" id="addPesanTglPesan" name="tgl_pesan"
+                    <input type="datetime-local" id="addPesanTglPesan" name="tgl_pesan" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
 
-                    <label for="addPesanJenisPesan" class="block text-sm font-medium">Jenis ID</label>
-                    <select id="addPesanJenisPesan" name="jenis_id"
+                    <!-- Jenis Pesan -->
+                    <label for="addPesanJenisPesan" class="block text-sm font-medium">Jenis Pesan</label>
+                    <select id="addPesanJenisPesan" name="jenis_id" required
                         class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2">
-                        <option value="">Pilih Jenis ID</option>
+                        <option value="">Pilih Jenis Pesan</option>
                     </select>
                 </div>
             </div>
 
-            <div class="flex justify-end gap-2 mt-6">
-                <x-button type="button" variant="secondary" onclick="closeAddPesanModal()"> Batal</x-button>
-           
-                <x-button type="submit" variant="primary" >Tambah Data</x-button>
+             <!-- Isi Pesan -->
+                   
+                    <label for="addPesanIsi" class="block text-sm font-medium">Isi</label>
+                    <textarea id="addPesanIsi" name="isi" placeholder="Masukkan Isi" required
+                        class="w-full h-28 rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500"></textarea>
 
+            <!-- Action Button -->
+            <div class="flex justify-end gap-2 mt-6">
+                <x-button type="button" variant="secondary" onclick="closeAddPesanModal()">Batal</x-button>
+                <x-button type="submit" variant="primary">Tambah Data</x-button>
             </div>
         </form>
     </div>

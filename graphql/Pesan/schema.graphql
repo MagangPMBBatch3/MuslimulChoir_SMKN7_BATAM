@@ -1,9 +1,8 @@
 type Pesan {
     id: ID!
-    pengirim: String!
-    penerima: String!
+    pengirim_id: Int
+    penerima_id: Int
     isi: String
-    parent_id: Int
     tgl_pesan: DateTime
     jenis_id: Int
     created_at: DateTime
@@ -11,22 +10,22 @@ type Pesan {
     deleted_at: DateTime
 
     jenis_pesan: JenisPesan @belongsTo
+    user: User @belongsTo
+    penerima: User @belongsTo
 }
 
 input CreatePesanInput {
-    pengirim: String!
-    penerima: String!
+    pengirim_id: Int
+    penerima_id: Int
     isi: String
-    parent_id: Int
     tgl_pesan: DateTime
     jenis_id: Int
 }
 
 input UpdatePesanInput {
-    pengirim: String
-    penerima: String
+    pengirim_id: Int
+    penerima_id: Int
     isi: String
-    parent_id: Int
     tgl_pesan: DateTime
     jenis_id: Int
 }

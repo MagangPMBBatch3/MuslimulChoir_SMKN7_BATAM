@@ -32,7 +32,6 @@
                         <x-th align="center">Pengirim</x-th>
                         <x-th align="center">Penerima</x-th>
                         <x-th align="center">Isi</x-th>
-                        <x-th align="center">Prent ID</x-th>
                         <x-th align="center">Tanggal Pesan</x-th>
                         <x-th align="center">Jenis Pesan</x-th>
                         <x-th align="center">Aksi</x-th>
@@ -48,7 +47,6 @@
                         <x-th align="center">Pengirim</x-th>
                         <x-th align="center">Penerima</x-th>
                         <x-th align="center">Isi</x-th>
-                        <x-th align="center">Prent ID</x-th>
                         <x-th align="center">Tanggal Pesan</x-th>
                         <x-th align="center">Jenis Pesan</x-th>
                         <x-th align="center">Aksi</x-th>
