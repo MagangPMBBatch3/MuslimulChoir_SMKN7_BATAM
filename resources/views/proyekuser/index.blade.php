@@ -1,6 +1,11 @@
 <x-layouts.main title="Data Proyek User">
+     <x-slot name="pageTitle">Proyek User</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
-        <h1 class="text-2xl font-bold mb-4 text-white">Data Proyek User</h1>
+       <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+    <i class="bx bx-briefcase-alt-2 text-cyan-400"></i>
+    Data Proyek User
+</h1>
+
 
         {{-- Search & Tambah --}}
         <div class="flex justify-between mb-4">

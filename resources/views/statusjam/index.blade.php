@@ -1,6 +1,11 @@
 <x-layouts.main title="Data StatusJamKerja">
+     <x-slot name="pageTitle">Status Jam Kerja</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
-        <h1 class="text-2xl font-bold mb-4 text-white">Data Status Jam Kerja</h1>
+<h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+    <i class="bx bx-toggle-left text-cyan-400"></i>
+    Status Jam Kerja
+</h1>
+
 
         {{-- Search & Tambah --}}
         <div class="flex justify-between mb-4">

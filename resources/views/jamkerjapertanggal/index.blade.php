@@ -1,6 +1,11 @@
 <x-layouts.main title="Data Jam Per Tanggal">
+     <x-slot name="pageTitle">Jam Kerja PerTanggal</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
-        <h1 class="text-2xl font-bold mb-4 text-white">Data Jam Per Tanggal</h1>
+        <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+    <i class="bx bx-calendar-alt text-teal-400"></i>
+    Jam Kerja Per Tanggal
+</h1>
+
 
         {{-- Tombol Tambah & Pencarian --}}
         <div class="flex justify-between mb-4">

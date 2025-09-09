@@ -1,6 +1,11 @@
 <x-layouts.main title="Data Aktivitas">
+    <x-slot name="pageTitle">Aktivitas</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
-        <h1 class="text-2xl font-bold mb-4 text-white">Data Aktivitas</h1>
+        <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+    <i class="bx bx-task text-cyan-400"></i>
+    Data Aktivitas
+</h1>
+
 
         {{-- Search + Tambah Data --}}
         <div class="flex justify-between mb-4">

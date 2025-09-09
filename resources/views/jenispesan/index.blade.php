@@ -1,6 +1,11 @@
 <x-layouts.main title="Data JenisPesan">
+     <x-slot name="pageTitle">Jenis Pesan</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
-        <h1 class="text-2xl font-bold mb-4 text-white">Data Jenis Pesan</h1>
+        <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+    <i class="bx bx-category text-cyan-400"></i>
+    Jenis Pesan
+</h1>
+
 
         {{-- Search & Tambah --}}
         <div class="flex justify-between mb-4">
