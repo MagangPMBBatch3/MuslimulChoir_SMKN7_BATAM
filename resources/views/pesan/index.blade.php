@@ -1,5 +1,5 @@
 <x-layouts.main title="Data Pesan">
-     <x-slot name="pageTitle">Pesan</x-slot>
+     <x-slot name="pageTitle">Data Pesan</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
         <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
     <i class="bx bx-message-rounded-dots text-sky-400"></i>

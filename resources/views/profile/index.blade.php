@@ -1,5 +1,5 @@
 <x-layouts.main title="Profile">
-   <x-slot name="pageTitle">Profile</x-slot>
+   <x-slot name="pageTitle">Profile Saya</x-slot>
 
   <div class="w-full max-w-5xl bg-gray-800 shadow-2xl rounded-2xl p-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">

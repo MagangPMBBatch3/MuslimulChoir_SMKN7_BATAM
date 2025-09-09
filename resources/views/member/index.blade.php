@@ -1,21 +1,12 @@
-<style>
-@keyframes gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-text {
-  background-size: 200% 200%;
-  animation: gradient-move 4s ease infinite;
-}
-</style>
-
 <x-layouts.main title="Data Member">
-     <x-slot name="pageTitle">Member</x-slot>
+     <x-slot name="pageTitle">Data Member</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
 
-<h1 class="text-3xl font-extrabold mb-8 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent tracking-wider drop-shadow-lg animate-text">Data Member</h1>
+<h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+    <i class="bx bxs-user-detail text-cyan-400"></i>
+    Data Member
+</h1>
+
         
         <div class="flex flex-col sm:flex-row justify-between mb-4 gap-2"></div>
 

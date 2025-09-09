@@ -1,5 +1,5 @@
 <x-layouts.main title="Data Keterangan">
-     <x-slot name="pageTitle">Keterangan</x-slot>
+     <x-slot name="pageTitle">Data Keterangan</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
         <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
     <i class="bx bx-info-circle text-cyan-400"></i>

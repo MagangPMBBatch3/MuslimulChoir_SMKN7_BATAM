@@ -1,5 +1,5 @@
 <x-layouts.main title="Data Bagian">
-     <x-slot name="pageTitle">Bagian</x-slot>
+     <x-slot name="pageTitle">Data Bagian</x-slot>
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
 <h1 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
     <i class="bx bx-layer text-cyan-400"></i>
