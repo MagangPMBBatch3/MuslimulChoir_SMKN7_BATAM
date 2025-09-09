@@ -163,7 +163,7 @@
         @endif
 
              {{-- Jam Kerja per Tanggal --}}
-             {{-- <li class="mt-4 text-xs uppercase text-blue-200 font-semibold">Jam Kerja per Tanggal</li> --}}
+            
             <li class="mb-2">
                 <a href="{{ route('jamkerjapertanggal.index') }}"
                    class="flex items-center p-2 rounded {{ request()->routeIs('jamkerjapertanggal.*') ? 'bg-gray-900 text-with shadow-md font-semibold' : 'hover:bg-gray-700' }}">
@@ -199,7 +199,7 @@
                    class="flex items-center py-2 px-3 rounded-lg transition duration-200 
                           {{ request()->is('jenispesan') ? 'bg-gray-900 text-white shadow-md' : 'hover:bg-gray-700 hover:text-white' }}">
                     <i class='bx bx-list-ul' style="font-size: 18px;"></i>
-                    <span class="ml-2">Jenis Pesanan</span>
+                    <span class="ml-2">Jenis Pesan</span>
                 </a>
             </li>
         @endif

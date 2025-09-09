@@ -195,7 +195,7 @@ style.innerHTML = `
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
-  border: 4px solid #38bdf8;
+  border: 4px solid #4b5563;
   width: 130px;
   height: 130px;
   object-fit: cover;

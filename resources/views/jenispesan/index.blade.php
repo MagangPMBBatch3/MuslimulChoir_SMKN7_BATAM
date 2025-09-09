@@ -1,6 +1,6 @@
 <x-layouts.main title="Data JenisPesan">
     <div class="bg-slate-800/90 p-4 rounded-xl shadow w-full">
-        <h1 class="text-2xl font-bold mb-4 text-white">Data JenisPesan</h1>
+        <h1 class="text-2xl font-bold mb-4 text-white">Data Jenis Pesan</h1>
 
         {{-- Search & Tambah --}}
         <div class="flex justify-between mb-4">
