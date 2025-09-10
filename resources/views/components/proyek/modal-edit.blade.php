@@ -15,28 +15,28 @@
             <div class="mb-4">
                 <label for="editProyekKode" class="block text-sm font-medium mb-1">Kode Proyek:</label>
                 <input type="text" id="editProyekKode" name="kodeProyek" required
-                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                    class="w-full rounded-md border border-slate-600 bg-gray-900 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
                 <label for="editProyekNama" class="block text-sm font-medium mb-1">Nama Proyek:</label>
                 <input type="text" id="editProyekNama" name="namaProyek" required
-                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                    class="w-full rounded-md border border-slate-600 bg-gray-900 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
                 <label for="editProyekTanggal" class="block text-sm font-medium mb-1">Tanggal Proyek:</label>
                 <input type="date" id="editProyekTanggal" name="tanggalProyek" required
-                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                    class="w-full rounded-md border border-slate-600 bg-gray-900 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 
             <div class="mb-4">
                 <label for="editProyekNamaSekolah" class="block text-sm font-medium mb-1">Nama Sekolah:</label>
                 <input type="text" id="editProyekNamaSekolah" name="namasekolah" required
-                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 p-2 text-gray-200
+                    class="w-full rounded-md border border-slate-600 bg-gray-900 p-2 text-gray-200
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500 mb-3">
             </div>
 

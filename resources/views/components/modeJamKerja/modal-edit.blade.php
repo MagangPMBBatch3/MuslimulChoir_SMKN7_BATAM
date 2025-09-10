@@ -14,7 +14,7 @@
             <div class="mb-4">
                 <label for="editModeJamKerjaNama" class="block text-sm font-medium mb-1">Nama ModeJamKerja:</label>
                 <input type="text" id="editModeJamKerjaNama" name="nama" required
-                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                    class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2
                            focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
             </div>
 

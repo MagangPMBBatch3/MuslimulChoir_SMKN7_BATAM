@@ -15,7 +15,7 @@
                 <div>
                     <label for="editUserProfileUserID" class="block mb-1 text-sm">User:</label>
                     <select id="editUserProfileUserID" name="user_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Email User</option>
                     </select>
@@ -24,21 +24,21 @@
                 <div>
                     <label for="editUserProfileNama" class="block mb-1 text-sm">Nama Lengkap:</label>
                     <input type="text" id="editUserProfileNama" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
                     <label for="editUserProfileNrp" class="block mb-1 text-sm">NRP:</label>
                     <input type="text" id="editUserProfileNrp" name="nrp" placeholder="Masukkan NRP" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
                     <label for="editUserProfileAlamat" class="block mb-1 text-sm">Alamat:</label>
                     <input type="text" id="editUserProfileAlamat" name="alamat" placeholder="Masukkan Alamat" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
@@ -46,14 +46,14 @@
                 <div>
                     <label for="editUserProfileFoto" class="block mb-1 text-sm">Foto:</label>
                     <input type="text" id="editUserProfileFoto" name="foto" placeholder="Masukkan Foto"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
                     <label for="editUserProfileBagian" class="block mb-1 text-sm">Nama Bagian:</label>
                     <select id="editUserProfileBagian" name="bagian_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Bagian</option>
                     </select>
@@ -62,7 +62,7 @@
                 <div>
                     <label for="editUserProfileLevel" class="block mb-1 text-sm">Nama Level:</label>
                     <select id="editUserProfileLevel" name="level_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Level</option>
                     </select>
@@ -71,7 +71,7 @@
                 <div>
                     <label for="editUserProfileStatus" class="block mb-1 text-sm">Nama Status:</label>
                     <select id="editUserProfileStatus" name="status_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Status</option>
                     </select>

@@ -20,7 +20,7 @@
                     <div>
                         <label for="addBagian" class="block text-sm font-medium text-gray-300">Nama Bagian:</label>
                         <select id="addAktivitasBagian" name="bagian_id"
-                            class="mt-1 block w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            class="mt-1 block w-full rounded-lg border border-slate-600 bg-gray-900 text-gray-200 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Pilih Bagian</option>
                         </select>
                     </div>
@@ -29,7 +29,7 @@
                     <div>
                         <label for="addNoWbs" class="block text-sm font-medium text-gray-300">No WBS:</label>
                         <input type="text" id="addAktivitasNoWbs" name="NoWbs"
-                            class="mt-1 block w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            class="mt-1 block w-full rounded-lg border border-slate-600 bg-gray-900 text-gray-200 placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             placeholder="Masukkan No WBS Aktivitas">
                     </div>
 
@@ -37,7 +37,7 @@
                     <div>
                         <label for="addNama" class="block text-sm font-medium text-gray-300">Nama Aktivitas:</label>
                         <input type="text" id="addAktivitasNama" name="nama"
-                            class="mt-1 block w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            class="mt-1 block w-full rounded-lg border border-slate-600 bg-gray-900 text-gray-200 placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             placeholder="Masukkan nama Aktivitas">
                     </div>
                 </div>

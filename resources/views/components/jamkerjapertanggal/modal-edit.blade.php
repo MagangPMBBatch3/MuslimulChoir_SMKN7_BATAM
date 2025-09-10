@@ -20,7 +20,7 @@
                 <div>
                     <label for="editJamPerTanggalUserProfile" class="block mb-1 text-sm">User Profile:</label>
                     <select id="editJamPerTanggalUserProfile" name="users_profile_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih User Profile</option>
                     </select>
                 </div>
@@ -29,7 +29,7 @@
                 <div>
                     <label for="editJamPerTanggalProyek" class="block mb-1 text-sm">Nama Proyek:</label>
                     <select id="editJamPerTanggalProyek" name="proyek_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Proyek</option>
                     </select>
                 </div>
@@ -38,14 +38,14 @@
                 <div>
                     <label for="editJamPerTanggalTanggal" class="block mb-1 text-sm">Tanggal:</label>
                     <input type="date" id="editJamPerTanggalTanggal" name="tanggal" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <!-- Jam -->
                 <div>
                     <label for="editJamPerTanggalJam" class="block mb-1 text-sm">Jam:</label>
                     <input type="number" id="editJamPerTanggalJam" name="jam" step="0.5" min="0"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
             </div>
 

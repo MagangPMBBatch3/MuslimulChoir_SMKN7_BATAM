@@ -19,7 +19,7 @@
                 <div>
                     <label for="addLemburUserProfile" class="block mb-1 text-sm">User Profile:</label>
                     <select id="addLemburUserProfile" name="users_profile_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih User Profile</option>
                     </select>
@@ -29,7 +29,7 @@
                 <div>
                     <label for="addLemburProyek" class="block mb-1 text-sm">Nama Proyek:</label>
                     <select id="addLemburProyek" name="proyek_id" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         <option value="">Pilih Proyek</option>
                     </select>
@@ -39,7 +39,7 @@
                 <div>
                     <label for="addLemburTanggal" class="block mb-1 text-sm">Tanggal:</label>
                     <input type="date" id="addLemburTanggal" name="Tanggal" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Masukkan Tanggal Lembur">
                 </div>
