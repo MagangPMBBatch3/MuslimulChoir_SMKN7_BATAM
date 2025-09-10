@@ -25,7 +25,7 @@
                     <!-- Pengirim -->
                     <label for="editPesanPengirim" class="block text-sm font-medium mb-2">Pengirim:</label>
                     <select id="editPesanPengirim" name="pengirim" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                        class="p-2 bg-gray-900 text-gray-200 w-full rounded-md border border-slate-600 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
                         <option value="">Pilih Pengirim</option>
                     </select>
@@ -33,7 +33,7 @@
                     <!-- Penerima -->
                     <label for="editPesanPenerima" class="block text-sm font-medium">Penerima:</label>
                     <select id="editPesanPenerima" name="penerima" required
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                        class="p-2 bg-gray-900 text-gray-200 w-full rounded-md border border-slate-600 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
                         <option value="">Pilih Penerima</option>
                     </select>
@@ -44,13 +44,13 @@
                     <!-- Tanggal Pesan -->
                     <label for="editPesanTglPesan" class="block text-sm font-medium mb-2">Tgl Pesan:</label>
                     <input type="datetime-local" id="editPesanTglPesan" name="tgl_pesan"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                        class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2
                                focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
 
                     <!-- Jenis Pesan -->
                     <label for="editPesanJenisPesan" class="block text-sm font-medium">Jenis Pesan:</label>
                     <select id="editPesanJenisPesan" name="jenis_id"
-                        class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                        class="p-2 bg-gray-900 text-gray-200 w-full rounded-md border border-slate-600 
                                focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500">
                         <option value="">Pilih Jenis Pesan</option>
                     </select>
@@ -60,7 +60,7 @@
             <!-- Isi Pesan -->
             <label for="editPesanIsi" class="block text-sm font-medium mt-4 mb-2">Isi:</label>
             <textarea id="editPesanIsi" name="isi" required
-                class="w-full h-28 rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2
+                class="w-full h-28 rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2
                        focus:ring-2 focus:ring-blue-500 focus:outline-none hover:ring-2 hover:ring-blue-500"></textarea>
 
             <!-- Action Buttons -->

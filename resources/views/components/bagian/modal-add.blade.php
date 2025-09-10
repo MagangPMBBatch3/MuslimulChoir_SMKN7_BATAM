@@ -14,7 +14,7 @@
             <div class="mb-4">
                 <label for="addnama" class="block text-sm font-medium mb-1">Nama Bagian:</label>
                 <input type="text" name="addnama" id="addnama"
-                       class="w-full rounded-lg border border-slate-600 bg-slate-700/70 text-gray-200 
+                       class="w-full rounded-lg border border-slate-600 bg-gray-900 text-gray-200 
                               placeholder-gray-400 p-2 shadow-sm focus:ring-2 focus:ring-blue-500 
                               focus:outline-none transition duration-200 ease-in-out"
                        placeholder="Masukkan nama bagian">

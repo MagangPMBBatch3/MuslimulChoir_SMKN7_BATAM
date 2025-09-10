@@ -16,7 +16,7 @@
             <div class="mb-4">
                 <label for="editLevelNama" class="block mb-1 text-sm">Nama Level:</label>
                 <input type="text" id="editLevelNama" name="nama" required
-                    class="w-full rounded-md border border-slate-600 bg-slate-700/70 text-gray-200 p-2 
+                    class="w-full rounded-md border border-slate-600 bg-gray-900 text-gray-200 p-2 
                            focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 

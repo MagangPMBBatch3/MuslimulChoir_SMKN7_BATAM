@@ -122,7 +122,7 @@
           </div>
 
           <!-- File Upload -->
-          <div class="border-2 border-dashed border-gray-600 rounded-xl p-6 text-center hover:border-blue-500 hover:bg-gray-700 transition">
+          <div class="border-2 border-dashed border-gray-600 bg-gray-900 rounded-xl p-6 text-center hover:border-blue-500 hover:bg-gray-700 transition">
             <input type="file" name="foto" id="fileInput" accept="image/*" class="hidden">
             <label for="fileInput" class="cursor-pointer text-gray-300">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

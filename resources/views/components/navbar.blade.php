@@ -7,22 +7,35 @@
 
 .animate-text {
   background-size: 200% 200%;
-  animation: gradient-move 4s ease infinite;
+  animation: gradient-move 5s ease infinite;
 }
 </style>
 
-<div class="bg-gray-900 border-b-2 border-blue-500 
-            p-5 flex items-center justify-between rounded-t-xl shadow-md">
-    
+<div class="bg-gray-900 border-b border-blue-500 
+            px-6 py-4 flex items-center justify-between 
+            rounded-t-xl shadow-lg">
+
     <!-- Judul -->
-    <h1 class="text-2xl font-extrabold text-center 
+    <h1 class="text-3xl font-bold tracking-wider 
                bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 
-               bg-clip-text text-transparent tracking-wider animate-text">
+               bg-clip-text text-transparent animate-text drop-shadow-md">
         {{ $pageTitle ?? 'Dashboard' }}
     </h1>
-    
+
     <!-- Sapaan -->
-    <span class="text-gray-300 italic">
-        Selamat datang, <span class="text-white font-semibold">{{ Auth::user()->name }}</span> 🌟
-    </span>
+    <div class="flex items-center gap-3 text-gray-300 italic">
+        <span>
+            Selamat datang, 
+            <span class="text-white font-semibold not-italic">
+                {{ Auth::user()->name }}
+            </span>
+        </span>
+        <!-- Foto pengguna kecil -->
+        <img 
+            src="{{ Auth::user()->userProfile && Auth::user()->userProfile->foto
+                    ? asset('storage/img/' . Auth::user()->userProfile->foto)
+                    : asset('storage/img/default-avatar.png') }}" 
+            alt="Foto User" 
+            class="w-8 h-8 rounded-full object-cover border-2 border-gray-600 shadow-sm">
+    </div>
 </div>
