@@ -14,7 +14,7 @@ class BagianQuery
             $query->where('nama', 'like', '%' . $args['search'] . '%');
         }
 
-        $perPage = $args['first'] ?? 5;
+        $perPage = $args['first'] ?? 10;
         $page = $args['page'] ?? 1;
 
         $paginator = $query->paginate($perPage, ['*'], 'page', $page);
